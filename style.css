@@ -297,3 +297,33 @@ img { max-width: 100%; height: auto; display: block; }
     text-align: center;
   }
 }
+
+/* Clickable image cards */
+.img-card { position: relative; cursor: pointer; }
+.zoom-badge {
+  position: absolute; top: 12px; right: 12px;
+  background: rgba(0,0,0,0.55); color: #fff;
+  width: 36px; height: 36px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem;
+}
+
+/* Image lightbox (reuses video lightbox pattern) */
+.img-lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(0,0,0,0.92);
+}
+.img-lightbox.open { display: flex; align-items: center; justify-content: center; }
+.lightbox-img {
+  position: relative;
+  z-index: 1;
+  max-width: 94vw;
+  max-height: 88vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+}

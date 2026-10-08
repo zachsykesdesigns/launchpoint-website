@@ -92,4 +92,40 @@
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape' && lightbox && lightbox.classList.contains('open')) closeLightbox();
   });
+
+  // Image lightbox — tap Root & Ripple designs to see mockups
+  var imgLightbox = document.getElementById('img-lightbox');
+  var lightboxImg = document.getElementById('lightbox-img');
+  var imgLightboxClose = document.getElementById('img-lightbox-close');
+  var imgLightboxBackdrop = document.getElementById('img-lightbox-backdrop');
+
+  function openImgLightbox(imgSrc, imgAlt) {
+    if (!imgLightbox || !lightboxImg) return;
+    lightboxImg.src = imgSrc;
+    lightboxImg.alt = imgAlt || '';
+    imgLightbox.classList.add('open');
+    imgLightbox.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeImgLightbox() {
+    if (!imgLightbox || !lightboxImg) return;
+    lightboxImg.removeAttribute('src');
+    imgLightbox.classList.remove('open');
+    imgLightbox.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('.img-card[data-full]').forEach(function (card) {
+    card.addEventListener('click', function () {
+      var img = card.querySelector('img');
+      openImgLightbox(card.getAttribute('data-full'), img ? img.alt : '');
+    });
+  });
+
+  if (imgLightboxClose) imgLightboxClose.addEventListener('click', closeImgLightbox);
+  if (imgLightboxBackdrop) imgLightboxBackdrop.addEventListener('click', closeImgLightbox);
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && imgLightbox && imgLightbox.classList.contains('open')) closeImgLightbox();
+  });
 })();
