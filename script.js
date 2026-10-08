@@ -118,9 +118,15 @@
 
   var galleries = {
     shirts: [
-      { src: 'mockup-bears-worn.webp?v=2', alt: 'Woman wearing the Yoga Bears shirt' },
-      { src: 'mockup-chic-worn.webp?v=2', alt: 'Woman wearing the Yoga Series shirt' },
-      { src: 'mockup-pizza-worn.webp?v=2', alt: 'Person wearing the Pizza Night shirt' }
+      { src: 'mockup-bear-meditating-worn.webp?v=2', alt: 'Bear meditating shirt being worn' },
+      { src: 'mockup-bears-worn.webp?v=2', alt: 'Bear tree pose shirt being worn' },
+      { src: 'mockup-bear-warrior-worn.webp?v=2', alt: 'Bear warrior II shirt being worn' },
+      { src: 'mockup-bear-dancer-worn.webp?v=2', alt: 'Bear dancer shirt being worn' },
+      { src: 'mockup-chic-worn.webp?v=2', alt: 'Chic warrior shirt being worn' },
+      { src: 'mockup-chic-tree-worn.webp?v=2', alt: 'Chic tree pose shirt being worn' },
+      { src: 'mockup-chic-dancer-worn.webp?v=2', alt: 'Chic dancer shirt being worn' },
+      { src: 'mockup-chic-cobra-worn.webp?v=2', alt: 'Chic cobra shirt being worn' },
+      { src: 'mockup-pizza-worn.webp?v=2', alt: 'Pizza night shirt being worn' }
     ]
   };
   var currentGallery = null;
