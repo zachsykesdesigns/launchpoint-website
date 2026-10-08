@@ -307,4 +307,81 @@
       if (Math.abs(dx) > 50) carouselStep(dx < 0 ? 1 : -1);
     }, { passive: true });
   }
+
+  // Consultation popup
+  var consultPopup = document.getElementById('consult-popup');
+  var consultHistoryPushed = false;
+
+  function openConsultPopup() {
+    if (!consultPopup) return;
+    consultPopup.classList.add('open');
+    consultPopup.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    try {
+      history.pushState({ lightbox: 'consult' }, '');
+      consultHistoryPushed = true;
+    } catch (e) {}
+    var firstInput = consultPopup.querySelector('input');
+    if (firstInput) setTimeout(function() { firstInput.focus(); }, 100);
+  }
+
+  function closeConsultPopup(fromPopstate) {
+    if (!consultPopup) return;
+    consultPopup.classList.remove('open');
+    consultPopup.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    if (!fromPopstate && consultHistoryPushed) {
+      consultHistoryPushed = false;
+      try { history.back(); } catch (e) {}
+    } else {
+      consultHistoryPushed = false;
+    }
+  }
+
+  document.querySelectorAll('.consult-trigger').forEach(function (btn) {
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+      openConsultPopup();
+    });
+  });
+
+  var consultClose = document.getElementById('consult-close');
+  if (consultClose) consultClose.addEventListener('click', function () { closeConsultPopup(false); });
+  var consultBackdrop = document.getElementById('consult-backdrop');
+  if (consultBackdrop) consultBackdrop.addEventListener('click', function () { closeConsultPopup(false); });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && consultPopup && consultPopup.classList.contains('open')) {
+      closeConsultPopup(false);
+    }
+  });
+
+  window.addEventListener('popstate', function () {
+    if (consultPopup && consultPopup.classList.contains('open')) {
+      closeConsultPopup(true);
+    }
+  });
+
+  var consultForm = document.getElementById('consult-form');
+  if (consultForm) {
+    consultForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var name = document.getElementById('consult-name').value;
+      var email = document.getElementById('consult-email').value;
+      var message = document.getElementById('consult-message').value;
+      var subject = encodeURIComponent('Free Consultation Request from ' + name);
+      var body = encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\n\n' + message);
+      window.location.href = 'mailto:zachsykesdesigns@gmail.com?subject=' + subject + '&body=' + body;
+      closeConsultPopup(false);
+    });
+  }
+
+  // Auto-open consultation popup when arriving from a package page
+  if (window.location.search.indexOf('consult=open') > -1) {
+    // Clean the URL without reloading
+    try {
+      history.replaceState({}, '', window.location.pathname);
+    } catch (e) {}
+    setTimeout(openConsultPopup, 300);
+  }
 })();

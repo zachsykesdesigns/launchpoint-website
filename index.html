@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=12">
+<link rel="stylesheet" href="style.css?v=13">
 </head>
 <body>
 
@@ -20,7 +20,7 @@
       <a href="#work">Our Work</a>
       <a href="#portal">My Launchpoint</a>
       <a href="#about">About</a>
-      <a href="#contact" class="nav-cta">Free Consultation</a>
+      <button class="nav-cta consult-trigger">Free Consultation</button>
     </nav>
     <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
       <span></span><span></span><span></span>
@@ -37,7 +37,7 @@
       <h1>Your business,<br><span class="accent">ready to launch.</span></h1>
       <p class="hero-sub">Launchpoint Media gives small businesses the creative firepower of a full marketing team — ad campaigns, websites, and branding built to bring in customers.</p>
       <div class="hero-ctas">
-        <a href="#contact" class="btn btn-primary">Book a Free Consultation</a>
+        <button class="btn btn-primary consult-trigger">Book a Free Consultation</button>
         <a href="#work" class="btn btn-ghost">See Our Work</a>
       </div>
       <p class="hero-note">Free 30-minute consultation — no pitch, no pressure. Just honest advice on what your business needs.</p>
@@ -51,7 +51,7 @@
         <h2>Not sure where to start? Let's talk it through — free.</h2>
         <p>Book a free 30-minute consultation. We'll look at where your business stands, what's working, and what could bring in more customers. You'll walk away with a clear plan whether you hire us or not.</p>
       </div>
-      <a href="#contact" class="btn btn-primary btn-large">Book My Free Consultation</a>
+      <button class="btn btn-primary btn-large consult-trigger">Book My Free Consultation</button>
     </div>
   </section>
 
@@ -256,6 +256,31 @@
     </div>
   </section>
 
+
+  <!-- Consultation popup -->
+  <div class="consult-popup" id="consult-popup" aria-hidden="true" role="dialog" aria-label="Book a free consultation">
+    <div class="consult-popup-backdrop" id="consult-backdrop"></div>
+    <div class="consult-popup-card">
+      <button class="consult-popup-close" id="consult-close" aria-label="Close">&times;</button>
+      <p class="section-eyebrow">Free Consultation</p>
+      <h2>Book your free consultation</h2>
+      <p class="section-lead">Tell me about your business and we'll find a time for a free 30-minute call. No pitch, no pressure — just honest advice. I read every message personally.</p>
+      <form class="contact-form" id="consult-form">
+        <label for="consult-name">Name
+          <input type="text" id="consult-name" name="name" required autocomplete="name">
+        </label>
+        <label for="consult-email">Email
+          <input type="email" id="consult-email" name="email" required autocomplete="email">
+        </label>
+        <label for="consult-message">What does your business need?
+          <textarea id="consult-message" name="message" rows="4" required></textarea>
+        </label>
+        <button type="submit" class="btn btn-primary">Request My Free Consultation</button>
+      </form>
+      <p class="contact-email">Prefer email? <a href="mailto:zachsykesdesigns@gmail.com">zachsykesdesigns@gmail.com</a></p>
+    </div>
+  </div>
+
 </main>
 
 <footer class="site-footer">
@@ -265,6 +290,6 @@
   </div>
 </footer>
 
-<script src="script.js?v=15"></script>
+<script src="script.js?v=16"></script>
 </body>
 </html>
