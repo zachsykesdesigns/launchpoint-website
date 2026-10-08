@@ -127,6 +127,34 @@
       { src: 'mockup-chic-dancer-worn.webp?v=2', alt: 'Chic dancer shirt being worn' },
       { src: 'mockup-chic-cobra-worn.webp?v=2', alt: 'Chic cobra shirt being worn' },
       { src: 'mockup-pizza-worn.webp?v=2', alt: 'Pizza night shirt being worn' }
+    ],
+    'ads-fitness': [
+      { src: 'fitness-tennessee-2.webp', alt: 'Tennessee fitness ad' },
+      { src: 'fitness-florida.webp', alt: 'Florida fitness ad' },
+      { src: 'fitness-michigan-state.webp', alt: 'Michigan State fitness ad' },
+      { src: 'fitness-lsu.webp', alt: 'LSU fitness ad' },
+      { src: 'fitness-kansas.webp', alt: 'Kansas fitness ad' },
+      { src: 'fitness-vanderbilt.webp', alt: 'Vanderbilt fitness ad' }
+    ],
+    'ads-workday': [
+      { src: 'workday-tennessee.webp', alt: 'Tennessee workday ad' },
+      { src: 'workday-indiana.webp', alt: 'Indiana workday ad' },
+      { src: 'workday-michigan-state.webp', alt: 'Michigan State workday ad' },
+      { src: 'workday-lsu.webp', alt: 'LSU workday ad' },
+      { src: 'workday-illinois.webp', alt: 'Illinois workday ad' },
+      { src: 'workday-ims.webp', alt: 'IMS workday ad' }
+    ],
+    'ads-basketball': [
+      { src: 'sports-tennessee-basketball.webp', alt: 'Tennessee basketball ad' },
+      { src: 'sports-alabama-basketball.webp', alt: 'Alabama basketball ad' },
+      { src: 'sports-florida-basketball.webp', alt: 'Florida basketball ad' },
+      { src: 'sports-michigan-state-basketball.webp', alt: 'Michigan State basketball ad' },
+      { src: 'sports-indiana-basketball.webp', alt: 'Indiana basketball ad' }
+    ],
+    'ads-alumni': [
+      { src: 'alumni-tennessee.webp', alt: 'Tennessee alumni gift ad' },
+      { src: 'alumni-florida.webp', alt: 'Florida alumni gift ad' },
+      { src: 'alumni-michigan-state.webp', alt: 'Michigan State alumni gift ad' }
     ]
   };
   var currentGallery = null;
@@ -218,24 +246,25 @@
   }
 
   // Single-image cards (decal -> storefront, AirFeet strip -> full size)
-  document.querySelectorAll('.img-card[data-full], .ads-card[data-full]').forEach(function (card) {
+  document.querySelectorAll('.img-card[data-full]').forEach(function (card) {
     card.addEventListener('click', function () {
       var img = card.querySelector('img');
       openImgLightbox(card.getAttribute('data-full'), img ? img.alt : '');
     });
   });
 
-  // Gallery cards (shirts -> swipeable carousel), start at tapped shirt
-  var shirtOrder = ['mockup-bears-worn.webp', 'mockup-chic-worn.webp', 'mockup-pizza-worn.webp'];
+  // Gallery cards -> swipeable carousel (shirts start at tapped design, ads start at 0)
   document.querySelectorAll('.img-card[data-gallery]').forEach(function (card) {
     card.addEventListener('click', function () {
-      var img = card.querySelector('img');
+      var galleryName = card.getAttribute('data-gallery');
       var startAt = 0;
-      // match tapped thumbnail to its worn mockup
-      if (img && img.src.indexOf('rr-bears') > -1) startAt = 0;
-      else if (img && img.src.indexOf('rr-chic') > -1) startAt = 1;
-      else if (img && img.src.indexOf('rr-pizza') > -1) startAt = 2;
-      openImgLightbox(null, null, card.getAttribute('data-gallery'), startAt);
+      if (galleryName === 'shirts') {
+        var img = card.querySelector('img');
+        if (img && img.src.indexOf('rr-bears') > -1) startAt = 1;
+        else if (img && img.src.indexOf('rr-chic') > -1) startAt = 4;
+        else if (img && img.src.indexOf('rr-pizza') > -1) startAt = 8;
+      }
+      openImgLightbox(null, null, galleryName, startAt);
     });
   });
 
