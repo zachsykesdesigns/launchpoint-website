@@ -155,6 +155,14 @@
       { src: 'alumni-tennessee.webp', alt: 'Tennessee alumni gift ad' },
       { src: 'alumni-florida.webp', alt: 'Florida alumni gift ad' },
       { src: 'alumni-michigan-state.webp', alt: 'Michigan State alumni gift ad' }
+    ],
+    'ads-gameday': [
+      { src: 'gameday-illinois-ohio-state.webp', alt: 'Illinois vs Ohio State rivalry ad' },
+      { src: 'gameday-iu-northwestern.webp', alt: 'IU vs Northwestern matchup ad' },
+      { src: 'gameday-team-recovery.webp', alt: 'Team recovery for every fan ad' },
+      { src: 'gameday-clemson-support.webp', alt: 'Clemson support starts at your feet ad' },
+      { src: 'gameday-alabama-locker.webp', alt: 'Alabama locker room recovery ad' },
+      { src: 'gameday-full-lineup.webp', alt: 'Full team lineup ad' }
     ]
   };
   var currentGallery = null;
