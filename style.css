@@ -137,7 +137,14 @@ img { max-width: 100%; height: auto; display: block; }
 .gallery-videos img { aspect-ratio: 16 / 10; }
 .gallery figcaption { padding: 12px 16px; font-size: 0.88rem; font-weight: 600; color: var(--ink-soft); }
 
-.video-card { position: relative; cursor: pointer; }
+.video-card { position: relative; }
+.video-card video {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+  background: #000;
+}
 .play-badge {
   position: absolute; top: 50%; left: 50%; transform: translate(-50%, -70%);
   width: 60px; height: 60px; border-radius: 50%;
