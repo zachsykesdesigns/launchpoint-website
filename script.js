@@ -118,10 +118,10 @@
 
   var galleries = {
     shirts: [
-      { src: 'mockup-bear-meditating-worn.webp?v=2', alt: 'Bear meditating shirt being worn' },
-      { src: 'mockup-bears-worn.webp?v=2', alt: 'Bear tree pose shirt being worn' },
-      { src: 'mockup-bear-warrior-worn.webp?v=2', alt: 'Bear warrior II shirt being worn' },
-      { src: 'mockup-bear-dancer-worn.webp?v=2', alt: 'Bear dancer shirt being worn' },
+      { src: 'mockup-bear-meditating-worn.webp?v=3', alt: 'Bear meditating shirt being worn' },
+      { src: 'mockup-bears-worn.webp?v=3', alt: 'Bear tree pose shirt being worn' },
+      { src: 'mockup-bear-warrior-worn.webp?v=3', alt: 'Bear warrior II shirt being worn' },
+      { src: 'mockup-bear-dancer-worn.webp?v=3', alt: 'Bear dancer shirt being worn' },
       { src: 'mockup-chic-worn.webp?v=2', alt: 'Chic warrior shirt being worn' },
       { src: 'mockup-chic-tree-worn.webp?v=2', alt: 'Chic tree pose shirt being worn' },
       { src: 'mockup-chic-dancer-worn.webp?v=2', alt: 'Chic dancer shirt being worn' },
