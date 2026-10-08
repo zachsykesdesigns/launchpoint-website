@@ -163,6 +163,16 @@
       { src: 'gameday-clemson-support.webp', alt: 'Clemson support starts at your feet ad' },
       { src: 'gameday-alabama-locker.webp', alt: 'Alabama locker room recovery ad' },
       { src: 'gameday-full-lineup.webp', alt: 'Full team lineup ad' }
+    ],
+    'site-walkthrough': [
+      { src: 'site-homepage-top.webp', alt: 'Homepage — hero and featured product' },
+      { src: 'site-homepage-bottom.webp', alt: 'Homepage — styles and footer' },
+      { src: 'site-collection-top.webp', alt: 'Shop by school — product grid' },
+      { src: 'site-collection-bottom.webp', alt: 'Shop by school — features' },
+      { src: 'site-product.webp', alt: 'Product page — details and lifestyle' },
+      { src: 'site-cart.webp', alt: 'Cart page' },
+      { src: 'site-checkout-top.webp', alt: 'Checkout — contact and delivery' },
+      { src: 'site-checkout-bottom.webp', alt: 'Checkout — payment' }
     ]
   };
   var currentGallery = null;
