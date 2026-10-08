@@ -104,9 +104,9 @@
 
   var galleries = {
     shirts: [
-      { src: 'mockup-bears-worn.webp', alt: 'Woman wearing the Yoga Bears shirt' },
-      { src: 'mockup-chic-worn.webp', alt: 'Woman wearing the Yoga Series shirt' },
-      { src: 'mockup-pizza-worn.webp', alt: 'Person wearing the Pizza Night shirt' }
+      { src: 'mockup-bears-worn.webp?v=2', alt: 'Woman wearing the Yoga Bears shirt' },
+      { src: 'mockup-chic-worn.webp?v=2', alt: 'Woman wearing the Yoga Series shirt' },
+      { src: 'mockup-pizza-worn.webp?v=2', alt: 'Person wearing the Pizza Night shirt' }
     ]
   };
   var currentGallery = null;
