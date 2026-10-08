@@ -62,6 +62,8 @@
   var lightboxClose = document.getElementById('lightbox-close');
   var lightboxBackdrop = document.getElementById('lightbox-backdrop');
 
+  var videoHistoryPushed = false;
+
   function openLightbox(videoSrc) {
     if (!lightbox || !lightboxVideo) return;
     lightboxVideo.src = videoSrc;
@@ -69,9 +71,14 @@
     lightbox.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
     lightboxVideo.play().catch(function () {});
+    // Push history state so phone back button closes popup instead of leaving site
+    try {
+      history.pushState({ lightbox: 'video' }, '');
+      videoHistoryPushed = true;
+    } catch (e) {}
   }
 
-  function closeLightbox() {
+  function closeLightbox(fromPopstate) {
     if (!lightbox || !lightboxVideo) return;
     lightboxVideo.pause();
     lightboxVideo.removeAttribute('src');
@@ -79,6 +86,13 @@
     lightbox.classList.remove('open');
     lightbox.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
+    // If closed via X/backdrop (not via back button), pop the history entry we added
+    if (!fromPopstate && videoHistoryPushed) {
+      videoHistoryPushed = false;
+      try { history.back(); } catch (e) {}
+    } else {
+      videoHistoryPushed = false;
+    }
   }
 
   document.querySelectorAll('.video-card[data-video]').forEach(function (card) {
@@ -140,6 +154,8 @@
     });
   }
 
+  var imgHistoryPushed = false;
+
   function openImgLightbox(src, alt, galleryName, startIndex) {
     if (!imgLightbox || !lightboxImg) return;
     if (galleryName && galleries[galleryName]) {
@@ -157,16 +173,37 @@
     imgLightbox.classList.add('open');
     imgLightbox.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
+    // Push history state so phone back button closes popup instead of leaving site
+    try {
+      history.pushState({ lightbox: 'image' }, '');
+      imgHistoryPushed = true;
+    } catch (e) {}
   }
 
-  function closeImgLightbox() {
+  function closeImgLightbox(fromPopstate) {
     if (!imgLightbox || !lightboxImg) return;
     lightboxImg.removeAttribute('src');
     imgLightbox.classList.remove('open');
     imgLightbox.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
     currentGallery = null;
+    // If closed via X/backdrop (not via back button), pop the history entry we added
+    if (!fromPopstate && imgHistoryPushed) {
+      imgHistoryPushed = false;
+      try { history.back(); } catch (e) {}
+    } else {
+      imgHistoryPushed = false;
+    }
   }
+
+  // Handle phone back button: close any open lightbox instead of leaving the site
+  window.addEventListener('popstate', function () {
+    if (lightbox && lightbox.classList.contains('open')) {
+      closeLightbox(true);
+    } else if (imgLightbox && imgLightbox.classList.contains('open')) {
+      closeImgLightbox(true);
+    }
+  });
 
   function carouselStep(dir) {
     if (!currentGallery) return;
