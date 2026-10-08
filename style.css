@@ -327,3 +327,41 @@ img { max-width: 100%; height: auto; display: block; }
   object-fit: contain;
   border-radius: 8px;
 }
+
+/* Carousel controls */
+.carousel-prev, .carousel-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  background: rgba(255,255,255,0.15);
+  border: none;
+  color: #fff;
+  font-size: 1.5rem;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.carousel-prev { left: 12px; }
+.carousel-next { right: 12px; }
+.carousel-prev:hover, .carousel-next:hover { background: rgba(255,255,255,0.3); }
+.carousel-prev.hidden, .carousel-next.hidden { display: none; }
+.carousel-dots {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  gap: 8px;
+}
+.carousel-dots.hidden { display: none; }
+.carousel-dots .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.4);
+  cursor: pointer;
+}
+.carousel-dots .dot.active { background: #fff; }
