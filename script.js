@@ -55,4 +55,41 @@
       }
     });
   }
+
+  // Video lightbox — tap thumbnail to play fullscreen on black
+  var lightbox = document.getElementById('video-lightbox');
+  var lightboxVideo = document.getElementById('lightbox-video');
+  var lightboxClose = document.getElementById('lightbox-close');
+  var lightboxBackdrop = document.getElementById('lightbox-backdrop');
+
+  function openLightbox(videoSrc) {
+    if (!lightbox || !lightboxVideo) return;
+    lightboxVideo.src = videoSrc;
+    lightbox.classList.add('open');
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    lightboxVideo.play().catch(function () {});
+  }
+
+  function closeLightbox() {
+    if (!lightbox || !lightboxVideo) return;
+    lightboxVideo.pause();
+    lightboxVideo.removeAttribute('src');
+    lightboxVideo.load();
+    lightbox.classList.remove('open');
+    lightbox.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('.video-card[data-video]').forEach(function (card) {
+    card.addEventListener('click', function () {
+      openLightbox(card.getAttribute('data-video'));
+    });
+  });
+
+  if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+  if (lightboxBackdrop) lightboxBackdrop.addEventListener('click', closeLightbox);
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && lightbox && lightbox.classList.contains('open')) closeLightbox();
+  });
 })();

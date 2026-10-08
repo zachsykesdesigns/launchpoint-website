@@ -130,25 +130,29 @@
       <h3 class="gallery-title">Video Work</h3>
       <p class="gallery-sub">Original promotional videos, produced in-house.</p>
       <div class="gallery gallery-videos">
-        <figure class="video-card">
-          <video class="vid-landscape" controls playsinline preload="metadata" poster="video-florida1.jpg">
-            <source src="videos/florida-full.mp4" type="video/mp4">
-          </video>
+        <figure class="video-card" data-video="videos/florida-full.mp4" data-poster="video-florida1.jpg">
+          <img src="video-florida1.jpg" alt="Florida Gators Step Into Recovery video thumbnail" loading="lazy">
+          <span class="play-badge" aria-hidden="true">&#9654;</span>
           <figcaption>Florida Gators — "Step Into Recovery"</figcaption>
         </figure>
-        <figure class="video-card">
-          <video class="vid-landscape" controls playsinline preload="metadata" poster="video-florida2.jpg">
-            <source src="videos/florida-product.mp4" type="video/mp4">
-          </video>
+        <figure class="video-card" data-video="videos/florida-product.mp4" data-poster="video-florida2.jpg">
+          <img src="video-florida2.jpg" alt="Florida Gators product video thumbnail" loading="lazy">
+          <span class="play-badge" aria-hidden="true">&#9654;</span>
           <figcaption>Florida Gators — Product Cut</figcaption>
         </figure>
-        <figure class="video-card video-portrait">
-          <video class="vid-portrait" controls playsinline preload="metadata" poster="video-indiana.jpg">
-            <source src="videos/indiana.mp4" type="video/mp4">
-          </video>
+        <figure class="video-card" data-video="videos/indiana.mp4" data-poster="video-indiana.jpg">
+          <img src="video-indiana.jpg" alt="Indiana University Step Into Recovery video thumbnail" loading="lazy">
+          <span class="play-badge" aria-hidden="true">&#9654;</span>
           <figcaption>Indiana University — "Step Into Recovery"</figcaption>
         </figure>
       </div>
+
+  <!-- Video lightbox -->
+  <div class="video-lightbox" id="video-lightbox" aria-hidden="true">
+    <div class="lightbox-backdrop" id="lightbox-backdrop"></div>
+    <button class="lightbox-close" id="lightbox-close" aria-label="Close video">&times;</button>
+    <video class="lightbox-video" id="lightbox-video" controls playsinline preload="none"></video>
+  </div>
 
       <h3 class="gallery-title">Client Branding — Root and Ripple</h3>
       <p class="gallery-sub">Complete branding package for Root and Ripple, a yoga studio: custom shirt designs and a storefront window decal.</p>
