@@ -215,3 +215,43 @@ img { max-width: 100%; height: auto; display: block; }
   .hero { padding: 140px 0 84px; }
   .footer-inner { flex-direction: column; text-align: center; }
 }
+
+/* Free consultation banner */
+.consult-banner {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  color: #fff;
+  padding: 3.5rem 0;
+}
+.consult-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+.consult-inner h2 {
+  color: #fff;
+  margin-bottom: 0.75rem;
+  font-size: 1.75rem;
+}
+.consult-inner p {
+  color: rgba(255,255,255,0.8);
+  max-width: 600px;
+  margin: 0;
+}
+.hero-note {
+  margin-top: 1.25rem;
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.7);
+}
+.btn-large {
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  white-space: nowrap;
+}
+@media (max-width: 768px) {
+  .consult-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+}
