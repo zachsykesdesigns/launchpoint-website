@@ -217,8 +217,8 @@
     showCarouselImage();
   }
 
-  // Single-image cards (decal -> storefront)
-  document.querySelectorAll('.img-card[data-full]').forEach(function (card) {
+  // Single-image cards (decal -> storefront, AirFeet strip -> full size)
+  document.querySelectorAll('.img-card[data-full], .strip-card[data-full]').forEach(function (card) {
     card.addEventListener('click', function () {
       var img = card.querySelector('img');
       openImgLightbox(card.getAttribute('data-full'), img ? img.alt : '');

@@ -365,3 +365,50 @@ img { max-width: 100%; height: auto; display: block; }
   cursor: pointer;
 }
 .carousel-dots .dot.active { background: #fff; }
+
+/* Horizontal scrollable strip for AirFeet ads */
+.scroll-strip {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding: 4px 4px 16px;
+  margin: 0 -4px;
+  scrollbar-width: thin;
+}
+.scroll-strip::-webkit-scrollbar { height: 6px; }
+.scroll-strip::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.2); border-radius: 3px; }
+.strip-card {
+  flex: 0 0 240px;
+  scroll-snap-align: start;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform .2s;
+  margin: 0;
+}
+.strip-card:hover { transform: translateY(-3px); }
+.strip-card img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  display: block;
+}
+.strip-card figcaption {
+  padding: 10px 14px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+.strip-hint {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-top: 4px;
+}
+@media (min-width: 768px) {
+  .strip-card { flex-basis: 280px; }
+}
