@@ -162,7 +162,11 @@
       { src: 'gameday-team-recovery.webp', alt: 'Team recovery for every fan ad' },
       { src: 'gameday-clemson-support.webp', alt: 'Clemson support starts at your feet ad' },
       { src: 'gameday-alabama-locker.webp', alt: 'Alabama locker room recovery ad' },
-      { src: 'gameday-full-lineup.webp', alt: 'Full team lineup ad' }
+      { src: 'gameday-full-lineup.webp', alt: 'Full team lineup ad' },
+      { src: 'gameday-tamu-missouri-v2.webp', alt: 'Texas A&M vs Missouri GameDay VS matchup' },
+      { src: 'gameday-arizona-wvu-v2.webp', alt: 'Arizona vs West Virginia GameDay VS matchup' },
+      { src: 'gameday-illinois-msu-v2.webp', alt: 'Illinois vs Michigan State GameDay VS matchup' },
+      { src: 'gameday-minnesota-purdue-v2.webp', alt: 'Minnesota vs Purdue GameDay VS matchup' }
     ],
     'site-walkthrough': [
       { src: 'site-homepage-top.webp', alt: 'Homepage — hero and featured product' },
