@@ -118,9 +118,18 @@
 
   var galleries = {
     shirts: [
-      { src: 'rr-chakra-lotus.webp', alt: 'Chakra lotus shirt design' },
-      { src: 'rr-chakra-meditation.webp', alt: 'Chakra meditation shirt design' },
-      { src: 'rr-tree-pose.webp', alt: 'Tree pose shirt design' },
+      { src: 'rr-chakra-lotus.webp', alt: 'Chakra lotus shirt design — black' },
+      { src: 'rr-chakra-lotus-white.webp', alt: 'Chakra lotus shirt — white' },
+      { src: 'rr-chakra-lotus-gray.webp', alt: 'Chakra lotus shirt — gray' },
+      { src: 'rr-chakra-lotus-navy.webp', alt: 'Chakra lotus shirt — navy' },
+      { src: 'rr-chakra-meditation.webp', alt: 'Chakra meditation shirt design — black' },
+      { src: 'rr-chakra-meditation-white.webp', alt: 'Chakra meditation shirt — white' },
+      { src: 'rr-chakra-meditation-gray.webp', alt: 'Chakra meditation shirt — gray' },
+      { src: 'rr-chakra-meditation-navy.webp', alt: 'Chakra meditation shirt — navy' },
+      { src: 'rr-tree-pose.webp', alt: 'Tree pose shirt design — black' },
+      { src: 'rr-tree-pose-white.webp', alt: 'Tree pose shirt — white' },
+      { src: 'rr-tree-pose-gray.webp', alt: 'Tree pose shirt — gray' },
+      { src: 'rr-tree-pose-navy.webp', alt: 'Tree pose shirt — navy' },
       { src: 'rr-pizza.webp', alt: 'Pizza night shirt design' },
       { src: 'mockup-chakra-lotus-worn.webp', alt: 'Chakra lotus shirt being worn' },
       { src: 'mockup-chakra-meditation-worn.webp', alt: 'Chakra meditation shirt being worn' },
