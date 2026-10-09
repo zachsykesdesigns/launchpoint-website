@@ -118,6 +118,10 @@
 
   var galleries = {
     shirts: [
+      { src: 'rr-chakra-lotus.webp', alt: 'Chakra lotus shirt design' },
+      { src: 'rr-chakra-meditation.webp', alt: 'Chakra meditation shirt design' },
+      { src: 'rr-tree-pose.webp', alt: 'Tree pose shirt design' },
+      { src: 'rr-pizza.webp', alt: 'Pizza night shirt design' },
       { src: 'mockup-bear-meditating-worn-final.webp', alt: 'Bear meditating shirt being worn' },
       { src: 'mockup-bears-worn-final.webp', alt: 'Bear tree pose shirt being worn' },
       { src: 'mockup-bear-warrior-worn-final.webp', alt: 'Bear warrior II shirt being worn' },
@@ -280,12 +284,6 @@
     card.addEventListener('click', function () {
       var galleryName = card.getAttribute('data-gallery');
       var startAt = 0;
-      if (galleryName === 'shirts') {
-        var img = card.querySelector('img');
-        if (img && img.src.indexOf('rr-bears') > -1) startAt = 1;
-        else if (img && img.src.indexOf('rr-chic') > -1) startAt = 4;
-        else if (img && img.src.indexOf('rr-pizza') > -1) startAt = 8;
-      }
       openImgLightbox(null, null, galleryName, startAt);
     });
   });
