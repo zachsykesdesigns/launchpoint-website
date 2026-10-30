@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>M30 Collective — Rebuild Mockup | Launchpoint Media</title>
+<meta name="description" content="M30 Collective is a 46-acre community along Indianapolis's Monon Trail. Rebuild mockup by Launchpoint Media — same content and feel, our own code.">
+<style>
+  :root{
+    --navy:#112337; --navy2:#0c1a29; --paper:#F5F5F5; --ink:#32373c; --mut:#5b6672;
+    --line:#dcd9d2; --accent:#c8a15a;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);background:#fff;line-height:1.65}
+  img{display:block;max-width:100%}
+  a{color:inherit}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+  .ribbon{background:#000;color:#fff;font-size:12px;letter-spacing:.14em;text-transform:uppercase;text-align:center;padding:8px 12px}
+  .ribbon b{color:var(--accent);font-weight:700}
+  /* header */
+  header{background:var(--navy);position:sticky;top:0;z-index:20}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;max-width:1280px;margin:0 auto}
+  .nav img{height:44px;width:auto}
+  .nav .links{display:flex;gap:28px}
+  .nav .links a{color:#e8e6e1;text-decoration:none;font-size:13px;letter-spacing:.16em;text-transform:uppercase}
+  .nav .links a:hover{color:var(--accent)}
+  @media(max-width:720px){.nav .links{display:none}}
+  /* hero */
+  .hero{background:var(--navy);color:#fff;position:relative;overflow:hidden}
+  .hero .symbol{position:absolute;right:-140px;top:50%;transform:translateY(-50%);width:640px;opacity:.10;pointer-events:none}
+  .hero .wrap{position:relative;padding:110px 24px 96px}
+  .kicker{color:var(--accent);letter-spacing:.3em;text-transform:uppercase;font-size:13px;margin-bottom:18px}
+  h1{font-size:clamp(44px,7vw,84px);line-height:1.02;font-weight:800;letter-spacing:-.01em;margin-bottom:26px}
+  .hero p{max-width:760px;font-size:19px;color:#d8dde3}
+  .btn{display:inline-block;margin-top:34px;background:var(--accent);color:#14100a;text-decoration:none;
+       padding:14px 30px;font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;border-radius:2px}
+  .btn:hover{filter:brightness(1.08)}
+  .btn.ghost{background:transparent;color:#fff;border:1px solid #8fa1b5}
+  /* sections */
+  section{padding:88px 0}
+  .light{background:var(--paper)}
+  h2.sec{font-size:13px;letter-spacing:.3em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+  h3.big{font-size:clamp(30px,4vw,44px);line-height:1.12;color:var(--navy);font-weight:800;margin-bottom:18px}
+  .lead{font-size:18px;max-width:820px;color:#3c434b}
+  .trio{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:44px}
+  .trio img{width:100%;height:300px;object-fit:cover;border-radius:3px}
+  @media(max-width:820px){.trio{grid-template-columns:1fr}.trio img{height:240px}}
+  /* aerial */
+  .aerial{background:var(--navy2);color:#fff;padding:0}
+  .aerial .frame{position:relative}
+  .aerial video{width:100%;height:min(72vh,640px);object-fit:cover;display:block}
+  .aerial .cap{position:absolute;left:0;right:0;bottom:0;padding:26px 24px;background:linear-gradient(transparent,rgba(6,12,20,.78));
+    display:flex;justify-content:space-between;align-items:flex-end;gap:16px}
+  .aerial .cap h3{font-size:clamp(24px,3.4vw,38px);font-weight:800}
+  .aerial .cap span{font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:#cfd6dd}
+  /* projects */
+  .proj{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center;padding:56px 0;border-bottom:1px solid var(--line)}
+  .proj:last-child{border-bottom:none}
+  .proj img.main{width:100%;height:380px;object-fit:cover;border-radius:3px}
+  .proj .duo{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+  .proj .duo img{width:100%;height:170px;object-fit:cover;border-radius:3px}
+  .proj h3{font-size:clamp(28px,3.6vw,40px);color:var(--navy);font-weight:800;margin-bottom:14px}
+  .proj .tag{color:var(--accent);letter-spacing:.26em;text-transform:uppercase;font-size:12px;margin-bottom:10px}
+  .proj p{color:#3c434b;font-size:17px}
+  @media(max-width:900px){.proj{grid-template-columns:1fr}}
+  /* stay updated */
+  .stay{background:var(--navy);color:#fff;text-align:center}
+  .stay h3{color:#fff}
+  .stay .lead{color:#cfd6dd;margin:0 auto}
+  .stay form{margin:34px auto 0;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;max-width:620px}
+  .stay input{flex:1;min-width:260px;padding:15px 18px;border-radius:2px;border:1px solid #44586e;background:#0d1c2c;color:#fff;font-size:16px}
+  .stay input::placeholder{color:#8fa1b5}
+  .stay button{background:var(--accent);border:none;padding:15px 30px;font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;border-radius:2px;cursor:pointer}
+  .stay .fine{margin-top:16px;font-size:13px;color:#8fa1b5}
+  /* footer */
+  footer{background:var(--navy2);color:#aeb9c4;padding:34px 0;font-size:14px}
+  footer .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+  footer .soc span{margin-left:18px;letter-spacing:.12em;text-transform:uppercase;font-size:12px}
+</style>
+</head>
+<body>
+
+<div class="ribbon">Rebuild Mockup — <b>Launchpoint Media</b> · Same site, our own code (no Avada)</div>
+
+<header>
+  <div class="nav">
+    <img src="https://m30collective.com/wp-content/uploads/2025/10/M30-logo-hd.png" alt="M30 Collective">
+    <nav class="links">
+      <a href="#building">What We&rsquo;re Building</a>
+      <a href="#development">In Development</a>
+      <a href="#updates">Stay Updated</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <img class="symbol" src="https://m30collective.com/wp-content/uploads/2025/10/M30_Logo_symbol-1024x957.png" alt="">
+  <div class="wrap">
+    <div class="kicker">Indianapolis &middot; Monon Trail</div>
+    <h1>M30 Collective</h1>
+    <p>M30 Collective is a 46-acre community along Indianapolis&rsquo;s Monon Trail where modern living, dining, and recreation come together in one dynamic destination. From residential spaces and vibrant entertainment at MONON 30 to pickleball courts and direct access to the Monon and Nickel Plate Trails, this is urban connectivity reimagined. Whether you&rsquo;re here to live, gather, or explore, M30 Collective is designed for connection, creativity, and the way life actually happens.</p>
+    <a class="btn" href="https://m30collective.com/">Recent News</a>
+  </div>
+</div>
+
+<section class="light" id="building">
+  <div class="wrap">
+    <h2 class="sec">The Vision</h2>
+    <h3 class="big">What We&rsquo;re Building</h3>
+    <p class="lead">We&rsquo;re creating a neighborhood where everything flows. Imagine living steps from your favorite coffee shop, walking to dinner and a concert, or hitting the trails without getting in your car. At M30 Collective, it&rsquo;s all connected and designed around real life &ndash; a place that works with your rhythm, not against it. This is more than development; it&rsquo;s a community built to grow and evolve with the people who call it home.</p>
+    <div class="trio">
+      <img src="https://m30collective.com/wp-content/uploads/m30_collective_foundation.jpg" alt="M30 Collective foundation work">
+      <img src="https://m30collective.com/wp-content/uploads/2025/10/MONON6.jpg" alt="Monon 30">
+      <img src="https://m30collective.com/wp-content/uploads/m30_collective_foundation2.jpg" alt="M30 Collective construction">
+    </div>
+  </div>
+</section>
+
+<section class="aerial">
+  <div class="frame">
+    <video controls preload="none" poster="https://m30collective.com/wp-content/uploads/2025/10/MONON6.jpg">
+      <source src="https://m30collective.com/wp-content/uploads/M30_Collective_2025_video.mp4" type="video/mp4">
+    </video>
+    <div class="cap">
+      <h3>Aerial Render</h3>
+      <span>M30 Collective &middot; 2025</span>
+    </div>
+  </div>
+</section>
+
+<section id="development">
+  <div class="wrap">
+    <h2 class="sec">The Projects</h2>
+    <h3 class="big">In Development</h3>
+
+    <div class="proj">
+      <img class="main" src="https://m30collective.com/wp-content/uploads/2025/10/queue2.webp" alt="The Queue">
+      <div>
+        <div class="tag">Residential</div>
+        <h3>The Queue</h3>
+        <p>The Queue will offer thoughtfully designed townhomes and apartments within M30 Collective, perfectly positioned along the Monon Trail. This modern residential community features curated amenities and well-crafted indoor and outdoor spaces that balance comfort with connectivity. With immediate access to dining at MONON 30, the Nickel Plate Trail, and nearby green spaces, residents enjoy the best of urban convenience and outdoor living. Offering both market-rate and affordable options, The Queue welcomes a diverse community seeking an accessible, well-connected place to call home.</p>
+        <a class="btn ghost" style="color:var(--navy);border-color:#9db0c3" href="https://thequeueindy.com/">Visit The Queue</a>
+      </div>
+    </div>
+
+    <div class="proj">
+      <div>
+        <div class="tag">Entertainment &middot; Dining &middot; Events</div>
+        <h3>Monon 30</h3>
+        <p>MONON 30 is the beating heart of M30 Collective, a dynamic destination for live entertainment, dining, and community events. Housed in transformed industrial buildings, this vibrant venue hosts regular concerts, food festivals, and gatherings that bring people together. Whether you&rsquo;re catching a live show, enjoying local food and drink, or simply soaking in the energy, MONON 30 is where the community comes alive.</p>
+        <a class="btn ghost" style="color:var(--navy);border-color:#9db0c3" href="https://monon30.com/">Visit Monon 30</a>
+      </div>
+      <div>
+        <img class="main" src="https://m30collective.com/wp-content/uploads/2025/10/monon-30-a-scaled-1.webp" alt="Monon 30">
+        <div class="duo">
+          <img src="https://m30collective.com/wp-content/uploads/2025/10/vision.webp" alt="Monon 30 vision">
+          <img src="https://m30collective.com/wp-content/uploads/2025/10/Monon-32-scaled-1.webp" alt="Monon 32">
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="stay" id="updates">
+  <div class="wrap">
+    <h2 class="sec" style="color:var(--accent)">Newsletter</h2>
+    <h3 class="big">Stay Updated</h3>
+    <p class="lead">Sign up for updates to be the first to know about new developments, leasing opportunities, and events happening within M30 Collective.</p>
+    <form onsubmit="event.preventDefault();document.getElementById('staymsg').textContent='Thanks — you\'re on the list. (Mockup form)';">
+      <input type="email" required placeholder="Your email address" aria-label="Email address">
+      <button type="submit">Sign Up</button>
+    </form>
+    <div class="fine" id="staymsg">No spam — just project news and event announcements.</div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>&copy; 2026 M30 Collective, Indianapolis, IN. All rights reserved.</div>
+    <div class="soc"><span>Facebook</span><span>Instagram</span></div>
+  </div>
+</footer>
+
+</body>
+</html>
