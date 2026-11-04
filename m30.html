@@ -58,6 +58,9 @@
   .proj{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center;padding:56px 0;border-bottom:1px solid var(--line)}
   .proj:last-child{border-bottom:none}
   .proj img.main{width:100%;height:380px;object-fit:cover;border-radius:3px}
+  .tour360{position:relative}
+  .tour360 iframe{width:100%;height:380px;border:0;border-radius:3px;display:block;background:#0a1522}
+  .tour360 .cap360{position:absolute;top:12px;left:12px;background:rgba(6,12,20,.72);color:#fff;font-size:12px;letter-spacing:.14em;text-transform:uppercase;padding:7px 12px;border-radius:999px;pointer-events:none}
   .proj .duo{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
   .proj .duo img{width:100%;height:170px;object-fit:cover;border-radius:3px}
   .proj h3{font-size:clamp(28px,3.6vw,40px);color:var(--navy);font-weight:800;margin-bottom:14px}
@@ -135,7 +138,10 @@
     <h3 class="big">In Development</h3>
 
     <div class="proj">
-      <img class="main" src="https://m30collective.com/wp-content/uploads/2025/10/queue2.webp" alt="The Queue">
+      <div class="tour360">
+        <iframe src="https://views.ovalroomgroup.com/v/A0zr6BP5zvQ" title="The Queue — 360° virtual tour" loading="lazy" allowfullscreen allow="fullscreen; gyroscope; accelerometer"></iframe>
+        <span class="cap360">360° Tour · Drag to look around</span>
+      </div>
       <div>
         <div class="tag">Residential</div>
         <h3>The Queue</h3>
