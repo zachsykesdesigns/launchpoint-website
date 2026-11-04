@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>History — M30 Collective | Launchpoint Media</title>
+<meta name="description" content="The story of M30 Collective: 46 acres along Indianapolis's Monon Trail, from overlooked ground to a neighborhood being reborn.">
+<style>
+  :root{
+    --navy:#112337; --navy2:#0c1a29; --paper:#F5F5F5; --ink:#32373c; --mut:#5b6672;
+    --line:#dcd9d2; --accent:#c8a15a;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);background:#fff;line-height:1.65}
+  img{display:block;max-width:100%}
+  a{color:inherit}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+  .ribbon{background:#000;color:#fff;font-size:12px;letter-spacing:.14em;text-transform:uppercase;text-align:center;padding:8px 12px}
+  .ribbon b{color:var(--accent);font-weight:700}
+  header{background:var(--navy);position:sticky;top:0;z-index:20}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;max-width:1280px;margin:0 auto}
+  .nav img{height:44px;width:auto}
+  .nav .links{display:flex;gap:28px}
+  .nav .links a{color:#e8e6e1;text-decoration:none;font-size:13px;letter-spacing:.16em;text-transform:uppercase}
+  .nav .links a:hover{color:var(--accent)}
+  .nav .links a.here{color:var(--accent)}
+  @media(max-width:720px){.nav .links{display:none}}
+  /* title band */
+  .band{background:var(--navy);color:#fff;position:relative;overflow:hidden}
+  .band .symbol{position:absolute;right:-140px;top:50%;transform:translateY(-50%);width:640px;opacity:.10;pointer-events:none}
+  .band .wrap{position:relative;padding:96px 24px 84px}
+  .kicker{color:var(--accent);letter-spacing:.3em;text-transform:uppercase;font-size:13px;margin-bottom:18px}
+  h1{font-size:clamp(42px,6.4vw,76px);line-height:1.03;font-weight:800;letter-spacing:-.01em;margin-bottom:24px}
+  .band p{max-width:780px;font-size:19px;color:#d8dde3}
+  .btn{display:inline-block;margin-top:30px;background:var(--accent);color:#14100a;text-decoration:none;
+       padding:14px 30px;font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;border-radius:2px}
+  .btn:hover{filter:brightness(1.08)}
+  .btn.ghost{background:transparent;color:var(--navy);border:1px solid #9db0c3}
+  /* eras */
+  section{padding:84px 0}
+  .light{background:var(--paper)}
+  h2.sec{font-size:13px;letter-spacing:.3em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+  h3.big{font-size:clamp(30px,4vw,44px);line-height:1.12;color:var(--navy);font-weight:800;margin-bottom:18px}
+  .lead{font-size:18px;max-width:840px;color:#3c434b}
+  .era{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center;padding:14px 0 30px}
+  .era img.main{width:100%;height:360px;object-fit:cover;border-radius:3px}
+  .era .duo{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+  .era .duo img{width:100%;height:170px;object-fit:cover;border-radius:3px}
+  .era h3{font-size:clamp(28px,3.6vw,40px);color:var(--navy);font-weight:800;margin-bottom:14px}
+  .era .tag{color:var(--accent);letter-spacing:.26em;text-transform:uppercase;font-size:12px;margin-bottom:10px}
+  .era p{color:#3c434b;font-size:17px}
+  @media(max-width:900px){.era{grid-template-columns:1fr}}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
+  .grid3 img{width:100%;height:250px;object-fit:cover;border-radius:3px}
+  @media(max-width:820px){.grid3{grid-template-columns:1fr}.grid3 img{height:220px}}
+  /* news clipping card */
+  .news{display:flex;gap:26px;align-items:center;max-width:960px;margin:44px auto 0;text-align:left;background:#fff;border:1px solid var(--line);border-radius:4px;padding:20px}
+  .news img{width:230px;height:170px;object-fit:cover;object-position:top;border-radius:3px;flex:none}
+  .news h4{font-size:20px;color:var(--navy);margin-bottom:6px}
+  .news p{font-size:15px;color:#3c434b}
+  @media(max-width:720px){.news{flex-direction:column;text-align:center}.news img{width:100%;height:180px}}
+  /* closing */
+  .closing{background:var(--navy);color:#fff;text-align:center}
+  .closing h3{font-size:clamp(30px,4.4vw,48px);font-weight:800;line-height:1.12;margin-bottom:18px;color:#fff}
+  .closing p{max-width:780px;margin:0 auto;color:#cfd6dd;font-size:18px}
+  footer{background:var(--navy2);color:#aeb9c4;padding:34px 0;font-size:14px}
+  footer .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+  footer .soc span{margin-left:18px;letter-spacing:.12em;text-transform:uppercase;font-size:12px}
+</style>
+</head>
+<body>
+
+<div class="ribbon">Rebuild Mockup — <b>Launchpoint Media</b> · Same site, our own code (no Avada)</div>
+
+<header>
+  <div class="nav">
+    <img src="images/m30/m30-logo-hd.png" alt="M30 Collective">
+    <nav class="links">
+      <a href="m30.html">M30 Collective</a>
+      <a href="monon30.html">Monon 30</a>
+      <a href="queue.html">The Queue</a>
+      <a class="here" href="history.html">History</a>
+    </nav>
+  </div>
+</header>
+
+<div class="band">
+  <img class="symbol" src="images/m30/m30-logo-symbol.png" alt="">
+  <div class="wrap">
+    <div class="kicker">M30 Collective &middot; The Story So Far</div>
+    <h1>Rebirthing a<br>Neighborhood</h1>
+    <p>Before the concerts, the courts, and the first residents, there was 46 acres of overlooked ground along the Monon Trail — and a lot of people who believed it could be something more. This is how it got here.</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="era">
+      <div>
+        <div class="tag">Chapter One</div>
+        <h3>The Ground</h3>
+        <p>For years, the land around East 30th Street and the Monon Trail sat quiet — rail corridor, open lots, and a neighborhood waiting on someone to see what it could be. The trail ran right through it. The city skyline stood right there. What was missing was the belief that this corner of Indianapolis was worth building on.</p>
+      </div>
+      <div>
+        <img class="main" src="images/m30/monon9.jpg" alt="Aerial — the neighborhood and the site before construction">
+        <div class="duo">
+          <img src="images/m30/monon10.jpg" alt="Aerial — the district toward downtown Indianapolis">
+          <img src="images/m30/video-poster.jpg" alt="Aerial — looking down the Monon Trail corridor">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="light">
+  <div class="wrap" style="text-align:center">
+    <h2 class="sec">Chapter Two</h2>
+    <h3 class="big">The Belief</h3>
+    <p class="lead" style="margin:0 auto">The plan was first proposed years before the first building opened, and it took patience to get there. What carried it was the people around here — neighbors and believers who held onto the idea that this area deserved a gathering place of its own. When the first building finally opened, the headline told the story plainly:</p>
+    <div class="news">
+      <img src="images/m30/news.jpg" alt="News coverage of Monon 30">
+      <div>
+        <h4>&ldquo;Four years after first proposed, Monon 30 has one building open&rdquo;</h4>
+        <p>Coverage of the district&rsquo;s long road from proposal to first opening — and of everything still to come.</p>
+        <a class="btn" style="margin-top:16px" href="https://m30collective.com/">Read More</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2 class="sec">Chapter Three</h2>
+    <h3 class="big">Breaking Ground</h3>
+    <p class="lead">Belief turned into blueprints, and blueprints into foundations. Concrete pumps on the townhome sites, footings along the trail, survey lines where streets and gathering places now take shape — this is the work that turned a proposal into a place.</p>
+    <div class="grid3">
+      <img src="images/m30/foundation.jpg" alt="Pouring foundations at The Queue">
+      <img src="images/m30/dji-0384.jpg" alt="Aerial — construction along the Monon Trail">
+      <img src="images/m30/foundation2.jpg" alt="Foundation work at M30 Collective">
+    </div>
+  </div>
+</section>
+
+<section class="light">
+  <div class="wrap">
+    <div class="era">
+      <div>
+        <img class="main" src="images/m30/monon7.jpg" alt="Aerial — DOMINO and the district rising">
+        <div class="duo">
+          <img src="images/m30/monon2.jpg" alt="Aerial — Monon 30">
+          <img src="images/m30/monon4.jpg" alt="Aerial — site work and DOMINO">
+        </div>
+      </div>
+      <div>
+        <div class="tag">Chapter Four</div>
+        <h3>Rising</h3>
+        <p>Then it started to look like the renderings. DOMINO welcomed its first residents in 2025. MONON 30 opened its doors for concerts, dining, and events. And at The Queue, the foundations in these photos are becoming townhomes — the next neighbors, arriving spring 2027.</p>
+        <a class="btn ghost" href="queue.html">See The Queue</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="closing">
+  <div class="wrap">
+    <h3>The story isn&rsquo;t finished.</h3>
+    <p>A rebirth isn&rsquo;t a ribbon cutting — it&rsquo;s what happens when a neighborhood comes back to life, one building, one gathering, one neighbor at a time. M30 Collective is still becoming. Come be part of what&rsquo;s next.</p>
+    <a class="btn" href="m30.html">Back to M30 Collective</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>&copy; 2026 M30 Collective, Indianapolis, IN. All rights reserved.</div>
+    <div class="soc"><span>Facebook</span><span>Instagram</span></div>
+  </div>
+  <div class="wrap" style="margin-top:14px;border-top:1px solid #22344a;padding-top:14px">
+    <div style="letter-spacing:.14em;text-transform:uppercase;font-size:12px">The District:
+      <a href="m30.html" style="color:#cfd6dd;text-decoration:none">M30 Collective</a> &middot;
+      <a href="monon30.html" style="color:#cfd6dd;text-decoration:none">Monon 30</a> &middot;
+      <a href="queue.html" style="color:#cfd6dd;text-decoration:none">The Queue</a> &middot;
+      <a href="history.html" style="color:#fff;text-decoration:none;border-bottom:2px solid var(--accent)">History</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
