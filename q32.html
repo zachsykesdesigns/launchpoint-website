@@ -457,9 +457,21 @@
     .plan-view-toggle button { flex: 1; padding: 9px 8px; border: 1px solid var(--line); background: var(--surface); color: var(--muted); font: 700 .72rem var(--body); letter-spacing: .08em; text-transform: uppercase; cursor: pointer; transition: background .2s ease, color .2s ease, border-color .2s ease; }
     .plan-view-toggle button:hover, .plan-view-toggle button:focus-visible { color: var(--ink); }
     .plan-view-toggle button[aria-pressed="true"] { background: var(--amber); border-color: var(--amber); color: #fffaf2; }
-    .plan-view-stage { position: relative; aspect-ratio: 3 / 2; margin: 14px 16px 16px; overflow: hidden; background: #f4f1ea; }
-    .plan-view-stage img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .3s ease; }
-    .plan-view-stage img.active { opacity: 1; }
+    .plan-view-stage { position: relative; margin: 14px 16px 16px; background: #fff; }
+    .plan-view-stage img { display: none; width: 100%; height: auto; cursor: zoom-in; }
+    .plan-view-stage img.active { display: block; }
+    .plan-expand-hint { margin: 0 16px 14px; text-align: center; color: var(--muted); font: 600 .68rem var(--body); letter-spacing: .1em; text-transform: uppercase; }
+    .lightbox { position: fixed; inset: 0; z-index: 300; background: rgba(6, 8, 10, .88); display: flex; flex-direction: column; }
+    .lightbox[hidden] { display: none; }
+    .lb-top { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; }
+    .lb-title { color: #f4f1ea; font: 600 .8rem var(--body); letter-spacing: .08em; text-transform: uppercase; margin: 0; }
+    .lb-close { background: none; border: 1px solid rgba(244,241,234,.4); color: #fff; width: 40px; height: 40px; border-radius: 50%; font-size: 1.3rem; line-height: 1; cursor: pointer; }
+    .lb-stage { flex: 1; overflow: hidden; display: grid; place-items: center; touch-action: none; }
+    .lb-stage img { max-width: 96vw; max-height: 100%; user-select: none; -webkit-user-drag: none; cursor: grab; }
+    .lb-stage img:active { cursor: grabbing; }
+    .lb-bar { display: flex; gap: 8px; justify-content: center; align-items: center; padding: 12px 16px 18px; }
+    .lb-bar button { background: rgba(244,241,234,.12); border: 1px solid rgba(244,241,234,.35); color: #fff; min-width: 44px; height: 40px; padding: 0 14px; border-radius: 999px; font: 700 .8rem var(--body); cursor: pointer; }
+    .lb-hint { color: rgba(244,241,234,.65); text-align: center; font: 500 .72rem var(--body); margin: 0; padding: 0 16px 14px; }
 
     .footer-main { display: grid; grid-template-columns: 1.15fr 1fr 1fr; gap: 46px; padding: 50px 0 38px; }
     .footer-block strong { display: block; color: #fff; font: 600 1rem var(--display); margin-bottom: 12px; }
@@ -627,6 +639,7 @@
               <div class="plan-view-stage">
                 <img class="active" src="images/q32/plan-tandem-unitA.jpg" alt="Tandem Unit A &mdash; rendered floor plan, both levels with tandem garage">
               </div>
+              <p class="plan-expand-hint">Tap the plan to expand &amp; zoom</p>
             </div>
             <div class="plan-body">
               <div class="plan-kicker">Townhome &middot; The Tandem</div>
@@ -651,6 +664,7 @@
                 <img class="active" data-view="3d" src="images/q32/plan-flats-12-living.jpg" alt="Flats Units 1 and 2 &mdash; rendered living level floor plan">
                 <img data-view="topdown" src="images/q32/plan-flats-12-garage.jpg" alt="Flats Units 1 and 2 &mdash; rendered garage level floor plan">
               </div>
+              <p class="plan-expand-hint">Tap the plan to expand &amp; zoom</p>
             </div>
             <div class="plan-body">
               <div class="plan-kicker">Flats &middot; Second Level</div>
@@ -675,6 +689,7 @@
                 <img class="active" data-view="3d" src="images/q32/plan-flats-34-living.jpg" alt="Flats Units 3 and 4 &mdash; rendered living level floor plan">
                 <img data-view="topdown" src="images/q32/plan-flats-34-roof.jpg" alt="Flats Units 3 and 4 &mdash; rendered roof level with flex space and deck">
               </div>
+              <p class="plan-expand-hint">Tap the plan to expand &amp; zoom</p>
             </div>
             <div class="plan-body">
               <div class="plan-kicker">Flats &middot; Third Level</div>
@@ -840,6 +855,79 @@
       }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
       items.forEach(function (item) { observer.observe(item); });
     }());
+  </script>
+
+  <div class="lightbox" id="plan-lightbox" hidden role="dialog" aria-modal="true" aria-label="Floor plan viewer">
+    <div class="lb-top">
+      <p class="lb-title" id="lb-title">Floor plan</p>
+      <button class="lb-close" id="lb-close" type="button" aria-label="Close viewer">&times;</button>
+    </div>
+    <div class="lb-stage" id="lb-stage"><img id="lb-img" src="" alt=""></div>
+    <p class="lb-hint">Pinch or scroll to zoom &middot; drag to look around &middot; double-tap to zoom in</p>
+    <div class="lb-bar">
+      <button type="button" id="lb-out" aria-label="Zoom out">&minus;</button>
+      <button type="button" id="lb-reset">Reset</button>
+      <button type="button" id="lb-in" aria-label="Zoom in">+</button>
+    </div>
+  </div>
+  <script>
+    (function () {
+      var lb = document.getElementById('plan-lightbox');
+      var img = document.getElementById('lb-img');
+      var stage = document.getElementById('lb-stage');
+      var title = document.getElementById('lb-title');
+      var scale = 1, tx = 0, ty = 0;
+      function apply() { img.style.transform = 'translate(' + tx + 'px,' + ty + 'px) scale(' + scale + ')'; }
+      function reset() { scale = 1; tx = 0; ty = 0; apply(); }
+      function open(src, alt) {
+        img.src = src; img.alt = alt || ''; title.textContent = alt || 'Floor plan';
+        reset(); lb.hidden = false; document.body.style.overflow = 'hidden';
+      }
+      function close() { lb.hidden = true; document.body.style.overflow = ''; img.src = ''; }
+      document.querySelectorAll('.plan-view-stage img').forEach(function (p) {
+        p.addEventListener('click', function () { open(p.src, p.alt); });
+      });
+      document.getElementById('lb-close').addEventListener('click', close);
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !lb.hidden) close(); });
+      stage.addEventListener('click', function (e) { if (e.target === stage) close(); });
+      document.getElementById('lb-in').addEventListener('click', function () { scale = Math.min(4, scale * 1.35); apply(); });
+      document.getElementById('lb-out').addEventListener('click', function () { scale = Math.max(1, scale / 1.35); if (scale === 1) { tx = 0; ty = 0; } apply(); });
+      document.getElementById('lb-reset').addEventListener('click', reset);
+      stage.addEventListener('wheel', function (e) {
+        e.preventDefault();
+        scale = Math.min(4, Math.max(1, scale * (e.deltaY < 0 ? 1.12 : 0.89)));
+        if (scale === 1) { tx = 0; ty = 0; }
+        apply();
+      }, { passive: false });
+      stage.addEventListener('dblclick', function () { if (scale > 1) { reset(); } else { scale = 2.2; apply(); } });
+      var pointers = {}, pinchDist = 0, dragging = false, lastX = 0, lastY = 0, moved = 0;
+      stage.addEventListener('pointerdown', function (e) {
+        pointers[e.pointerId] = { x: e.clientX, y: e.clientY };
+        if (Object.keys(pointers).length === 1) { dragging = true; moved = 0; lastX = e.clientX; lastY = e.clientY; }
+        if (Object.keys(pointers).length === 2) {
+          var p = Object.values(pointers);
+          pinchDist = Math.hypot(p[0].x - p[1].x, p[0].y - p[1].y);
+        }
+        stage.setPointerCapture(e.pointerId);
+      });
+      stage.addEventListener('pointermove', function (e) {
+        if (!pointers[e.pointerId]) return;
+        pointers[e.pointerId] = { x: e.clientX, y: e.clientY };
+        if (Object.keys(pointers).length === 2) {
+          var p = Object.values(pointers);
+          var d = Math.hypot(p[0].x - p[1].x, p[0].y - p[1].y);
+          if (pinchDist > 0) { scale = Math.min(4, Math.max(1, scale * (d / pinchDist))); apply(); }
+          pinchDist = d;
+        } else if (dragging && scale > 1) {
+          tx += e.clientX - lastX; ty += e.clientY - lastY;
+          moved += Math.abs(e.clientX - lastX) + Math.abs(e.clientY - lastY);
+          lastX = e.clientX; lastY = e.clientY; apply();
+        }
+      });
+      function endPointer(e) { delete pointers[e.pointerId]; if (Object.keys(pointers).length === 0) dragging = false; }
+      stage.addEventListener('pointerup', endPointer);
+      stage.addEventListener('pointercancel', endPointer);
+    })();
   </script>
 </body>
 </html>
