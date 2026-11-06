@@ -55,6 +55,17 @@
   .amen-program img{width:100%;display:block;border-radius:3px;border:1px solid #e3e0d8}
   .amen-program figcaption{font-size:13.5px;color:#5a636d;margin-top:10px}
   @media(max-width:820px){.amen-grid{grid-template-columns:1fr}.amen-card img{height:230px}.amen-card.wide img{height:230px}}
+  /* happening now */
+  .now-video{margin-top:36px}
+  .now-video video{width:100%;display:block;border-radius:3px;background:#0a0f14}
+  .now-video figcaption{font-size:13.5px;color:#5a636d;margin-top:10px}
+  .now-grid{display:grid;grid-template-columns:1.45fr 1fr;gap:18px;margin-top:26px}
+  .now-next{background:var(--navy);color:#fff;border-radius:3px;padding:30px 28px;display:flex;flex-direction:column;justify-content:center}
+  .now-next .k{color:var(--accent);letter-spacing:.26em;text-transform:uppercase;font-size:12px;margin-bottom:12px}
+  .now-next .date{font-size:clamp(30px,3.4vw,42px);font-weight:800;line-height:1.1;margin-bottom:10px}
+  .now-next p{color:#cfd6dd;font-size:16px}
+  .now-next a{color:#fff;font-weight:700}
+  @media(max-width:820px){.now-grid{grid-template-columns:1fr}}
   /* rebirth statement band */
   .rebirth{background:var(--navy);color:#fff;text-align:center}
   .rebirth .kick{color:var(--accent);letter-spacing:.3em;text-transform:uppercase;font-size:13px;margin-bottom:16px}
@@ -156,6 +167,7 @@
   <div class="nav">
     <img src="images/m30/m30-logo-hd.png" alt="M30 Collective">
     <nav class="links">
+      <a href="#now">Happening Now</a>
       <a href="#amenities">Amenities</a>
       <a href="#building">What We&rsquo;re Building</a>
       <a href="#journey">The Journey</a>
@@ -189,6 +201,34 @@
 </section>
 </div>
 
+
+<section id="now">
+  <div class="wrap">
+    <h2 class="sec">Happening Now</h2>
+    <h3 class="big">The Flea Is On.</h3>
+    <p class="lead">The district isn&rsquo;t waiting on the future to come alive. Circle City Flea &mdash; Indy&rsquo;s only true flea market &mdash; has set up at 1120 E 30th Street, packing the grounds with 150+ vendors, food trucks, vintage finds, and crowds from across the city.</p>
+    <figure class="now-video">
+      <video controls muted playsinline preload="metadata" poster="images/flea/flea-market-wide.jpg">
+        <source src="videos/m30-happening-now.mp4" type="video/mp4">
+      </video>
+      <figcaption>Circle City Flea in full swing at M30 &mdash; and right next door, The Queue is rising.</figcaption>
+    </figure>
+    <div class="now-grid">
+      <article class="amen-card">
+        <img src="images/flea/flea-market-wide.jpg" alt="Circle City Flea in full swing at M30 — vendor tents across the turf field with DOMINO in the distance">
+        <div class="ac-body">
+          <h4>Market Days at M30</h4>
+          <p>Rows of local vendors, makers, and vintage dealers on the grounds &mdash; the neighborhood gathering here right now, while the rest of the district rises around it.</p>
+        </div>
+      </article>
+      <div class="now-next">
+        <div class="k">Next Market</div>
+        <div class="date">Saturday,<br>November 14</div>
+        <p>11 AM &ndash; 5 PM &middot; 1120 E 30th St<br>Follow <a href="https://www.instagram.com/circlecityflea/">@circlecityflea</a> for vendor lineups and market-day updates.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
 <section class="light" id="amenities">
   <div class="wrap">
