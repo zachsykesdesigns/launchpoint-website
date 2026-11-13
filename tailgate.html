@@ -39,7 +39,7 @@
 <script>
 const CDN = 'https://cdn.shopify.com/s/files/1/0725/7866/2582/files/';
 const slides = [
-  { type:'video', src: CDN+'tailgate-iu-usc-video-1080-v5.mp4?v=1794591500',
+  { type:'video', audio:true, src: CDN+'tailgate-iu-usc-video-1080-v6.mp4?v=1794591979',
     cap:'Hollywood Comes to <span class="accent">Bloomington.</span>', sub:'Trojans vs Hoosiers — Saturday 3:30 PM · CBS' },
   { type:'video', src: CDN+'indiana-collection-hero-video-v4.mp4?v=1794581816',
     cap:'Indiana <span class="accent">— Recover Fast.</span>', sub:'Made by Tyrol — Active Recovery' },
@@ -117,6 +117,7 @@ function show(n) {
     const v = cur._media;
     v.currentTime = 0;
     const p = v.play(); if (p) p.catch(()=>{});
+    v.muted = !(slides[idx].audio && window._soundOn);
     v.onended = () => show(idx + 1);
     timer = setTimeout(() => show(idx + 1), 45000); /* safety if a video stalls */
   } else {
@@ -132,6 +133,8 @@ async function goFull() {
   try { if (navigator.wakeLock) await navigator.wakeLock.request('screen'); } catch(e) {}
 }
 document.addEventListener('click', goFull);
+function unlockSound(){ window._soundOn = true; const s = slides[idx]; if (s && s.type==='video' && s.audio) { els[idx]._media.muted = false; } }
+document.addEventListener('pointerdown', unlockSound);
 document.addEventListener('keydown', e => {
   if (e.key === 'ArrowRight') show(idx + 1);
   if (e.key === 'ArrowLeft') show(idx - 1);
