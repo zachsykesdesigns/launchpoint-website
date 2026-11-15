@@ -7,26 +7,35 @@
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
   body { background:#062A4E; color:#fff; font-family:'Segoe UI', Arial, sans-serif; }
-  header { text-align:center; padding:34px 18px 10px; }
+  header { text-align:center; padding:34px 18px 6px; }
   header img.logo { width:min(420px, 82vw); height:auto; }
   h1 { font-size:clamp(26px,6vw,44px); letter-spacing:2px; margin-top:14px; font-weight:900; }
   h1 .accent { color:#71D53C; }
   header p { color:#cfe3f5; margin-top:8px; font-size:clamp(14px,3.4vw,17px); }
-  .wrap { max-width:860px; margin:0 auto; padding:10px 14px 60px; }
+  nav { position:sticky; top:0; z-index:10; background:rgba(6,42,78,.96); padding:10px 8px;
+    display:flex; flex-wrap:wrap; gap:6px; justify-content:center; border-bottom:1px solid rgba(113,213,60,.3); }
+  nav a { color:#fff; text-decoration:none; font-size:12.5px; font-weight:700; letter-spacing:.4px;
+    background:#0a3560; border:1px solid rgba(113,213,60,.35); padding:6px 10px; border-radius:20px; }
+  .wrap { max-width:860px; margin:0 auto; padding:6px 14px 60px; }
   h2.section { color:#71D53C; letter-spacing:3px; font-size:15px; text-transform:uppercase;
-    margin:34px 4px 14px; border-bottom:2px solid rgba(113,213,60,.35); padding-bottom:8px; }
+    margin:34px 4px 14px; border-bottom:2px solid rgba(113,213,60,.35); padding-bottom:8px; scroll-margin-top:64px; }
   .card { background:#0a3560; border:1px solid rgba(113,213,60,.25); border-radius:14px;
     overflow:hidden; margin-bottom:22px; box-shadow:0 6px 24px rgba(0,0,0,.35); }
   .card video, .card img { width:100%; display:block; background:#000; }
-  .card video { aspect-ratio:16/9; object-fit:contain; }
-  .card.featured video { aspect-ratio:9/16; max-height:78vh; }
-  .card img { max-height:70vh; object-fit:contain; }
+  .card video { height:auto; max-height:82vh; }
+  .card img { max-height:76vh; object-fit:contain; }
   .meta { display:flex; justify-content:space-between; align-items:center; gap:12px; padding:12px 14px; }
   .meta h3 { font-size:17px; font-weight:700; }
   .meta p { color:#9fc2e2; font-size:13px; margin-top:2px; }
   a.dl { background:#71D53C; color:#062A4E; font-weight:800; text-decoration:none;
     padding:10px 16px; border-radius:9px; font-size:14px; white-space:nowrap; }
   a.dl:active { transform:scale(.97); }
+  .stats { padding:18px 14px; }
+  .stats-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:14px; }
+  .stat { text-align:center; background:#062A4E; border:1px solid rgba(113,213,60,.3); border-radius:10px; padding:14px 8px; }
+  .stat .num { color:#71D53C; font-size:30px; font-weight:900; letter-spacing:.5px; }
+  .stat .lbl { font-size:13.5px; font-weight:700; margin-top:4px; }
+  .stat .sub2 { color:#9fc2e2; font-size:12px; margin-top:3px; }
   footer { text-align:center; color:#9fc2e2; padding:0 16px 40px; font-size:14px; }
   footer .big { color:#fff; font-weight:900; letter-spacing:2px; font-size:19px; }
 </style>
@@ -35,159 +44,144 @@
 <header>
   <img class="logo" src="https://mylaunchpointmedia.com/airfeet-logo-header.png" alt="AirFeet Recovery">
   <h1>HERE ARE <span class="accent">OUR ADS</span></h1>
-  <p>Scroll through our videos and hero images. Press play to watch &mdash; every file has a download button.</p>
+  <p>Every AirFeet ad we have made — videos, hero images and banners. Press play to watch, pause anytime, and download any file.</p>
 </header>
+<nav><a href="#featured">Featured</a><a href="#holiday-ads">Holiday Ads</a><a href="#story-ads">Story Ads</a><a href="#tailgate-videos">Tailgate Videos</a><a href="#collection-heroes-—-every-team">Collection Heroes</a><a href="#meta-fight-song-ads">Meta Fight Song Ads</a><a href="#legacy-videos">Legacy Videos</a><a href="#rivalry-and-gameday-ads">Rivalry &amp; Gameday Ads</a><a href="#hero-images">Hero Images</a><a href="#hero-banners">Hero Banners</a></nav>
 <div class="wrap">
-  <h2 class="section">Featured</h2>
-<article class="card featured">
-  <video controls playsinline preload="metadata" src="https://mylaunchpointmedia.com/airfeet-santa-bison-v22.mp4"></video>
-  <div class="meta"><div><h3>Santa Bison — RECOVER NOW</h3><p>IU vs Purdue · Holiday 2026</p></div>
-  <a class="dl" href="https://mylaunchpointmedia.com/airfeet-santa-bison-v22.mp4" download>Download</a></div>
+<h2 class="section">By the Numbers</h2>
+
+<article class="card stats">
+  <div class="stats-grid">
+    <div class="stat"><div class="num">97,518</div><div class="lbl">Impressions in One Day</div><div class="sub2">Meta ads &middot; Sat Nov 14</div></div>
+    <div class="stat"><div class="num">436</div><div class="lbl">Link Clicks That Day</div><div class="sub2">Meta ads &middot; Sat Nov 14</div></div>
+    <div class="stat"><div class="num">150</div><div class="lbl">Store Sessions From Social</div><div class="sub2">Shopify &middot; Sat Nov 14</div></div>
+    <div class="stat"><div class="num">Best Ad</div><div class="lbl">Lineup Video &mdash; &ldquo;We Support Champions&rdquo;</div><div class="sub2">30 landing page views in a day</div></div>
+    <div class="stat"><div class="num">4 Pairs</div><div class="lbl">Sold From a Single Ad</div><div class="sub2">Lineup Video &middot; $319.96 order &middot; Nov 14</div></div>
+  </div>
 </article>
-  <h2 class="section">Videos</h2>
-<article class="card">
-  <video controls playsinline preload="metadata" src="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/tailgate-iu-usc-video-1080-v15.mp4?v=1794609384"></video>
-  <div class="meta"><div><h3>Iu Usc Video 1080 V15</h3></div>
-  <a class="dl" href="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/tailgate-iu-usc-video-1080-v15.mp4?v=1794609384" download>Download</a></div>
-</article>
-<article class="card">
-  <video controls playsinline preload="metadata" src="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/indiana-collection-hero-video-v5.mp4?v=1794608278"></video>
-  <div class="meta"><div><h3>Indiana — Recover Fast.</h3><p>Made by Tyrol — Active Recovery</p></div>
-  <a class="dl" href="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/indiana-collection-hero-video-v5.mp4?v=1794608278" download>Download</a></div>
-</article>
-<article class="card">
-  <video controls playsinline preload="metadata" src="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/tailgate-ambassador-v21.mp4?v=1794614046"></video>
-  <div class="meta"><div><h3>Become an Ambassador.</h3><p>Scan the QR Code to Sign Up</p></div>
-  <a class="dl" href="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/tailgate-ambassador-v21.mp4?v=1794614046" download>Download</a></div>
-</article>
-<article class="card">
-  <video controls playsinline preload="metadata" src="https://mylaunchpointmedia.com/tailgate-santa-mascot-v18.mp4"></video>
-  <div class="meta"><div><h3>You Aren&#x27;t One of the Elves.</h3><p>Support Your Team — Support the Game</p></div>
-  <a class="dl" href="https://mylaunchpointmedia.com/tailgate-santa-mascot-v18.mp4" download>Download</a></div>
-</article>
-<article class="card">
-  <video controls playsinline preload="metadata" src="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/hero-video-tennessee.mp4?v=1794577291"></video>
-  <div class="meta"><div><h3>Recover Fast. Built for Athletes.</h3><p>Made by Tyrol — Active Recovery</p></div>
-  <a class="dl" href="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/hero-video-tennessee.mp4?v=1794577291" download>Download</a></div>
-</article>
-<article class="card">
-  <video controls playsinline preload="metadata" src="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/tailgate-lineup-fullscreen.mp4?v=1794590549"></video>
-  <div class="meta"><div><h3>We Support Champions.</h3><p>18 Schools — Slides + Thongs</p></div>
-  <a class="dl" href="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/tailgate-lineup-fullscreen.mp4?v=1794590549" download>Download</a></div>
-</article>
-<article class="card">
-  <video controls playsinline preload="metadata" src="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/hero-video-tyrol-pickleball.mp4?v=1794579871"></video>
-  <div class="meta"><div><h3>Play in Tyrol. Recover in AirFeet.</h3><p>On Court — Off Court</p></div>
-  <a class="dl" href="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/hero-video-tyrol-pickleball.mp4?v=1794579871" download>Download</a></div>
-</article>
-<article class="card">
-  <video controls playsinline preload="metadata" src="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/tailgate-sheriff-part-one.mp4?v=1794614057"></video>
-  <div class="meta"><div><h3>AirFeet Recovery Presents.</h3><p>Feel the Difference.</p></div>
-  <a class="dl" href="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/tailgate-sheriff-part-one.mp4?v=1794614057" download>Download</a></div>
-</article>
-<article class="card">
-  <video controls playsinline preload="metadata" src="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/kansas-collection-hero-video-v2.mp4?v=1794594261"></video>
-  <div class="meta"><div><h3>Kansas — Feel the Difference.</h3><p>AIRfeet Recovery by Tyrol</p></div>
-  <a class="dl" href="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/kansas-collection-hero-video-v2.mp4?v=1794594261" download>Download</a></div>
-</article>
-<article class="card">
-  <video controls playsinline preload="metadata" src="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/clemson-collection-hero-video-v3.mp4?v=1794599032"></video>
-  <div class="meta"><div><h3>Clemson — Feel the Difference.</h3><p>AIRfeet Recovery by Tyrol</p></div>
-  <a class="dl" href="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/clemson-collection-hero-video-v3.mp4?v=1794599032" download>Download</a></div>
-</article>
-<article class="card">
-  <video controls playsinline preload="metadata" src="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/florida-collection-hero-video-v2.mp4?v=1794594261"></video>
-  <div class="meta"><div><h3>Florida — Feel the Difference.</h3><p>AIRfeet Recovery by Tyrol</p></div>
-  <a class="dl" href="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/florida-collection-hero-video-v2.mp4?v=1794594261" download>Download</a></div>
-</article>
-<article class="card">
-  <video controls playsinline preload="metadata" src="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/lsu-collection-hero-video-v3.mp4?v=1794599125"></video>
-  <div class="meta"><div><h3>LSU — Feel the Difference.</h3><p>AIRfeet Recovery by Tyrol</p></div>
-  <a class="dl" href="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/lsu-collection-hero-video-v3.mp4?v=1794599125" download>Download</a></div>
-</article>
-<article class="card">
-  <video controls playsinline preload="metadata" src="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/purdue-collection-hero-video.mp4?v=1794581253"></video>
-  <div class="meta"><div><h3>Purdue — Feel the Difference.</h3><p>AIRfeet Recovery by Tyrol</p></div>
-  <a class="dl" href="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/purdue-collection-hero-video.mp4?v=1794581253" download>Download</a></div>
-</article>
-<article class="card">
-  <video controls playsinline preload="metadata" src="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/tailgate-sheriff-part-two.mp4?v=1794614069"></video>
-  <div class="meta"><div><h3>Feel the Difference.</h3><p>AIRfeet Recovery by Tyrol</p></div>
-  <a class="dl" href="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/tailgate-sheriff-part-two.mp4?v=1794614069" download>Download</a></div>
-</article>
-<article class="card">
-  <video controls playsinline preload="metadata" src="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/ims-collection-hero-video-v4.mp4?v=1794592858"></video>
-  <div class="meta"><div><h3>Indianapolis Motor Speedway — Feel the Difference.</h3><p>AIRfeet Recovery by Tyrol</p></div>
-  <a class="dl" href="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/ims-collection-hero-video-v4.mp4?v=1794592858" download>Download</a></div>
-</article>
-<article class="card">
-  <video controls playsinline preload="metadata" src="https://mylaunchpointmedia.com/tailgate-bob-marley-v1.mp4"></video>
-  <div class="meta"><div><h3>Bob Marley Tribute Edition.</h3><p>Comfort For Your Feet</p></div>
-  <a class="dl" href="https://mylaunchpointmedia.com/tailgate-bob-marley-v1.mp4" download>Download</a></div>
-</article>
-<article class="card">
-  <video controls playsinline preload="metadata" src="https://mylaunchpointmedia.com/tailgate-bagpipe-v2.mp4"></video>
-  <div class="meta"><div><h3>Southern Indiana Pipe Band.</h3><p>Live at the Tailgate</p></div>
-  <a class="dl" href="https://mylaunchpointmedia.com/tailgate-bagpipe-v2.mp4" download>Download</a></div>
-</article>
-  <h2 class="section">Hero Images</h2>
-<article class="card">
-  <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/tailgate-holiday-santa-hoodie-v3.png?v=1794592333" alt="Holiday Santa Hoodie V3">
-  <div class="meta"><div><h3>Holiday Santa Hoodie V3</h3></div>
-  <a class="dl" href="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/tailgate-holiday-santa-hoodie-v3.png?v=1794592333" download>Download</a></div>
-</article>
-<article class="card">
-  <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/tailgate-holiday-nurse-v3.png?v=1794588682" alt="Holiday Nurse V3">
-  <div class="meta"><div><h3>Holiday Nurse V3</h3></div>
-  <a class="dl" href="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/tailgate-holiday-nurse-v3.png?v=1794588682" download>Download</a></div>
-</article>
-<article class="card">
-  <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/tailgate-purdue-plus-v2.jpg?v=1794590549" alt="Recovery in Every Layer.">
-  <div class="meta"><div><h3>Recovery in Every Layer.</h3><p>Layered Tyrol Cushioning</p></div>
-  <a class="dl" href="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/tailgate-purdue-plus-v2.jpg?v=1794590549" download>Download</a></div>
-</article>
-<article class="card">
-  <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/tailgate-holiday-boots-v3.png?v=1794588682" alt="Holiday Boots V3">
-  <div class="meta"><div><h3>Holiday Boots V3</h3></div>
-  <a class="dl" href="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/tailgate-holiday-boots-v3.png?v=1794588682" download>Download</a></div>
-</article>
-<article class="card">
-  <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/hero-skeleton-purdue-desktop-v2.jpg?v=1794531006" alt="Recovery, Down to the Bone.">
-  <div class="meta"><div><h3>Recovery, Down to the Bone.</h3><p>Made by Tyrol — Active Recovery</p></div>
-  <a class="dl" href="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/hero-skeleton-purdue-desktop-v2.jpg?v=1794531006" download>Download</a></div>
-</article>
-<article class="card">
-  <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/tailgate-holiday-give-team-v3.png?v=1794588682" alt="Holiday Give Team V3">
-  <div class="meta"><div><h3>Holiday Give Team V3</h3></div>
-  <a class="dl" href="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/tailgate-holiday-give-team-v3.png?v=1794588682" download>Download</a></div>
-</article>
-<article class="card">
-  <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/tailgate-nurse-plus-v3.jpg?v=1794592857" alt="Come Home to Recovery.">
-  <div class="meta"><div><h3>Come Home to Recovery.</h3><p>For Those Long Shifts</p></div>
-  <a class="dl" href="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/tailgate-nurse-plus-v3.jpg?v=1794592857" download>Download</a></div>
-</article>
-<article class="card">
-  <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/tailgate-holiday-black-friday-v3.png?v=1794588682" alt="Holiday Black Friday V3">
-  <div class="meta"><div><h3>Holiday Black Friday V3</h3></div>
-  <a class="dl" href="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/tailgate-holiday-black-friday-v3.png?v=1794588682" download>Download</a></div>
-</article>
-<article class="card">
-  <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/hero-workday-alabama-desktop.jpg?v=1794577291" alt="WORK DAY DONE. RECOVER RIGHT.">
-  <div class="meta"><div><h3>WORK DAY DONE. RECOVER RIGHT.</h3><p>Made by Tyrol — Active Recovery</p></div>
-  <a class="dl" href="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/hero-workday-alabama-desktop.jpg?v=1794577291" download>Download</a></div>
-</article>
-<article class="card">
-  <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/tailgate-holiday-santa-two-v3.png?v=1794592333" alt="Holiday Santa Two V3">
-  <div class="meta"><div><h3>Holiday Santa Two V3</h3></div>
-  <a class="dl" href="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/tailgate-holiday-santa-two-v3.png?v=1794592333" download>Download</a></div>
-</article>
+
+<h2 class="section" id="featured">Featured</h2>
+<article class="card featured"><video controls playsinline preload="metadata" src="https://mylaunchpointmedia.com/airfeet-santa-bison-v22.mp4"></video><div class="meta"><div><h3>Santa Bison — RECOVER NOW</h3><p>IU vs Purdue · Holiday 2026</p></div><a class="dl" href="https://mylaunchpointmedia.com/airfeet-santa-bison-v22.mp4" download>Download</a></div></article>
+<h2 class="section" id="holiday-ads">Holiday Ads</h2>
+<article class="card"><video controls playsinline preload="metadata" src="https://mylaunchpointmedia.com/tailgate-santa-mascot-v18.mp4"></video><div class="meta"><div><h3>Santa &amp; the Irish Mascot — You Aren&#x27;t One of the Elves</h3><p>GO IRISH</p></div><a class="dl" href="https://mylaunchpointmedia.com/tailgate-santa-mascot-v18.mp4" download>Download</a></div></article>
+<article class="card"><video controls playsinline preload="metadata" src="https://mylaunchpointmedia.com/airfeet-santa-bison-purdue-train-v1.mp4"></video><div class="meta"><div><h3>Bison Smashes the Purdue Train</h3><p>GO HOOSIERS!</p></div><a class="dl" href="https://mylaunchpointmedia.com/airfeet-santa-bison-purdue-train-v1.mp4" download>Download</a></div></article>
+<article class="card"><video controls playsinline preload="metadata" src="https://mylaunchpointmedia.com/airfeet-santa-indiana-v1.mp4"></video><div class="meta"><div><h3>Santa &amp; the Indiana Mascot</h3><p>GO HOOSIERS!</p></div><a class="dl" href="https://mylaunchpointmedia.com/airfeet-santa-indiana-v1.mp4" download>Download</a></div></article>
+<article class="card"><video controls playsinline preload="metadata" src="https://mylaunchpointmedia.com/airfeet-santa-bama-v1.mp4"></video><div class="meta"><div><h3>Santa &amp; the Alabama Mascot</h3><p>ROLL TIDE</p></div><a class="dl" href="https://mylaunchpointmedia.com/airfeet-santa-bama-v1.mp4" download>Download</a></div></article>
+<article class="card"><video controls playsinline preload="metadata" src="https://mylaunchpointmedia.com/airfeet-santa-florida-v1.mp4"></video><div class="meta"><div><h3>Santa &amp; the Florida Mascot</h3><p>GO GATORS!</p></div><a class="dl" href="https://mylaunchpointmedia.com/airfeet-santa-florida-v1.mp4" download>Download</a></div></article>
+<article class="card"><video controls playsinline preload="metadata" src="https://mylaunchpointmedia.com/airfeet-santa-clemson-v1.mp4"></video><div class="meta"><div><h3>Santa &amp; the Clemson Mascot</h3><p>GO TIGERS!</p></div><a class="dl" href="https://mylaunchpointmedia.com/airfeet-santa-clemson-v1.mp4" download>Download</a></div></article>
+<h2 class="section" id="story-ads">Story Ads</h2>
+<article class="card"><video controls playsinline preload="metadata" src="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/tailgate-iu-usc-video-1080-v15.mp4?v=1794609384"></video><div class="meta"><div><h3>Indiana vs USC — Game Day Opener</h3><p>Hollywood Comes to Bloomington</p></div><a class="dl" href="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/tailgate-iu-usc-video-1080-v15.mp4?v=1794609384" download>Download</a></div></article>
+<article class="card"><video controls playsinline preload="metadata" src="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/tailgate-lineup-fullscreen.mp4?v=1794590549"></video><div class="meta"><div><h3>The Lineup — We Support Champions</h3><p>All 18 Teams</p></div><a class="dl" href="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/tailgate-lineup-fullscreen.mp4?v=1794590549" download>Download</a></div></article>
+<article class="card"><video controls playsinline preload="metadata" src="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/tailgate-ambassador-v21.mp4?v=1794614046"></video><div class="meta"><div><h3>Become an Ambassador</h3><p>Rep Your Team</p></div><a class="dl" href="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/tailgate-ambassador-v21.mp4?v=1794614046" download>Download</a></div></article>
+<article class="card"><video controls playsinline preload="metadata" src="https://mylaunchpointmedia.com/airfeet-sheriff-final-v4.mp4"></video><div class="meta"><div><h3>The Sheriff — Full Version</h3><p>AirFeet Recovery Presents</p></div><a class="dl" href="https://mylaunchpointmedia.com/airfeet-sheriff-final-v4.mp4" download>Download</a></div></article>
+<article class="card"><video controls playsinline preload="metadata" src="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/tailgate-sheriff-part-one.mp4?v=1794614057"></video><div class="meta"><div><h3>The Sheriff — Part One</h3></div><a class="dl" href="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/tailgate-sheriff-part-one.mp4?v=1794614057" download>Download</a></div></article>
+<article class="card"><video controls playsinline preload="metadata" src="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/tailgate-sheriff-part-two.mp4?v=1794614069"></video><div class="meta"><div><h3>The Sheriff — Part Two</h3><p>Feel the Difference</p></div><a class="dl" href="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/tailgate-sheriff-part-two.mp4?v=1794614069" download>Download</a></div></article>
+<article class="card"><video controls playsinline preload="metadata" src="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/hero-video-tyrol-pickleball.mp4?v=1794579871"></video><div class="meta"><div><h3>Play in Tyrol. Recover in AirFeet.</h3><p>Tyrol Pickleball</p></div><a class="dl" href="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/hero-video-tyrol-pickleball.mp4?v=1794579871" download>Download</a></div></article>
+<article class="card"><video controls playsinline preload="metadata" src="https://mylaunchpointmedia.com/tailgate-bob-marley-v1.mp4"></video><div class="meta"><div><h3>Bob Marley Tribute Edition</h3></div><a class="dl" href="https://mylaunchpointmedia.com/tailgate-bob-marley-v1.mp4" download>Download</a></div></article>
+<article class="card"><video controls playsinline preload="metadata" src="https://mylaunchpointmedia.com/iu-soccer-run-reel-v1.mp4"></video><div class="meta"><div><h3>IU Soccer — The Run</h3><p>Big Ten Tournament</p></div><a class="dl" href="https://mylaunchpointmedia.com/iu-soccer-run-reel-v1.mp4" download>Download</a></div></article>
+<article class="card"><video controls playsinline preload="metadata" src="https://mylaunchpointmedia.com/airfeet-head-to-head-black-friday-v8b.mp4"></video><div class="meta"><div><h3>Black Friday — Head to Head</h3><p>Every Pair $59.99</p></div><a class="dl" href="https://mylaunchpointmedia.com/airfeet-head-to-head-black-friday-v8b.mp4" download>Download</a></div></article>
+<article class="card"><video controls playsinline preload="metadata" src="https://mylaunchpointmedia.com/tennessee-step-into-recovery-video.mp4"></video><div class="meta"><div><h3>Tennessee — Step Into Recovery</h3></div><a class="dl" href="https://mylaunchpointmedia.com/tennessee-step-into-recovery-video.mp4" download>Download</a></div></article>
+<article class="card"><video controls playsinline preload="metadata" src="https://mylaunchpointmedia.com/airfeet-sliding-video-v1.mp4"></video><div class="meta"><div><h3>Sliding Into Recovery</h3></div><a class="dl" href="https://mylaunchpointmedia.com/airfeet-sliding-video-v1.mp4" download>Download</a></div></article>
+<article class="card"><video controls playsinline preload="metadata" src="https://mylaunchpointmedia.com/gallery-schools-capcut.mp4"></video><div class="meta"><div><h3>AirFeet Recovery — Every School</h3></div><a class="dl" href="https://mylaunchpointmedia.com/gallery-schools-capcut.mp4" download>Download</a></div></article>
+<article class="card"><video controls playsinline preload="metadata" src="https://mylaunchpointmedia.com/iu-osu-rivalry-video-v2.mp4"></video><div class="meta"><div><h3>Indiana vs Ohio State — Rivalry</h3></div><a class="dl" href="https://mylaunchpointmedia.com/iu-osu-rivalry-video-v2.mp4" download>Download</a></div></article>
+<h2 class="section" id="tailgate-videos">Tailgate Videos</h2>
+<article class="card"><video controls playsinline preload="metadata" src="https://mylaunchpointmedia.com/gallery-interview-a-v14.mp4"></video><div class="meta"><div><h3>Tailgate Interview</h3><p>Real Fans at the IU Tailgate</p></div><a class="dl" href="https://mylaunchpointmedia.com/gallery-interview-a-v14.mp4" download>Download</a></div></article>
+<article class="card"><video controls playsinline preload="metadata" src="https://mylaunchpointmedia.com/gallery-bagpipe-kid-v5.mp4"></video><div class="meta"><div><h3>Bagpipes &amp; the Kid</h3><p>Magic Happens On and Off the Field</p></div><a class="dl" href="https://mylaunchpointmedia.com/gallery-bagpipe-kid-v5.mp4" download>Download</a></div></article>
+<article class="card"><video controls playsinline preload="metadata" src="https://mylaunchpointmedia.com/tailgate-bagpipe-v2.mp4"></video><div class="meta"><div><h3>Southern Indiana Pipe Band</h3><p>Tailgate TV Cut</p></div><a class="dl" href="https://mylaunchpointmedia.com/tailgate-bagpipe-v2.mp4" download>Download</a></div></article>
+<h2 class="section" id="collection-heroes-—-every-team">Collection Heroes — Every Team</h2>
+<article class="card"><video controls playsinline preload="metadata" src="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/indiana-collection-hero-video-v5.mp4?v=1794608278"></video><div class="meta"><div><h3>Indiana — Recover Fast</h3></div><a class="dl" href="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/indiana-collection-hero-video-v5.mp4?v=1794608278" download>Download</a></div></article>
+<article class="card"><video controls playsinline preload="metadata" src="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/alabama-collection-hero-video-v6.mp4?v=1794603239"></video><div class="meta"><div><h3>Alabama — Feel the Difference</h3></div><a class="dl" href="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/alabama-collection-hero-video-v6.mp4?v=1794603239" download>Download</a></div></article>
+<article class="card"><video controls playsinline preload="metadata" src="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/american-flag-collection-hero-video-v5.mp4?v=1794599619"></video><div class="meta"><div><h3>American Flag — Feel the Difference</h3></div><a class="dl" href="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/american-flag-collection-hero-video-v5.mp4?v=1794599619" download>Download</a></div></article>
+<article class="card"><video controls playsinline preload="metadata" src="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/arizona-collection-hero-video-v3.mp4?v=1794599711"></video><div class="meta"><div><h3>Arizona — Feel the Difference</h3></div><a class="dl" href="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/arizona-collection-hero-video-v3.mp4?v=1794599711" download>Download</a></div></article>
+<article class="card"><video controls playsinline preload="metadata" src="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/clemson-collection-hero-video-v3.mp4?v=1794599032"></video><div class="meta"><div><h3>Clemson — Feel the Difference</h3></div><a class="dl" href="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/clemson-collection-hero-video-v3.mp4?v=1794599032" download>Download</a></div></article>
+<article class="card"><video controls playsinline preload="metadata" src="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/florida-collection-hero-video-v2.mp4?v=1794594261"></video><div class="meta"><div><h3>Florida — Feel the Difference</h3></div><a class="dl" href="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/florida-collection-hero-video-v2.mp4?v=1794594261" download>Download</a></div></article>
+<article class="card"><video controls playsinline preload="metadata" src="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/illinois-collection-hero-video-v3.mp4?v=1794599529"></video><div class="meta"><div><h3>Illinois — Feel the Difference</h3></div><a class="dl" href="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/illinois-collection-hero-video-v3.mp4?v=1794599529" download>Download</a></div></article>
+<article class="card"><video controls playsinline preload="metadata" src="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/kansas-collection-hero-video-v2.mp4?v=1794594261"></video><div class="meta"><div><h3>Kansas — Feel the Difference</h3></div><a class="dl" href="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/kansas-collection-hero-video-v2.mp4?v=1794594261" download>Download</a></div></article>
+<article class="card"><video controls playsinline preload="metadata" src="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/lsu-collection-hero-video-v3.mp4?v=1794599125"></video><div class="meta"><div><h3>LSU — Feel the Difference</h3></div><a class="dl" href="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/lsu-collection-hero-video-v3.mp4?v=1794599125" download>Download</a></div></article>
+<article class="card"><video controls playsinline preload="metadata" src="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/michigan-state-collection-hero-video-v3.mp4?v=1794598942"></video><div class="meta"><div><h3>Michigan State — Feel the Difference</h3></div><a class="dl" href="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/michigan-state-collection-hero-video-v3.mp4?v=1794598942" download>Download</a></div></article>
+<article class="card"><video controls playsinline preload="metadata" src="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/missouri-collection-hero-video-v3.mp4?v=1794599990"></video><div class="meta"><div><h3>Missouri — Feel the Difference</h3></div><a class="dl" href="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/missouri-collection-hero-video-v3.mp4?v=1794599990" download>Download</a></div></article>
+<article class="card"><video controls playsinline preload="metadata" src="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/penn-state-collection-hero-video.mp4?v=1794586200"></video><div class="meta"><div><h3>Penn State — Feel the Difference</h3></div><a class="dl" href="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/penn-state-collection-hero-video.mp4?v=1794586200" download>Download</a></div></article>
+<article class="card"><video controls playsinline preload="metadata" src="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/purdue-collection-hero-video.mp4?v=1794581253"></video><div class="meta"><div><h3>Purdue — Feel the Difference</h3></div><a class="dl" href="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/purdue-collection-hero-video.mp4?v=1794581253" download>Download</a></div></article>
+<article class="card"><video controls playsinline preload="metadata" src="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/shamrock-collection-hero-video.mp4?v=1794587891"></video><div class="meta"><div><h3>Shamrock — Feel the Difference</h3></div><a class="dl" href="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/shamrock-collection-hero-video.mp4?v=1794587891" download>Download</a></div></article>
+<article class="card"><video controls playsinline preload="metadata" src="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/hero-video-tennessee.mp4?v=1794577291"></video><div class="meta"><div><h3>Tennessee — Recover Fast. Built for Athletes.</h3></div><a class="dl" href="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/hero-video-tennessee.mp4?v=1794577291" download>Download</a></div></article>
+<article class="card"><video controls playsinline preload="metadata" src="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/vanderbilt-collection-hero-video-v3.mp4?v=1794599805"></video><div class="meta"><div><h3>Vanderbilt — Feel the Difference</h3></div><a class="dl" href="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/vanderbilt-collection-hero-video-v3.mp4?v=1794599805" download>Download</a></div></article>
+<article class="card"><video controls playsinline preload="metadata" src="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/west-virginia-collection-hero-video-v3.mp4?v=1794599897"></video><div class="meta"><div><h3>West Virginia — Feel the Difference</h3></div><a class="dl" href="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/west-virginia-collection-hero-video-v3.mp4?v=1794599897" download>Download</a></div></article>
+<article class="card"><video controls playsinline preload="metadata" src="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/ims-collection-hero-video-v4.mp4?v=1794592858"></video><div class="meta"><div><h3>Indianapolis Motor Speedway — Feel the Difference</h3></div><a class="dl" href="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/ims-collection-hero-video-v4.mp4?v=1794592858" download>Download</a></div></article>
+<h2 class="section" id="meta-fight-song-ads">Meta Fight Song Ads</h2>
+<article class="card"><video controls playsinline preload="metadata" src="https://mylaunchpointmedia.com/AF-FS01-HOUSEDIVIDED-ALABAMA-VANDERBILT-NASHVILLE-15s-9x16-v2.mp4"></video><div class="meta"><div><h3>FS01 · House Divided — Alabama vs Vanderbilt</h3><p>Nashville</p></div><a class="dl" href="https://mylaunchpointmedia.com/AF-FS01-HOUSEDIVIDED-ALABAMA-VANDERBILT-NASHVILLE-15s-9x16-v2.mp4" download>Download</a></div></article>
+<article class="card"><video controls playsinline preload="metadata" src="https://mylaunchpointmedia.com/AF-FS02-HOUSEDIVIDED-KANSAS-WESTVIRGINIA-MORGANTOWN-NIGHT-15s-9x16-v2.mp4"></video><div class="meta"><div><h3>FS02 · House Divided — Kansas vs West Virginia</h3><p>Morgantown</p></div><a class="dl" href="https://mylaunchpointmedia.com/AF-FS02-HOUSEDIVIDED-KANSAS-WESTVIRGINIA-MORGANTOWN-NIGHT-15s-9x16-v2.mp4" download>Download</a></div></article>
+<article class="card"><video controls playsinline preload="metadata" src="https://mylaunchpointmedia.com/AF-FS03-WALKBACK-INDIANA-BLOOMINGTON-15s-9x16-v2.mp4"></video><div class="meta"><div><h3>FS03 · Walk Back — Indiana</h3><p>Bloomington</p></div><a class="dl" href="https://mylaunchpointmedia.com/AF-FS03-WALKBACK-INDIANA-BLOOMINGTON-15s-9x16-v2.mp4" download>Download</a></div></article>
+<article class="card"><video controls playsinline preload="metadata" src="https://mylaunchpointmedia.com/AF-FS04-WALKBACK-LSU-BATONROUGE-NIGHT-15s-9x16-v2.mp4"></video><div class="meta"><div><h3>FS04 · Walk Back — LSU</h3><p>Baton Rouge</p></div><a class="dl" href="https://mylaunchpointmedia.com/AF-FS04-WALKBACK-LSU-BATONROUGE-NIGHT-15s-9x16-v2.mp4" download>Download</a></div></article>
+<article class="card"><video controls playsinline preload="metadata" src="https://mylaunchpointmedia.com/AF-FS05-ROADGAME-FLORIDA-LEXINGTON-NIGHT-15s-9x16-v2.mp4"></video><div class="meta"><div><h3>FS05 · Road Game — Florida</h3><p>Lexington</p></div><a class="dl" href="https://mylaunchpointmedia.com/AF-FS05-ROADGAME-FLORIDA-LEXINGTON-NIGHT-15s-9x16-v2.mp4" download>Download</a></div></article>
+<article class="card"><video controls playsinline preload="metadata" src="https://mylaunchpointmedia.com/AF-FS06-ROADGAME-ILLINOIS-PASADENA-NIGHT-15s-9x16-v2.mp4"></video><div class="meta"><div><h3>FS06 · Road Game — Illinois</h3><p>Pasadena</p></div><a class="dl" href="https://mylaunchpointmedia.com/AF-FS06-ROADGAME-ILLINOIS-PASADENA-NIGHT-15s-9x16-v2.mp4" download>Download</a></div></article>
+<article class="card"><video controls playsinline preload="metadata" src="https://mylaunchpointmedia.com/AF-FS07-ROADGAME-MISSOURI-ATHENS-15s-9x16-v2.mp4"></video><div class="meta"><div><h3>FS07 · Road Game — Missouri</h3><p>Athens</p></div><a class="dl" href="https://mylaunchpointmedia.com/AF-FS07-ROADGAME-MISSOURI-ATHENS-15s-9x16-v2.mp4" download>Download</a></div></article>
+<article class="card"><video controls playsinline preload="metadata" src="https://mylaunchpointmedia.com/AF-FS08-ROADGAME-PURDUE-IOWACITY-NIGHT-15s-9x16-v2.mp4"></video><div class="meta"><div><h3>FS08 · Road Game — Purdue</h3><p>Iowa City</p></div><a class="dl" href="https://mylaunchpointmedia.com/AF-FS08-ROADGAME-PURDUE-IOWACITY-NIGHT-15s-9x16-v2.mp4" download>Download</a></div></article>
+<article class="card"><video controls playsinline preload="metadata" src="https://mylaunchpointmedia.com/AF-FS09-ROADGAME-TENNESSEE-COLLEGESTATION-15s-9x16-v2.mp4"></video><div class="meta"><div><h3>FS09 · Road Game — Tennessee</h3><p>College Station</p></div><a class="dl" href="https://mylaunchpointmedia.com/AF-FS09-ROADGAME-TENNESSEE-COLLEGESTATION-15s-9x16-v2.mp4" download>Download</a></div></article>
+<article class="card"><video controls playsinline preload="metadata" src="https://mylaunchpointmedia.com/AF-FS10-CHECKLIST-ARIZONA-TUCSON-NIGHT-15s-9x16-v2.mp4"></video><div class="meta"><div><h3>FS10 · Checklist — Arizona</h3><p>Tucson</p></div><a class="dl" href="https://mylaunchpointmedia.com/AF-FS10-CHECKLIST-ARIZONA-TUCSON-NIGHT-15s-9x16-v2.mp4" download>Download</a></div></article>
+<article class="card"><video controls playsinline preload="metadata" src="https://mylaunchpointmedia.com/AF-FS11-CHECKLIST-CLEMSON-CLEMSON-15s-9x16-v2.mp4"></video><div class="meta"><div><h3>FS11 · Checklist — Clemson</h3><p>Clemson</p></div><a class="dl" href="https://mylaunchpointmedia.com/AF-FS11-CHECKLIST-CLEMSON-CLEMSON-15s-9x16-v2.mp4" download>Download</a></div></article>
+<article class="card"><video controls playsinline preload="metadata" src="https://mylaunchpointmedia.com/AF-FS12-CHECKLIST-MICHIGANSTATE-EASTLANSING-15s-9x16-v2.mp4"></video><div class="meta"><div><h3>FS12 · Checklist — Michigan State</h3><p>East Lansing</p></div><a class="dl" href="https://mylaunchpointmedia.com/AF-FS12-CHECKLIST-MICHIGANSTATE-EASTLANSING-15s-9x16-v2.mp4" download>Download</a></div></article>
+<article class="card"><video controls playsinline preload="metadata" src="https://mylaunchpointmedia.com/AF-FS13-CHECKLIST-PENNSTATE-STATECOLLEGE-NIGHT-15s-9x16-v2.mp4"></video><div class="meta"><div><h3>FS13 · Checklist — Penn State</h3><p>State College</p></div><a class="dl" href="https://mylaunchpointmedia.com/AF-FS13-CHECKLIST-PENNSTATE-STATECOLLEGE-NIGHT-15s-9x16-v2.mp4" download>Download</a></div></article>
+<article class="card"><video controls playsinline preload="metadata" src="https://mylaunchpointmedia.com/AF-BB-PURDUE-15s-9x16-fightsong.mp4"></video><div class="meta"><div><h3>Purdue Basketball — Fight Song</h3><p>Boiler Up</p></div><a class="dl" href="https://mylaunchpointmedia.com/AF-BB-PURDUE-15s-9x16-fightsong.mp4" download>Download</a></div></article>
+<article class="card"><video controls playsinline preload="metadata" src="https://cdn.shopify.com/videos/c/vp/e8aac9dfebbc455e8c1809e5df90de3b/e8aac9dfebbc455e8c1809e5df90de3b.SD-480p-1.2Mbps-97376076.mp4"></video><div class="meta"><div><h3>Indiana — Fight Song</h3><p>Go Hoosiers</p></div><a class="dl" href="https://cdn.shopify.com/videos/c/vp/e8aac9dfebbc455e8c1809e5df90de3b/e8aac9dfebbc455e8c1809e5df90de3b.SD-480p-1.2Mbps-97376076.mp4" download>Download</a></div></article>
+<h2 class="section" id="legacy-videos">Legacy Videos</h2>
+<article class="card"><video controls playsinline preload="metadata" src="https://mylaunchpointmedia.com/iu-swim-legacy-video-v6.mp4"></video><div class="meta"><div><h3>IU Swim — Legacy</h3></div><a class="dl" href="https://mylaunchpointmedia.com/iu-swim-legacy-video-v6.mp4" download>Download</a></div></article>
+<article class="card"><video controls playsinline preload="metadata" src="https://mylaunchpointmedia.com/iu-soccer-legacy-video-v3.mp4"></video><div class="meta"><div><h3>IU Soccer — Legacy</h3></div><a class="dl" href="https://mylaunchpointmedia.com/iu-soccer-legacy-video-v3.mp4" download>Download</a></div></article>
+<article class="card"><video controls playsinline preload="metadata" src="https://mylaunchpointmedia.com/indiana-basketball-legacy-video-v1.mp4"></video><div class="meta"><div><h3>Indiana Basketball — Legacy</h3></div><a class="dl" href="https://mylaunchpointmedia.com/indiana-basketball-legacy-video-v1.mp4" download>Download</a></div></article>
+<article class="card"><video controls playsinline preload="metadata" src="https://mylaunchpointmedia.com/alabama-football-legacy-video-v3.mp4"></video><div class="meta"><div><h3>Alabama Football — Legacy</h3></div><a class="dl" href="https://mylaunchpointmedia.com/alabama-football-legacy-video-v3.mp4" download>Download</a></div></article>
+<article class="card"><video controls playsinline preload="metadata" src="https://mylaunchpointmedia.com/alabama-soccer-legacy-video-v1.mp4"></video><div class="meta"><div><h3>Alabama Soccer — Legacy</h3></div><a class="dl" href="https://mylaunchpointmedia.com/alabama-soccer-legacy-video-v1.mp4" download>Download</a></div></article>
+<article class="card"><video controls playsinline preload="metadata" src="https://mylaunchpointmedia.com/notre-dame-legacy-video-v1.mp4"></video><div class="meta"><div><h3>Notre Dame — Legacy</h3></div><a class="dl" href="https://mylaunchpointmedia.com/notre-dame-legacy-video-v1.mp4" download>Download</a></div></article>
+<article class="card"><video controls playsinline preload="metadata" src="https://mylaunchpointmedia.com/notre-dame-rivalry-video-v1.mp4"></video><div class="meta"><div><h3>Notre Dame — Rivalry</h3></div><a class="dl" href="https://mylaunchpointmedia.com/notre-dame-rivalry-video-v1.mp4" download>Download</a></div></article>
+<h2 class="section" id="rivalry-and-gameday-ads">Rivalry &amp; Gameday Ads</h2>
+<article class="card"><img loading="lazy" src="https://mylaunchpointmedia.com/indiana-purdue-poster-fb-4x5.png" alt="Indiana vs Purdue — Rivalry Poster"><div class="meta"><div><h3>Indiana vs Purdue — Rivalry Poster</h3></div><a class="dl" href="https://mylaunchpointmedia.com/indiana-purdue-poster-fb-4x5.png" download>Download</a></div></article>
+<article class="card"><img loading="lazy" src="https://mylaunchpointmedia.com/iu-osu-grey-thongs-poster-fb-4x5.png" alt="Indiana vs Ohio State — Rivalry Poster"><div class="meta"><div><h3>Indiana vs Ohio State — Rivalry Poster</h3></div><a class="dl" href="https://mylaunchpointmedia.com/iu-osu-grey-thongs-poster-fb-4x5.png" download>Download</a></div></article>
+<article class="card"><img loading="lazy" src="https://mylaunchpointmedia.com/alabama-lsu-poster-fb-4x5.png" alt="Alabama vs LSU — Rivalry Poster"><div class="meta"><div><h3>Alabama vs LSU — Rivalry Poster</h3></div><a class="dl" href="https://mylaunchpointmedia.com/alabama-lsu-poster-fb-4x5.png" download>Download</a></div></article>
+<article class="card"><img loading="lazy" src="https://mylaunchpointmedia.com/tenn-ala-thongs-poster-fb-4x5.png" alt="Tennessee vs Alabama — Rivalry Poster"><div class="meta"><div><h3>Tennessee vs Alabama — Rivalry Poster</h3></div><a class="dl" href="https://mylaunchpointmedia.com/tenn-ala-thongs-poster-fb-4x5.png" download>Download</a></div></article>
+<article class="card"><img loading="lazy" src="https://mylaunchpointmedia.com/lsu-tennessee-poster-fb-4x5.png" alt="LSU vs Tennessee — Rivalry Poster"><div class="meta"><div><h3>LSU vs Tennessee — Rivalry Poster</h3></div><a class="dl" href="https://mylaunchpointmedia.com/lsu-tennessee-poster-fb-4x5.png" download>Download</a></div></article>
+<article class="card"><img loading="lazy" src="https://mylaunchpointmedia.com/tennessee-vanderbilt-poster-fb-4x5.png" alt="Tennessee vs Vanderbilt — Rivalry Poster"><div class="meta"><div><h3>Tennessee vs Vanderbilt — Rivalry Poster</h3></div><a class="dl" href="https://mylaunchpointmedia.com/tennessee-vanderbilt-poster-fb-4x5.png" download>Download</a></div></article>
+<article class="card"><img loading="lazy" src="https://mylaunchpointmedia.com/vanderbilt-florida-poster-fb-4x5.png" alt="Vanderbilt vs Florida — Rivalry Poster"><div class="meta"><div><h3>Vanderbilt vs Florida — Rivalry Poster</h3></div><a class="dl" href="https://mylaunchpointmedia.com/vanderbilt-florida-poster-fb-4x5.png" download>Download</a></div></article>
+<article class="card"><img loading="lazy" src="https://mylaunchpointmedia.com/alabama-vanderbilt-poster-fb-4x5.png" alt="Alabama vs Vanderbilt — Rivalry Poster"><div class="meta"><div><h3>Alabama vs Vanderbilt — Rivalry Poster</h3></div><a class="dl" href="https://mylaunchpointmedia.com/alabama-vanderbilt-poster-fb-4x5.png" download>Download</a></div></article>
+<article class="card"><img loading="lazy" src="https://mylaunchpointmedia.com/kansas-westvirginia-poster-fb-4x5.png" alt="Kansas vs West Virginia — Rivalry Poster"><div class="meta"><div><h3>Kansas vs West Virginia — Rivalry Poster</h3></div><a class="dl" href="https://mylaunchpointmedia.com/kansas-westvirginia-poster-fb-4x5.png" download>Download</a></div></article>
+<article class="card"><img loading="lazy" src="https://mylaunchpointmedia.com/purdue-pennstate-poster-fb-4x5.png" alt="Purdue vs Penn State — Rivalry Poster"><div class="meta"><div><h3>Purdue vs Penn State — Rivalry Poster</h3></div><a class="dl" href="https://mylaunchpointmedia.com/purdue-pennstate-poster-fb-4x5.png" download>Download</a></div></article>
+<article class="card"><video controls playsinline preload="metadata" src="https://mylaunchpointmedia.com/IU-zach-reel-9x16-8s.mp4"></video><div class="meta"><div><h3>Indiana — Zach Reel</h3></div><a class="dl" href="https://mylaunchpointmedia.com/IU-zach-reel-9x16-8s.mp4" download>Download</a></div></article>
+<article class="card"><video controls playsinline preload="metadata" src="https://mylaunchpointmedia.com/PUR-zach-reel-9x16-8s.mp4"></video><div class="meta"><div><h3>Purdue — Zach Reel</h3></div><a class="dl" href="https://mylaunchpointmedia.com/PUR-zach-reel-9x16-8s.mp4" download>Download</a></div></article>
+<article class="card"><img loading="lazy" src="https://mylaunchpointmedia.com/IU-zach-static-9x16.png" alt="Indiana — Zach Static"><div class="meta"><div><h3>Indiana — Zach Static</h3></div><a class="dl" href="https://mylaunchpointmedia.com/IU-zach-static-9x16.png" download>Download</a></div></article>
+<article class="card"><img loading="lazy" src="https://mylaunchpointmedia.com/PUR-zach-static-9x16.png" alt="Purdue — Zach Static"><div class="meta"><div><h3>Purdue — Zach Static</h3></div><a class="dl" href="https://mylaunchpointmedia.com/PUR-zach-static-9x16.png" download>Download</a></div></article>
+<h2 class="section" id="hero-images">Hero Images</h2>
+<article class="card"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/tailgate-holiday-santa-hoodie-v3.png?v=1794592333" alt="Santa Hoodie — Holiday Hero"><div class="meta"><div><h3>Santa Hoodie — Holiday Hero</h3></div><a class="dl" href="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/tailgate-holiday-santa-hoodie-v3.png?v=1794592333" download>Download</a></div></article>
+<article class="card"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/tailgate-holiday-nurse-v3.png?v=1794588682" alt="Nurse — Holiday Hero"><div class="meta"><div><h3>Nurse — Holiday Hero</h3></div><a class="dl" href="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/tailgate-holiday-nurse-v3.png?v=1794588682" download>Download</a></div></article>
+<article class="card"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/tailgate-purdue-plus-v2.jpg?v=1794590549" alt="Recovery in Every Layer"><div class="meta"><div><h3>Recovery in Every Layer</h3></div><a class="dl" href="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/tailgate-purdue-plus-v2.jpg?v=1794590549" download>Download</a></div></article>
+<article class="card"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/tailgate-holiday-boots-v3.png?v=1794588682" alt="Boots — Holiday Hero"><div class="meta"><div><h3>Boots — Holiday Hero</h3></div><a class="dl" href="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/tailgate-holiday-boots-v3.png?v=1794588682" download>Download</a></div></article>
+<article class="card"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/hero-skeleton-purdue-desktop-v2.jpg?v=1794531006" alt="Recovery, Down to the Bone"><div class="meta"><div><h3>Recovery, Down to the Bone</h3></div><a class="dl" href="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/hero-skeleton-purdue-desktop-v2.jpg?v=1794531006" download>Download</a></div></article>
+<article class="card"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/tailgate-holiday-give-team-v3.png?v=1794588682" alt="Give Them Their Team"><div class="meta"><div><h3>Give Them Their Team</h3></div><a class="dl" href="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/tailgate-holiday-give-team-v3.png?v=1794588682" download>Download</a></div></article>
+<article class="card"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/tailgate-nurse-plus-v3.jpg?v=1794592857" alt="Come Home to Recovery"><div class="meta"><div><h3>Come Home to Recovery</h3></div><a class="dl" href="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/tailgate-nurse-plus-v3.jpg?v=1794592857" download>Download</a></div></article>
+<article class="card"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/tailgate-holiday-black-friday-v3.png?v=1794588682" alt="Black Friday Hero"><div class="meta"><div><h3>Black Friday Hero</h3></div><a class="dl" href="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/tailgate-holiday-black-friday-v3.png?v=1794588682" download>Download</a></div></article>
+<article class="card"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/hero-workday-alabama-desktop.jpg?v=1794577291" alt="WORK DAY DONE. RECOVER RIGHT."><div class="meta"><div><h3>WORK DAY DONE. RECOVER RIGHT.</h3></div><a class="dl" href="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/hero-workday-alabama-desktop.jpg?v=1794577291" download>Download</a></div></article>
+<article class="card"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/tailgate-holiday-santa-two-v3.png?v=1794592333" alt="Santa — Holiday Hero"><div class="meta"><div><h3>Santa — Holiday Hero</h3></div><a class="dl" href="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/tailgate-holiday-santa-two-v3.png?v=1794592333" download>Download</a></div></article>
+<article class="card"><img loading="lazy" src="https://mylaunchpointmedia.com/airfeet-lineup-poster-4x5-v2.png" alt="The Lineup Poster"><div class="meta"><div><h3>The Lineup Poster</h3><p>We Support Champions</p></div><a class="dl" href="https://mylaunchpointmedia.com/airfeet-lineup-poster-4x5-v2.png" download>Download</a></div></article>
+<article class="card"><img loading="lazy" src="https://mylaunchpointmedia.com/airfeet-stack-brand-ad-4x5.png" alt="Stack Brand Ad"><div class="meta"><div><h3>Stack Brand Ad</h3></div><a class="dl" href="https://mylaunchpointmedia.com/airfeet-stack-brand-ad-4x5.png" download>Download</a></div></article>
+<article class="card"><img loading="lazy" src="https://mylaunchpointmedia.com/airfeet-vanpile-brand-ad-4x5.png" alt="Van Pile Brand Ad"><div class="meta"><div><h3>Van Pile Brand Ad</h3></div><a class="dl" href="https://mylaunchpointmedia.com/airfeet-vanpile-brand-ad-4x5.png" download>Download</a></div></article>
+<article class="card"><img loading="lazy" src="https://mylaunchpointmedia.com/all-teams-ad-v2-4x5.png" alt="All Teams Ad"><div class="meta"><div><h3>All Teams Ad</h3></div><a class="dl" href="https://mylaunchpointmedia.com/all-teams-ad-v2-4x5.png" download>Download</a></div></article>
+<article class="card"><img loading="lazy" src="https://mylaunchpointmedia.com/iu-soccer-final-ad-v4-9x16.png" alt="IU Soccer — Big Ten Final"><div class="meta"><div><h3>IU Soccer — Big Ten Final</h3><p>Championship Sunday</p></div><a class="dl" href="https://mylaunchpointmedia.com/iu-soccer-final-ad-v4-9x16.png" download>Download</a></div></article>
+<article class="card"><img loading="lazy" src="https://mylaunchpointmedia.com/iu-soccer-semi-ad-v3-9x16.png" alt="IU Soccer — Semifinal"><div class="meta"><div><h3>IU Soccer — Semifinal</h3></div><a class="dl" href="https://mylaunchpointmedia.com/iu-soccer-semi-ad-v3-9x16.png" download>Download</a></div></article>
+<article class="card"><img loading="lazy" src="https://mylaunchpointmedia.com/iu-soccer-tracker-ad-v2-9x16.png" alt="IU Soccer — The Run"><div class="meta"><div><h3>IU Soccer — The Run</h3></div><a class="dl" href="https://mylaunchpointmedia.com/iu-soccer-tracker-ad-v2-9x16.png" download>Download</a></div></article>
+<h2 class="section" id="hero-banners">Hero Banners</h2>
+<article class="card"><img loading="lazy" src="https://mylaunchpointmedia.com/indiana-usc-desktop.png" alt="Indiana vs USC Banner"><div class="meta"><div><h3>Indiana vs USC Banner</h3></div><a class="dl" href="https://mylaunchpointmedia.com/indiana-usc-desktop.png" download>Download</a></div></article>
+<article class="card"><img loading="lazy" src="https://mylaunchpointmedia.com/rivalry-week-desktop.png" alt="Rivalry Week Banner"><div class="meta"><div><h3>Rivalry Week Banner</h3></div><a class="dl" href="https://mylaunchpointmedia.com/rivalry-week-desktop.png" download>Download</a></div></article>
+<article class="card"><img loading="lazy" src="https://mylaunchpointmedia.com/thanksgiving-desktop.png" alt="Thanksgiving Banner"><div class="meta"><div><h3>Thanksgiving Banner</h3></div><a class="dl" href="https://mylaunchpointmedia.com/thanksgiving-desktop.png" download>Download</a></div></article>
+<article class="card"><img loading="lazy" src="https://mylaunchpointmedia.com/black-friday-desktop.png" alt="Black Friday Banner"><div class="meta"><div><h3>Black Friday Banner</h3></div><a class="dl" href="https://mylaunchpointmedia.com/black-friday-desktop.png" download>Download</a></div></article>
+<article class="card"><img loading="lazy" src="https://mylaunchpointmedia.com/cyber-monday-desktop.png" alt="Cyber Monday Banner"><div class="meta"><div><h3>Cyber Monday Banner</h3></div><a class="dl" href="https://mylaunchpointmedia.com/cyber-monday-desktop.png" download>Download</a></div></article>
+<article class="card"><img loading="lazy" src="https://mylaunchpointmedia.com/christmas-santa-desktop.png" alt="Christmas Santa Banner"><div class="meta"><div><h3>Christmas Santa Banner</h3></div><a class="dl" href="https://mylaunchpointmedia.com/christmas-santa-desktop.png" download>Download</a></div></article>
+<article class="card"><img loading="lazy" src="https://mylaunchpointmedia.com/holiday-mart-desktop.png" alt="Holiday Mart Banner"><div class="meta"><div><h3>Holiday Mart Banner</h3></div><a class="dl" href="https://mylaunchpointmedia.com/holiday-mart-desktop.png" download>Download</a></div></article>
+<article class="card"><img loading="lazy" src="https://mylaunchpointmedia.com/hoops-opener-desktop.png" alt="Hoops Opener Banner"><div class="meta"><div><h3>Hoops Opener Banner</h3></div><a class="dl" href="https://mylaunchpointmedia.com/hoops-opener-desktop.png" download>Download</a></div></article>
+<article class="card"><img loading="lazy" src="https://mylaunchpointmedia.com/bowl-season-desktop.png" alt="Bowl Season Banner"><div class="meta"><div><h3>Bowl Season Banner</h3></div><a class="dl" href="https://mylaunchpointmedia.com/bowl-season-desktop.png" download>Download</a></div></article>
+<article class="card"><img loading="lazy" src="https://mylaunchpointmedia.com/new-year-desktop.png" alt="New Year Banner"><div class="meta"><div><h3>New Year Banner</h3></div><a class="dl" href="https://mylaunchpointmedia.com/new-year-desktop.png" download>Download</a></div></article>
+<article class="card"><img loading="lazy" src="https://mylaunchpointmedia.com/alabama-vanderbilt-desktop.png" alt="Alabama vs Vanderbilt Banner"><div class="meta"><div><h3>Alabama vs Vanderbilt Banner</h3></div><a class="dl" href="https://mylaunchpointmedia.com/alabama-vanderbilt-desktop.png" download>Download</a></div></article>
 </div>
 <footer>
   <div class="big">WE SUPPORT CHAMPIONS.</div>
-  <p style="margin-top:6px">AirFeet Recovery &mdash; airfeetrecovery.com</p>
+  <p style="margin-top:6px">AirFeet Recovery — airfeetrecovery.com</p>
 </footer>
 <script>
-  // Pause every other video when one starts playing
   document.querySelectorAll('video').forEach(function(v){
     v.addEventListener('play', function(){
       document.querySelectorAll('video').forEach(function(o){ if(o!==v) o.pause(); });
