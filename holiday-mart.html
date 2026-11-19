@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>AirFeet — Holiday Mart Booth Loop</title>
+<!-- Built 2026-11-19 (Zach's direction): IMAGE-ONLY booth loop for Holiday Mart.
+     Hero banners + gift images + QR scan slides. NO videos.
+     Assets referenced by site-root filename (already live on the site):
+       holiday-mart-mobile.png, christmas-santa-mobile.png, hoops-opener-mobile.png,
+       rivalry-week-mobile.png, indiana-usc-mobile.png, alabama-vanderbilt-mobile.png,
+       thanksgiving-mobile.png (1080x1350 hero banners)
+       mascots-group-v2.jpg, booth-106-slide.jpg, qr-join-slide.jpg,
+       qr-shop-slide.jpg, qr-signup-slide.jpg, qr-follow-facebook-slide.jpg,
+       qr-follow-instagram-slide.jpg, and the 9 gift stills.
+     Black Friday / Cyber Monday banners intentionally NOT included
+     (no deal creative out until Black Friday itself). -->
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html, body { width:100%; height:100%; background:#000; overflow:hidden; cursor:pointer;
+    font-family:'Arial Black', 'Segoe UI', Arial, sans-serif; }
+  .slide { position:absolute; inset:0; opacity:0; transition:opacity .7s ease; pointer-events:none; }
+  .slide.active { opacity:1; }
+  .slide img.media { position:absolute; inset:0; width:100%; height:100%; object-fit:contain; background:#000; }
+  .slide img.media.cover { object-fit:cover; }
+  .caption { position:absolute; left:0; right:0; bottom:5.5vh; text-align:center; z-index:5;
+    color:#fff; text-transform:uppercase; letter-spacing:.14em;
+    font-size:clamp(18px, 2.7vw, 44px); font-weight:900; line-height:1.15;
+    text-shadow:0 3px 18px rgba(0,0,0,.85), 0 0 4px rgba(0,0,0,.9); padding:0 4vw; }
+  .caption .accent { color:#71D53C; }
+  .caption .sub { display:block; margin-top:1.2vh; font-size:clamp(12px, 1.4vw, 24px);
+    letter-spacing:.22em; font-weight:700; color:#F4F1EA; }
+  #logo { position:absolute; right:2.2vw; bottom:2.4vh; width:clamp(120px, 13vw, 260px); z-index:6;
+    filter:drop-shadow(0 2px 10px rgba(0,0,0,.8)); opacity:.95; }
+  #hint { position:absolute; left:0; right:0; top:4vh; text-align:center; z-index:7; color:#fff;
+    font-size:clamp(14px, 1.6vw, 26px); letter-spacing:.22em; text-transform:uppercase;
+    text-shadow:0 2px 12px rgba(0,0,0,.9); transition:opacity 1s ease; animation:pulse 1.6s ease-in-out infinite; }
+  @keyframes pulse { 0%,100% { opacity:.55; } 50% { opacity:1; } }
+  #hint.gone { opacity:0 !important; animation:none; }
+</style>
+</head>
+<body>
+
+<div id="hint">Tap anywhere for full screen</div>
+<img id="logo" src="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/tailgate-airfeet-logo.png?v=1794584871" alt="AIRfeet Recovery">
+
+<div id="stage"></div>
+
+<script>
+const slides = [
+  { src: 'holiday-mart-mobile.png', cover:true, dur:15, cap:'', sub:'' },
+  { src: 'booth-106-slide.jpg', cover:true, dur:20, cap:'', sub:'' },
+  { src: 'mascots-group-v2.jpg', cover:true, dur:12,
+    cap:'Recovery Starts With the <span class="accent">Shoes</span>', sub:'You Are Wearing' },
+  { src: 'christmas-santa-mobile.png', cover:true, dur:12, cap:'', sub:'' },
+  { src: '01-santa-hoodie-gift-v4.jpg', cover:true, dur:10, cap:'', sub:'' },
+  { src: 'hoops-opener-mobile.png', cover:true, dur:12, cap:'', sub:'' },
+  { src: '02-holiday-nurse-gift-v7.jpg', cover:true, dur:10, cap:'', sub:'' },
+  { src: 'rivalry-week-mobile.png', cover:true, dur:12, cap:'', sub:'' },
+  { src: 'qr-join-slide.jpg', cover:true, dur:30, cap:'', sub:'' },
+  { src: '05-skeleton-purdue-gift-v6.jpg', cover:true, dur:10, cap:'', sub:'' },
+  { src: 'indiana-usc-mobile.png', cover:true, dur:12, cap:'', sub:'' },
+  { src: '06-give-team-gift-v7.jpg', cover:true, dur:10, cap:'', sub:'' },
+  { src: 'alabama-vanderbilt-mobile.png', cover:true, dur:12, cap:'', sub:'' },
+  { src: '07-nurse-plus-gift-v5.jpg', cover:true, dur:10, cap:'', sub:'' },
+  { src: 'thanksgiving-mobile.png', cover:true, dur:12, cap:'', sub:'' },
+  { src: '09-workday-alabama-gift-v6.jpg', cover:true, dur:10, cap:'', sub:'' },
+  { src: '10-santa-two-gift-v8.jpg', cover:true, dur:10, cap:'', sub:'' },
+  { src: '04-boots-gift-v13.jpg', cover:true, dur:10, cap:'', sub:'' },
+  { src: '03-purdue-tech-gift-v5.jpg', cover:true, dur:10, cap:'', sub:'' },
+  { src: 'qr-shop-slide.jpg', cover:true, dur:20, cap:'', sub:'' },
+  { src: 'qr-signup-slide.jpg', cover:true, dur:20, cap:'', sub:'' },
+  { src: 'qr-follow-facebook-slide.jpg', cover:true, dur:20, cap:'', sub:'' },
+  { src: 'qr-follow-instagram-slide.jpg', cover:true, dur:20, cap:'', sub:'' },
+];
+
+const stage = document.getElementById('stage');
+const els = slides.map(s => {
+  const d = document.createElement('div');
+  d.className = 'slide';
+  const im = document.createElement('img');
+  im.src = s.src; im.className = 'media' + (s.cover ? ' cover' : '');
+  im.alt = ''; d.appendChild(im); d._media = im;
+  const c = document.createElement('div');
+  c.className = 'caption';
+  c.innerHTML = s.cap + (s.sub ? '<span class="sub">'+s.sub+'</span>' : '');
+  d.appendChild(c);
+  stage.appendChild(d);
+  return d;
+});
+
+let idx = -1, timer = null;
+function show(n) {
+  if (idx >= 0) els[idx].classList.remove('active');
+  idx = ((n % slides.length) + slides.length) % slides.length;
+  els[idx].classList.add('active');
+  clearTimeout(timer);
+  timer = setTimeout(() => show(idx + 1), (slides[idx].dur || 10) * 1000);
+}
+show(0);
+
+async function goFull() {
+  const hint = document.getElementById('hint');
+  hint.classList.add('gone');
+  try { await document.documentElement.requestFullscreen(); } catch(e) {}
+  try { if (navigator.wakeLock) await navigator.wakeLock.request('screen'); } catch(e) {}
+}
+document.addEventListener('click', goFull);
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight') show(idx + 1);
+  if (e.key === 'ArrowLeft') show(idx - 1);
+  if (e.key.toLowerCase() === 'f') goFull();
+});
+</script>
+</body>
+</html>
