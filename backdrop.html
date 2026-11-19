@@ -4,16 +4,51 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
-<title>AirFeet — Christmas Backdrop</title>
+<title>AirFeet — TV Backdrop</title>
+<!-- TV version (Zach 2026-11-19): full 16:9, no black bars. QR cards top corners,
+     logo center, and a rotating hero banner (desktop ads) filling the rest. -->
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
-  html, body { width:100%; height:100%; background:#000; overflow:hidden; cursor:pointer; }
-  img { position:absolute; inset:0; width:100%; height:100%; object-fit:contain; }
+  html, body { width:100%; height:100%; overflow:hidden; cursor:pointer;
+    background:linear-gradient(180deg, #0A3460 0%, #062A4E 45%, #03182E 100%);
+    font-family:'Arial Black', 'Segoe UI', Arial, sans-serif; }
+  #hdr { position:absolute; top:0; left:0; right:0; height:23vh; z-index:5;
+    display:flex; align-items:center; justify-content:space-between; padding:1.6vh 2.2vw; }
+  #hdr .qr { height:100%; border-radius:1.2vh; box-shadow:0 4px 24px rgba(0,0,0,.45); }
+  #hdr .logo { height:88%; filter:drop-shadow(0 3px 14px rgba(0,0,0,.7)); }
+  #hero { position:absolute; left:0; right:0; top:23vh; bottom:0; }
+  #hero img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+    opacity:0; transition:opacity .8s ease; }
+  #hero img.active { opacity:1; }
 </style>
 </head>
 <body>
-<img src="airfeet-christmas-backdrop-v3.png" alt="AIRfeet Recovery Christmas backdrop — all teams">
+
+<div id="hdr">
+  <img class="qr" src="qr-card-deal.png" alt="Scan for the Holiday Mart deal">
+  <img class="logo" src="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/tailgate-airfeet-logo.png?v=1794584871" alt="AIRfeet Recovery">
+  <img class="qr" src="qr-card-shop.png" alt="Scan to shop">
+</div>
+
+<div id="hero">
+  <img src="holiday-mart-desktop.png" class="active" alt="">
+  <img src="christmas-santa-desktop.png" alt="">
+  <img src="hoops-opener-desktop.png" alt="">
+  <img src="rivalry-week-desktop.png" alt="">
+  <img src="indiana-usc-desktop.png" alt="">
+  <img src="alabama-vanderbilt-desktop.png" alt="">
+  <img src="thanksgiving-desktop.png" alt="">
+</div>
+
 <script>
+const banners = document.querySelectorAll('#hero img');
+let bi = 0;
+setInterval(() => {
+  banners[bi].classList.remove('active');
+  bi = (bi + 1) % banners.length;
+  banners[bi].classList.add('active');
+}, 8000);
+
 async function goFull() {
   try { await document.documentElement.requestFullscreen(); } catch(e) {}
   try { if (navigator.wakeLock) await navigator.wakeLock.request('screen'); } catch(e) {}
