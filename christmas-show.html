@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>AirFeet — Christmas Show</title>
+<!-- DRAFT built 2026-11-18 (local only, NOT deployed). New assets are referenced by
+     site-root filename and must be uploaded next to this page at deploy time:
+       mascots-group-v2.jpg
+       airfeet-smokey-final-northpole-intro-v20.mp4  (already has its Tales intro)
+       bama-elephant-tales-v4.mp4                    (APPROVED book cover, assembled)
+       bison-reindeer-tales-v1.mp4                   (APPROVED + assembled)
+       bison-train-tales-v1.mp4                      (APPROVED + assembled)
+       kingfisher-tales-v1.mp4                       (APPROVED + assembled)
+       irish-tales-v1.mp4                            (from tailgate-santa-mascot-v26, APPROVED + assembled)
+       Hero videos, IU-USC opener, lineup and ambassador play as the
+       ORIGINALS from the Shopify CDN (per Zach 2026-11-18: Tales covers
+       only on the mascot videos; everything else stays original; the
+       stills carry the Christmas wording + bow).
+       01-santa-hoodie-gift-v4.jpg, 02-holiday-nurse-gift-v7.jpg,
+       03-purdue-tech-gift-v5.jpg, 04-boots-gift-v13.jpg,
+       05-skeleton-purdue-gift-v6.jpg, 06-give-team-gift-v7.jpg,
+       07-nurse-plus-gift-v5.jpg, 09-workday-alabama-gift-v6.jpg,
+       10-santa-two-gift-v8.jpg                      (the 9 kept gift stills)
+     The discarded Black Friday gift copy (#8) is intentionally NOT in this show. -->
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html, body { width:100%; height:100%; background:#000; overflow:hidden; cursor:pointer;
+    font-family:'Arial Black', 'Segoe UI', Arial, sans-serif; }
+  .slide { position:absolute; inset:0; opacity:0; transition:opacity .7s ease; pointer-events:none; }
+  .slide.active { opacity:1; }
+  .slide video, .slide img.media { position:absolute; inset:0; width:100%; height:100%; object-fit:contain; background:#000; }
+  .slide img.media.cover { object-fit:cover; }
+  .caption { position:absolute; left:0; right:0; bottom:5.5vh; text-align:center; z-index:5;
+    color:#fff; text-transform:uppercase; letter-spacing:.14em;
+    font-size:clamp(18px, 2.7vw, 44px); font-weight:900; line-height:1.15;
+    text-shadow:0 3px 18px rgba(0,0,0,.85), 0 0 4px rgba(0,0,0,.9); padding:0 4vw; }
+  .caption .accent { color:#71D53C; }
+  .caption .sub { display:block; margin-top:1.2vh; font-size:clamp(12px, 1.4vw, 24px);
+    letter-spacing:.22em; font-weight:700; color:#F4F1EA; }
+  #logo { position:absolute; right:2.2vw; bottom:2.4vh; width:clamp(120px, 13vw, 260px); z-index:6;
+    filter:drop-shadow(0 2px 10px rgba(0,0,0,.8)); opacity:.95; }
+  #hint { position:absolute; left:0; right:0; top:4vh; text-align:center; z-index:7; color:#fff;
+    font-size:clamp(14px, 1.6vw, 26px); letter-spacing:.22em; text-transform:uppercase;
+    text-shadow:0 2px 12px rgba(0,0,0,.9); transition:opacity 1s ease; animation:pulse 1.6s ease-in-out infinite; }
+  @keyframes pulse { 0%,100% { opacity:.55; } 50% { opacity:1; } }
+  #hint.gone { opacity:0 !important; animation:none; }
+</style>
+</head>
+<body>
+
+<div id="hint">Tap anywhere for full screen</div>
+<img id="logo" src="https://cdn.shopify.com/s/files/1/0725/7866/2582/files/tailgate-airfeet-logo.png?v=1794584871" alt="AIRfeet Recovery">
+
+<div id="stage"></div>
+
+<script>
+const CDN = 'https://cdn.shopify.com/s/files/1/0725/7866/2582/files/';
+const slides = [
+  { type:'img', src: 'mascots-group-v2.jpg', cover:true,
+    cap:'Recovery Starts With the <span class="accent">Shoes</span>', sub:'You Are Wearing' },
+  { type:'video', audio:true, src: 'airfeet-smokey-final-northpole-intro-v20.mp4',
+    cap:'Tales from the <span class="accent">North Pole.</span>', sub:'Smokey — Tennessee' },
+  { type:'video', audio:true, src: CDN+'tailgate-iu-usc-video-1080-v15.mp4?v=1794609384',
+    cap:'', sub:'' },
+  { type:'video', audio:true, src: 'bama-elephant-tales-v4.mp4',
+    cap:'Tales from the <span class="accent">North Pole.</span>', sub:'Alabama' },
+  { type:'video', src: CDN+'indiana-collection-hero-video-v5.mp4?v=1794608278',
+    cap:'', sub:'' },
+  { type:'img', src: '01-santa-hoodie-gift-v4.jpg', cover:true, cap:'', sub:'' },
+  { type:'video', audio:true, src: 'bison-reindeer-tales-v1.mp4',
+    cap:'Tales from the <span class="accent">North Pole.</span>', sub:'Indiana' },
+  { type:'video', src: CDN+'purdue-collection-hero-video.mp4?v=1794581253',
+    cap:'', sub:'' },
+  { type:'img', src: '02-holiday-nurse-gift-v7.jpg', cover:true, cap:'', sub:'' },
+  { type:'video', src: CDN+'hero-video-tennessee.mp4?v=1794577291',
+    cap:'', sub:'' },
+  { type:'video', audio:true, src: 'kingfisher-tales-v1.mp4',
+    cap:'Tales from the <span class="accent">North Pole.</span>', sub:'Illinois' },
+  { type:'img', src: '05-skeleton-purdue-gift-v6.jpg', cover:true, cap:'', sub:'' },
+  { type:'video', audio:true, src: 'bison-train-tales-v1.mp4',
+    cap:'Tales from the <span class="accent">North Pole.</span>', sub:'Indiana vs Purdue' },
+  { type:'video', src: CDN+'florida-collection-hero-video-v2.mp4?v=1794594261',
+    cap:'', sub:'' },
+  { type:'img', src: '06-give-team-gift-v7.jpg', cover:true, cap:'', sub:'' },
+  { type:'video', audio:true, src: 'irish-tales-v1.mp4',
+    cap:'Tales from the <span class="accent">North Pole.</span>', sub:'Notre Dame' },
+  { type:'video', src: CDN+'clemson-collection-hero-video-v3.mp4?v=1794599032',
+    cap:'', sub:'' },
+  { type:'img', src: '07-nurse-plus-gift-v5.jpg', cover:true, cap:'', sub:'' },
+  { type:'video', src: CDN+'lsu-collection-hero-video-v3.mp4?v=1794599125',
+    cap:'', sub:'' },
+  { type:'img', src: '09-workday-alabama-gift-v6.jpg', cover:true, cap:'', sub:'' },
+  { type:'video', src: CDN+'kansas-collection-hero-video-v2.mp4?v=1794594261',
+    cap:'', sub:'' },
+  { type:'img', src: '10-santa-two-gift-v8.jpg', cover:true, cap:'', sub:'' },
+  { type:'video', src: CDN+'ims-collection-hero-video-v4.mp4?v=1794592858',
+    cap:'', sub:'' },
+  { type:'img', src: '04-boots-gift-v13.jpg', cover:true, cap:'', sub:'' },
+  { type:'img', src: '03-purdue-tech-gift-v5.jpg', cover:true, cap:'', sub:'' },
+  { type:'video', src: CDN+'tailgate-lineup-fullscreen.mp4?v=1794590549',
+    cap:'We Support <span class="accent">Champions.</span>', sub:'18 Schools — Slides + Thongs' },
+  { type:'video', audio:true, src: CDN+'tailgate-ambassador-v21.mp4?v=1794614046',
+    cap:'Become an <span class="accent">Ambassador.</span>', sub:'Scan the QR Code to Sign Up' },
+];
+
+const stage = document.getElementById('stage');
+const els = slides.map(s => {
+  const d = document.createElement('div');
+  d.className = 'slide';
+  if (s.type === 'video') {
+    const v = document.createElement('video');
+    v.src = s.src; v.muted = true; v.loop = false; v.playsInline = true;
+    v.setAttribute('playsinline',''); v.preload = 'auto';
+    d.appendChild(v); d._media = v;
+  } else {
+    const im = document.createElement('img');
+    im.src = s.src; im.className = 'media' + (s.cover ? ' cover' : '');
+    im.alt = ''; d.appendChild(im); d._media = im;
+  }
+  const c = document.createElement('div');
+  c.className = 'caption';
+  c.innerHTML = s.cap + (s.sub ? '<span class="sub">'+s.sub+'</span>' : '');
+  d.appendChild(c);
+  stage.appendChild(d);
+  return d;
+});
+
+let idx = -1, timer = null;
+function show(n) {
+  if (idx >= 0) {
+    const prev = els[idx];
+    prev.classList.remove('active');
+    if (slides[idx].type === 'video') { prev._media.pause(); }
+  }
+  idx = ((n % slides.length) + slides.length) % slides.length;
+  const cur = els[idx];
+  cur.classList.add('active');
+  clearTimeout(timer);
+  if (slides[idx].type === 'video') {
+    const v = cur._media;
+    v.currentTime = 0;
+    const p = v.play(); if (p) p.catch(()=>{});
+    v.muted = !(slides[idx].audio && window._soundOn);
+    v.onended = () => show(idx + 1);
+    timer = setTimeout(() => show(idx + 1), 45000); /* safety if a video stalls */
+  } else {
+    timer = setTimeout(() => show(idx + 1), 8000);
+  }
+}
+show(0);
+
+async function goFull() {
+  const hint = document.getElementById('hint');
+  hint.classList.add('gone');
+  try { await document.documentElement.requestFullscreen(); } catch(e) {}
+  try { if (navigator.wakeLock) await navigator.wakeLock.request('screen'); } catch(e) {}
+}
+document.addEventListener('click', goFull);
+function unlockSound(){ window._soundOn = true; const s = slides[idx]; if (s && s.type==='video' && s.audio) { els[idx]._media.muted = false; } }
+document.addEventListener('pointerdown', unlockSound);
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight') show(idx + 1);
+  if (e.key === 'ArrowLeft') show(idx - 1);
+  if (e.key.toLowerCase() === 'f') goFull();
+});
+</script>
+</body>
+</html>
