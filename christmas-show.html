@@ -118,6 +118,13 @@ const slides = [
     cap:'Become an <span class="accent">Ambassador.</span>', sub:'Scan the QR Code to Sign Up' },
 ];
 
+// Interstitial (Zach 2026-11-19): the join/follow slide plays 30s after EVERY video.
+for (let i = slides.length - 1; i >= 0; i--) {
+  if (slides[i].type === 'video') {
+    slides.splice(i + 1, 0, { type:'img', src:'qr-join-slide.jpg', cover:true, dur:30, cap:'', sub:'' });
+  }
+}
+
 const stage = document.getElementById('stage');
 const els = slides.map(s => {
   const d = document.createElement('div');
