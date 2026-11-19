@@ -16,9 +16,9 @@
     display:flex; align-items:center; justify-content:space-between; padding:1.4vh 2.2vw; }
   #hdr .qr { height:100%; border-radius:1.2vh; box-shadow:0 4px 24px rgba(0,0,0,.45); }
   #hdr .logo { height:88%; filter:drop-shadow(0 3px 14px rgba(0,0,0,.7)); }
-  #screen { position:absolute; left:7vw; right:7vw; top:24vh; height:55vh; background:#000;
+  #screen { position:absolute; left:16vw; right:16vw; top:25vh; height:42vh; background:#000;
     border-radius:1.6vh; overflow:hidden; box-shadow:0 10px 50px rgba(0,0,0,.6); }
-  #foot { position:absolute; left:0; right:0; top:82vh; text-align:center; color:#fff; z-index:5; }
+  #foot { position:absolute; left:0; right:0; top:72vh; text-align:center; color:#fff; z-index:5; }
   #foot .big { font-size:clamp(18px, 2.4vw, 40px); font-weight:900; letter-spacing:.14em; text-transform:uppercase;
     text-shadow:0 3px 14px rgba(0,0,0,.8); }
   #foot .big .accent { color:#71D53C; }
@@ -53,24 +53,13 @@ const CDN = 'https://cdn.shopify.com/s/files/1/0725/7866/2582/files/';
 const playlist = [
   'airfeet-smokey-final-northpole-intro-v20.mp4',
   'arizona-tales-v4.mp4',
-  CDN+'tailgate-iu-usc-video-1080-v15.mp4?v=1794609384',
   'bama-elephant-tales-v4.mp4',
-  CDN+'indiana-collection-hero-video-v5.mp4?v=1794608278',
   'bison-reindeer-tales-v1.mp4',
-  CDN+'purdue-collection-hero-video.mp4?v=1794581253',
-  CDN+'hero-video-tennessee.mp4?v=1794577291',
-  'kingfisher-tales-v1.mp4',
   'bison-train-tales-v1.mp4',
-  CDN+'florida-collection-hero-video-v2.mp4?v=1794594261',
+  'kingfisher-tales-v1.mp4',
   'irish-tales-v1.mp4',
   'sheriff-one-mayberry.mp4',
   'sheriff-two-mayberry.mp4',
-  CDN+'clemson-collection-hero-video-v3.mp4?v=1794599032',
-  CDN+'lsu-collection-hero-video-v3.mp4?v=1794599125',
-  CDN+'kansas-collection-hero-video-v2.mp4?v=1794594261',
-  CDN+'ims-collection-hero-video-v4.mp4?v=1794592858',
-  CDN+'tailgate-lineup-fullscreen.mp4?v=1794590549',
-  CDN+'tailgate-ambassador-v21.mp4?v=1794614046',
 ];
 
 const screen = document.getElementById('screen');
