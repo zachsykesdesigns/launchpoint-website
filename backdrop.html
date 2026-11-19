@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
-<title>AirFeet — TV Screen</title>
-<!-- TV screen (Zach 2026-11-19): QR header stays on top; the ad videos run
-     underneath in a loop, full 16:9. Same video lineup as the Christmas Show. -->
+<title>AirFeet — TV Backdrop</title>
+<!-- TV backdrop (Zach 2026-11-19): NO videos. QR header on top, smaller rotating
+     hero banner (desktop ads) centered underneath, full 16:9 navy frame. -->
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
   html, body { width:100%; height:100%; overflow:hidden; cursor:pointer;
@@ -16,21 +16,16 @@
     display:flex; align-items:center; justify-content:space-between; padding:1.4vh 2.2vw; }
   #hdr .qr { height:100%; border-radius:1.2vh; box-shadow:0 4px 24px rgba(0,0,0,.45); }
   #hdr .logo { height:88%; filter:drop-shadow(0 3px 14px rgba(0,0,0,.7)); }
-  #screen { position:absolute; left:16vw; right:16vw; top:25vh; height:42vh; background:#000;
-    border-radius:1.6vh; overflow:hidden; box-shadow:0 10px 50px rgba(0,0,0,.6); }
+  #hero { position:absolute; left:16vw; right:16vw; top:25vh; height:42vh;
+    border-radius:1.6vh; overflow:hidden; box-shadow:0 10px 50px rgba(0,0,0,.6); background:#000; }
+  #hero img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+    opacity:0; transition:opacity .8s ease; }
+  #hero img.active { opacity:1; }
   #foot { position:absolute; left:0; right:0; top:72vh; text-align:center; color:#fff; z-index:5; }
   #foot .big { font-size:clamp(18px, 2.4vw, 40px); font-weight:900; letter-spacing:.14em; text-transform:uppercase;
     text-shadow:0 3px 14px rgba(0,0,0,.8); }
   #foot .big .accent { color:#71D53C; }
   #foot .small { margin-top:1vh; font-size:clamp(12px, 1.3vw, 22px); letter-spacing:.24em; color:#C9D8E8; text-transform:uppercase; }
-  #screen video { position:absolute; inset:0; width:100%; height:100%; object-fit:contain;
-    opacity:0; transition:opacity .6s ease; background:#000; }
-  #screen video.active { opacity:1; }
-  #hint { position:absolute; left:0; right:0; bottom:3vh; text-align:center; z-index:7; color:#fff;
-    font-size:clamp(13px, 1.4vw, 24px); letter-spacing:.22em; text-transform:uppercase;
-    text-shadow:0 2px 12px rgba(0,0,0,.9); transition:opacity 1s ease; animation:pulse 1.6s ease-in-out infinite; }
-  @keyframes pulse { 0%,100% { opacity:.55; } 50% { opacity:1; } }
-  #hint.gone { opacity:0 !important; animation:none; }
 </style>
 </head>
 <body>
@@ -41,71 +36,35 @@
   <img class="qr" src="qr-card-shop.png" alt="Scan to shop">
 </div>
 
-<div id="screen"></div>
+<div id="hero">
+  <img src="holiday-mart-desktop.png" class="active" alt="">
+  <img src="christmas-santa-desktop.png" alt="">
+  <img src="hoops-opener-desktop.png" alt="">
+  <img src="rivalry-week-desktop.png" alt="">
+  <img src="indiana-usc-desktop.png" alt="">
+  <img src="alabama-vanderbilt-desktop.png" alt="">
+  <img src="thanksgiving-desktop.png" alt="">
+</div>
+
 <div id="foot">
   <div class="big">We Support <span class="accent">Champions.</span></div>
   <div class="small">AirFeetRecovery.com</div>
 </div>
-<div id="hint">Tap anywhere for full screen + sound</div>
 
 <script>
-const CDN = 'https://cdn.shopify.com/s/files/1/0725/7866/2582/files/';
-const playlist = [
-  'airfeet-smokey-final-northpole-intro-v20.mp4',
-  'arizona-tales-v4.mp4',
-  'bama-elephant-tales-v4.mp4',
-  'bison-reindeer-tales-v1.mp4',
-  'bison-train-tales-v1.mp4',
-  'kingfisher-tales-v1.mp4',
-  'irish-tales-v1.mp4',
-  'sheriff-one-mayberry.mp4',
-  'sheriff-two-mayberry.mp4',
-];
-
-const screen = document.getElementById('screen');
-const vids = [document.createElement('video'), document.createElement('video')];
-vids.forEach(v => {
-  v.playsInline = true; v.setAttribute('playsinline',''); v.preload = 'auto'; v.muted = true;
-  screen.appendChild(v);
-});
-let cur = 0, idx = -1, safety = null;
-
-function playNext() {
-  idx = (idx + 1) % playlist.length;
-  const v = vids[cur], other = vids[1 - cur];
-  other.classList.remove('active');
-  other.pause();
-  v.src = playlist[idx];
-  v.currentTime = 0;
-  v.muted = !window._soundOn;
-  v.classList.add('active');
-  const p = v.play(); if (p) p.catch(() => playNext());
-  // preload the following video on the idle element
-  const pre = vids[1 - cur];
-  pre.src = playlist[(idx + 1) % playlist.length];
-  pre.preload = 'auto';
-  cur = 1 - cur;
-  clearTimeout(safety);
-  safety = setTimeout(playNext, 90000); /* safety if a video stalls */
-}
-vids.forEach(v => {
-  v.addEventListener('ended', playNext);
-  v.addEventListener('error', () => { if (v.classList.contains('active')) playNext(); }, true);
-});
-playNext();
+const banners = document.querySelectorAll('#hero img');
+let bi = 0;
+setInterval(() => {
+  banners[bi].classList.remove('active');
+  bi = (bi + 1) % banners.length;
+  banners[bi].classList.add('active');
+}, 8000);
 
 async function goFull() {
-  document.getElementById('hint').classList.add('gone');
-  window._soundOn = true;
-  vids.forEach(v => { if (v.classList.contains('active')) v.muted = false; });
   try { await document.documentElement.requestFullscreen(); } catch(e) {}
   try { if (navigator.wakeLock) await navigator.wakeLock.request('screen'); } catch(e) {}
 }
 document.addEventListener('click', goFull);
-document.addEventListener('keydown', e => {
-  if (e.key === 'ArrowRight') playNext();
-  if (e.key.toLowerCase() === 'f') goFull();
-});
 </script>
 </body>
 </html>
