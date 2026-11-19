@@ -4,22 +4,27 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
-<title>AirFeet — TV Backdrop</title>
-<!-- TV version (Zach 2026-11-19): full 16:9, no black bars. QR cards top corners,
-     logo center, and a rotating hero banner (desktop ads) filling the rest. -->
+<title>AirFeet — TV Screen</title>
+<!-- TV screen (Zach 2026-11-19): QR header stays on top; the ad videos run
+     underneath in a loop, full 16:9. Same video lineup as the Christmas Show. -->
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
   html, body { width:100%; height:100%; overflow:hidden; cursor:pointer;
     background:linear-gradient(180deg, #0A3460 0%, #062A4E 45%, #03182E 100%);
     font-family:'Arial Black', 'Segoe UI', Arial, sans-serif; }
-  #hdr { position:absolute; top:0; left:0; right:0; height:23vh; z-index:5;
-    display:flex; align-items:center; justify-content:space-between; padding:1.6vh 2.2vw; }
+  #hdr { position:absolute; top:0; left:0; right:0; height:21vh; z-index:5;
+    display:flex; align-items:center; justify-content:space-between; padding:1.4vh 2.2vw; }
   #hdr .qr { height:100%; border-radius:1.2vh; box-shadow:0 4px 24px rgba(0,0,0,.45); }
   #hdr .logo { height:88%; filter:drop-shadow(0 3px 14px rgba(0,0,0,.7)); }
-  #hero { position:absolute; left:0; right:0; top:23vh; bottom:0; }
-  #hero img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
-    opacity:0; transition:opacity .8s ease; }
-  #hero img.active { opacity:1; }
+  #screen { position:absolute; left:0; right:0; top:21vh; bottom:0; background:#000; }
+  #screen video { position:absolute; inset:0; width:100%; height:100%; object-fit:contain;
+    opacity:0; transition:opacity .6s ease; background:#000; }
+  #screen video.active { opacity:1; }
+  #hint { position:absolute; left:0; right:0; bottom:3vh; text-align:center; z-index:7; color:#fff;
+    font-size:clamp(13px, 1.4vw, 24px); letter-spacing:.22em; text-transform:uppercase;
+    text-shadow:0 2px 12px rgba(0,0,0,.9); transition:opacity 1s ease; animation:pulse 1.6s ease-in-out infinite; }
+  @keyframes pulse { 0%,100% { opacity:.55; } 50% { opacity:1; } }
+  #hint.gone { opacity:0 !important; animation:none; }
 </style>
 </head>
 <body>
@@ -30,30 +35,78 @@
   <img class="qr" src="qr-card-shop.png" alt="Scan to shop">
 </div>
 
-<div id="hero">
-  <img src="holiday-mart-desktop.png" class="active" alt="">
-  <img src="christmas-santa-desktop.png" alt="">
-  <img src="hoops-opener-desktop.png" alt="">
-  <img src="rivalry-week-desktop.png" alt="">
-  <img src="indiana-usc-desktop.png" alt="">
-  <img src="alabama-vanderbilt-desktop.png" alt="">
-  <img src="thanksgiving-desktop.png" alt="">
-</div>
+<div id="screen"></div>
+<div id="hint">Tap anywhere for full screen + sound</div>
 
 <script>
-const banners = document.querySelectorAll('#hero img');
-let bi = 0;
-setInterval(() => {
-  banners[bi].classList.remove('active');
-  bi = (bi + 1) % banners.length;
-  banners[bi].classList.add('active');
-}, 8000);
+const CDN = 'https://cdn.shopify.com/s/files/1/0725/7866/2582/files/';
+const playlist = [
+  'airfeet-smokey-final-northpole-intro-v20.mp4',
+  'arizona-tales-v4.mp4',
+  CDN+'tailgate-iu-usc-video-1080-v15.mp4?v=1794609384',
+  'bama-elephant-tales-v4.mp4',
+  CDN+'indiana-collection-hero-video-v5.mp4?v=1794608278',
+  'bison-reindeer-tales-v1.mp4',
+  CDN+'purdue-collection-hero-video.mp4?v=1794581253',
+  CDN+'hero-video-tennessee.mp4?v=1794577291',
+  'kingfisher-tales-v1.mp4',
+  'bison-train-tales-v1.mp4',
+  CDN+'florida-collection-hero-video-v2.mp4?v=1794594261',
+  'irish-tales-v1.mp4',
+  'sheriff-one-mayberry.mp4',
+  'sheriff-two-mayberry.mp4',
+  CDN+'clemson-collection-hero-video-v3.mp4?v=1794599032',
+  CDN+'lsu-collection-hero-video-v3.mp4?v=1794599125',
+  CDN+'kansas-collection-hero-video-v2.mp4?v=1794594261',
+  CDN+'ims-collection-hero-video-v4.mp4?v=1794592858',
+  CDN+'tailgate-lineup-fullscreen.mp4?v=1794590549',
+  CDN+'tailgate-ambassador-v21.mp4?v=1794614046',
+];
+
+const screen = document.getElementById('screen');
+const vids = [document.createElement('video'), document.createElement('video')];
+vids.forEach(v => {
+  v.playsInline = true; v.setAttribute('playsinline',''); v.preload = 'auto'; v.muted = true;
+  screen.appendChild(v);
+});
+let cur = 0, idx = -1, safety = null;
+
+function playNext() {
+  idx = (idx + 1) % playlist.length;
+  const v = vids[cur], other = vids[1 - cur];
+  other.classList.remove('active');
+  other.pause();
+  v.src = playlist[idx];
+  v.currentTime = 0;
+  v.muted = !window._soundOn;
+  v.classList.add('active');
+  const p = v.play(); if (p) p.catch(() => playNext());
+  // preload the following video on the idle element
+  const pre = vids[1 - cur];
+  pre.src = playlist[(idx + 1) % playlist.length];
+  pre.preload = 'auto';
+  cur = 1 - cur;
+  clearTimeout(safety);
+  safety = setTimeout(playNext, 90000); /* safety if a video stalls */
+}
+vids.forEach(v => {
+  v.addEventListener('ended', playNext);
+  v.addEventListener('error', () => { if (v.classList.contains('active')) playNext(); }, true);
+});
+playNext();
 
 async function goFull() {
+  document.getElementById('hint').classList.add('gone');
+  window._soundOn = true;
+  vids.forEach(v => { if (v.classList.contains('active')) v.muted = false; });
   try { await document.documentElement.requestFullscreen(); } catch(e) {}
   try { if (navigator.wakeLock) await navigator.wakeLock.request('screen'); } catch(e) {}
 }
 document.addEventListener('click', goFull);
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight') playNext();
+  if (e.key.toLowerCase() === 'f') goFull();
+});
 </script>
 </body>
 </html>
