@@ -49,6 +49,7 @@ const PLAYLIST = [
  {t:'i', s:'hoops-opener-mobile.png'},
  {t:'i', s:'02-holiday-nurse-gift-v7.jpg'},
  {t:'v', s:'bison-train-tales-v1.mp4'},
+ {t:'v', s:'airfeet-smokey-zachcut-smoke-v6.mp4'},
  {t:'i', s:'rivalry-week-mobile.png'},
  {t:'i', s:'05-skeleton-purdue-gift-v6.jpg'},
  {t:'v', s:'kingfisher-tales-v1.mp4'},
@@ -58,6 +59,8 @@ const PLAYLIST = [
  {t:'i', s:'alabama-vanderbilt-mobile.png'},
  {t:'i', s:'07-nurse-plus-gift-v5.jpg'},
  {t:'v', s:'arizona-tales-v4.mp4'},
+ {t:'v', s:'sheriff-one-mayberry.mp4'},
+ {t:'v', s:'sheriff-two-mayberry.mp4'},
  {t:'i', s:'thanksgiving-mobile.png'},
  {t:'i', s:'09-workday-alabama-gift-v6.jpg'},
  {t:'i', s:'10-santa-two-gift-v8.jpg'},
@@ -93,9 +96,11 @@ function playItem(idx) {
   } else {
     const v = document.createElement('video');
     v.muted = true; v.playsInline = true; v.autoplay = true; v.preload = 'auto';
-    v.oncanplay = () => swapIn(v, item);
+    let swapped = false;
+    v.oncanplay = () => { swapped = true; swapIn(v, item); };
     v.onerror = () => next();
     v.src = item.s;
+    setTimeout(() => { if (!swapped && curIdx === idx) next(); }, 12000);
   }
 }
 playItem(0);
