@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>AirFeet — Christmas Backdrop</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html, body { width:100%; height:100%; background:#000; overflow:hidden; cursor:pointer; }
+  img { position:absolute; inset:0; width:100%; height:100%; object-fit:contain; }
+</style>
+</head>
+<body>
+<img src="airfeet-christmas-backdrop-v3.png" alt="AIRfeet Recovery Christmas backdrop — all teams">
+<script>
+async function goFull() {
+  try { await document.documentElement.requestFullscreen(); } catch(e) {}
+  try { if (navigator.wakeLock) await navigator.wakeLock.request('screen'); } catch(e) {}
+}
+document.addEventListener('click', goFull);
+</script>
+</body>
+</html>
