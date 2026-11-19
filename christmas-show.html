@@ -8,6 +8,10 @@
 <!-- DRAFT built 2026-11-18 (local only, NOT deployed). New assets are referenced by
      site-root filename and must be uploaded next to this page at deploy time:
        mascots-group-v2.jpg
+       booth-106-slide.jpg, qr-shop-slide.jpg, qr-signup-slide.jpg,
+       qr-follow-facebook-slide.jpg, qr-follow-instagram-slide.jpg
+       (booth + QR slides, 20s each; QRs are UTM/redirect tracked;
+        go-fb.html + go-ig.html redirect pages go to the site root too)
        airfeet-smokey-final-northpole-intro-v20.mp4  (already has its Tales intro)
        bama-elephant-tales-v4.mp4                    (APPROVED book cover, assembled)
        bison-reindeer-tales-v1.mp4                   (APPROVED + assembled)
@@ -60,6 +64,7 @@ const CDN = 'https://cdn.shopify.com/s/files/1/0725/7866/2582/files/';
 const slides = [
   { type:'img', src: 'mascots-group-v2.jpg', cover:true,
     cap:'Recovery Starts With the <span class="accent">Shoes</span>', sub:'You Are Wearing' },
+  { type:'img', src: 'booth-106-slide.jpg', cover:true, dur:20, cap:'', sub:'' },
   { type:'video', audio:true, src: 'airfeet-smokey-final-northpole-intro-v20.mp4',
     cap:'Tales from the <span class="accent">North Pole.</span>', sub:'Smokey — Tennessee' },
   { type:'video', audio:true, src: CDN+'tailgate-iu-usc-video-1080-v15.mp4?v=1794609384',
@@ -101,6 +106,10 @@ const slides = [
   { type:'img', src: '03-purdue-tech-gift-v5.jpg', cover:true, cap:'', sub:'' },
   { type:'video', src: CDN+'tailgate-lineup-fullscreen.mp4?v=1794590549',
     cap:'We Support <span class="accent">Champions.</span>', sub:'18 Schools — Slides + Thongs' },
+  { type:'img', src: 'qr-shop-slide.jpg', cover:true, dur:20, cap:'', sub:'' },
+  { type:'img', src: 'qr-signup-slide.jpg', cover:true, dur:20, cap:'', sub:'' },
+  { type:'img', src: 'qr-follow-facebook-slide.jpg', cover:true, dur:20, cap:'', sub:'' },
+  { type:'img', src: 'qr-follow-instagram-slide.jpg', cover:true, dur:20, cap:'', sub:'' },
   { type:'video', audio:true, src: CDN+'tailgate-ambassador-v21.mp4?v=1794614046',
     cap:'Become an <span class="accent">Ambassador.</span>', sub:'Scan the QR Code to Sign Up' },
 ];
@@ -146,7 +155,7 @@ function show(n) {
     v.onended = () => show(idx + 1);
     timer = setTimeout(() => show(idx + 1), 45000); /* safety if a video stalls */
   } else {
-    timer = setTimeout(() => show(idx + 1), 8000);
+    timer = setTimeout(() => show(idx + 1), (slides[idx].dur || 8) * 1000);
   }
 }
 show(0);
