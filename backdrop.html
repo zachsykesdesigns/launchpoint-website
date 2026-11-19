@@ -32,38 +32,38 @@
   <img class="qr" src="qr-card-shop.png" alt="Scan to shop">
 </div>
 
-<div id="hero">
-  <img src="holiday-mart-mobile.png" class="active" alt="">
-  <img src="mascots-group-v2.jpg" alt="">
-  <img src="christmas-santa-mobile.png" alt="">
-  <img src="01-santa-hoodie-gift-v4.jpg" alt="">
-  <img src="hoops-opener-mobile.png" alt="">
-  <img src="02-holiday-nurse-gift-v7.jpg" alt="">
-  <img src="rivalry-week-mobile.png" alt="">
-  <img src="05-skeleton-purdue-gift-v6.jpg" alt="">
-  <img src="indiana-usc-mobile.png" alt="">
-  <img src="06-give-team-gift-v7.jpg" alt="">
-  <img src="alabama-vanderbilt-mobile.png" alt="">
-  <img src="07-nurse-plus-gift-v5.jpg" alt="">
-  <img src="thanksgiving-mobile.png" alt="">
-  <img src="09-workday-alabama-gift-v6.jpg" alt="">
-  <img src="10-santa-two-gift-v8.jpg" alt="">
-  <img src="04-boots-gift-v13.jpg" alt="">
-  <img src="03-purdue-tech-gift-v5.jpg" alt="">
-</div>
+<div id="hero"></div>
 
 
 
 <script>
 
 
-const banners = document.querySelectorAll('#hero img');
-let bi = 0;
-setInterval(() => {
-  banners[bi].classList.remove('active');
-  bi = (bi + 1) % banners.length;
-  banners[bi].classList.add('active');
-}, 6000);
+const SRCS = ['holiday-mart-mobile.png','mascots-group-v2.jpg','christmas-santa-mobile.png',
+'01-santa-hoodie-gift-v4.jpg','hoops-opener-mobile.png','02-holiday-nurse-gift-v7.jpg',
+'rivalry-week-mobile.png','05-skeleton-purdue-gift-v6.jpg','indiana-usc-mobile.png',
+'06-give-team-gift-v7.jpg','alabama-vanderbilt-mobile.png','07-nurse-plus-gift-v5.jpg',
+'thanksgiving-mobile.png','09-workday-alabama-gift-v6.jpg','10-santa-two-gift-v8.jpg',
+'04-boots-gift-v13.jpg','03-purdue-tech-gift-v5.jpg'];
+const hero = document.getElementById('hero');
+const layers = [document.createElement('img'), document.createElement('img')];
+layers.forEach(im => { im.alt = ''; hero.appendChild(im); });
+let ready = [], cur = -1, front = 0;
+SRCS.forEach(src => {
+  const probe = new Image();
+  probe.onload = () => { ready.push(src); if (cur === -1) show(0); };
+  probe.src = src;
+});
+function show(i) {
+  cur = i;
+  const back = layers[1 - front];
+  back.src = ready[i];
+  back.classList.add('active');
+  layers[front].classList.remove('active');
+  front = 1 - front;
+}
+setInterval(() => { if (ready.length > 1) show((cur + 1) % ready.length); }, 6000);
+
 
 async function goFull() {
   try { await document.documentElement.requestFullscreen(); } catch(e) {}
