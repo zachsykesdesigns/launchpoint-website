@@ -67,7 +67,7 @@ const PLAYLIST = [
  {t:'i', s:'03-purdue-tech-gift-v5.jpg'}
 ];
 const hero = document.getElementById('hero');
-let curIdx = -1, timer = null;
+let curIdx = -1, timer = null, soundOn = false;
 function next() { playItem((curIdx + 1) % PLAYLIST.length); }
 function swapIn(el, item) {
   const old = hero.querySelector('.active');
@@ -78,7 +78,8 @@ function swapIn(el, item) {
   if (item.t === 'i') {
     timer = setTimeout(next, 6000);
   } else {
-    el.play().catch(() => {});
+    el.muted = !soundOn;
+    el.play().catch(() => { el.muted = true; el.play().catch(() => {}); });
     el.onended = next;
     timer = setTimeout(next, 60000);
   }
@@ -111,6 +112,13 @@ async function goFull() {
   try { if (navigator.wakeLock) await navigator.wakeLock.request('screen'); } catch(e) {}
 }
 document.addEventListener('click', goFull);
+function enableSound() {
+  soundOn = true;
+  const v = hero.querySelector('video.active');
+  if (v) { v.muted = false; v.play().catch(() => {}); }
+}
+document.addEventListener('click', enableSound);
+document.addEventListener('keydown', enableSound);
 </script>
 </body>
 </html>
