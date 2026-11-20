@@ -16,7 +16,10 @@
     display:flex; align-items:center; justify-content:space-between; padding:1.4vh 2.2vw; }
   #hdr .qr { height:100%; border-radius:1.2vh; box-shadow:0 4px 24px rgba(0,0,0,.45); }
   #hdr .logo { height:88%; filter:drop-shadow(0 3px 14px rgba(0,0,0,.7)); }
-  #hero { position:absolute; left:50%; transform:translateX(-50%); top:33.5vh; width:min(94vw, 122vh); height:56vh;
+  #main { position:absolute; left:0; right:0; top:33.5vh; bottom:2vh; display:flex; gap:1.6vw; padding:0 1.6vw; }
+  .side { flex:0 0 20%; display:flex; align-items:center; justify-content:center; }
+  .side video { width:100%; height:100%; object-fit:contain; border-radius:1.2vh; box-shadow:0 4px 24px rgba(0,0,0,.45); }
+  #hero { position:relative; flex:1; height:100%;
     overflow:visible; background:transparent; }
   #hero img, #hero video { position:absolute; inset:0; width:100%; height:100%; object-fit:contain;
     opacity:0; transition:opacity .8s ease; }
@@ -31,7 +34,11 @@
   <img class="qr" src="qr-card-shop.png" alt="Scan to shop">
 </div>
 
-<div id="hero"></div>
+<div id="main">
+  <div class="side"><video src="airfeet-sliding-video-v1.mp4" autoplay muted loop playsinline></video></div>
+  <div id="hero"></div>
+  <div class="side"><video src="airfeet-sliding-video-v1.mp4" autoplay muted loop playsinline></video></div>
+</div>
 
 
 
@@ -41,7 +48,32 @@
 const PLAYLIST = [
  {t:'v', s:'airfeet-smokey-zachcut-smoke-v7-web.mp4'},
  {t:'v', s:'bama-elephant-tales-v4-web.mp4'},
- {t:'v', s:'bison-reindeer-tales-v1-web.mp4'}
+ {t:'v', s:'bison-reindeer-tales-v1-web.mp4'},
+ {t:'v', s:'airfeet-sliding-video-v1.mp4'},
+ {t:'i', s:'holiday-mart-mobile.png'},
+ {t:'i', s:'mascots-group-v4.jpg'},
+ {t:'i', s:'christmas-santa-mobile.png'},
+ {t:'i', s:'01-santa-hoodie-gift-v4.jpg'},
+ {t:'i', s:'hoops-opener-mobile.png'},
+ {t:'i', s:'02-holiday-nurse-gift-v7.jpg'},
+ {t:'v', s:'bison-train-tales-v1-web.mp4'},
+ {t:'i', s:'rivalry-week-mobile.png'},
+ {t:'i', s:'05-skeleton-purdue-gift-v6.jpg'},
+ {t:'i', s:'technology-layers-dark.jpg'},
+ {t:'v', s:'kingfisher-tales-v1-web.mp4'},
+ {t:'i', s:'indiana-usc-mobile.png'},
+ {t:'i', s:'06-give-team-gift-v7.jpg'},
+ {t:'v', s:'irish-tales-v1-web.mp4'},
+ {t:'i', s:'alabama-vanderbilt-mobile.png'},
+ {t:'i', s:'07-nurse-plus-gift-v5.jpg'},
+ {t:'v', s:'arizona-tales-v4-web.mp4'},
+ {t:'v', s:'sheriff-one-mayberry-web.mp4'},
+ {t:'v', s:'sheriff-two-mayberry-web.mp4'},
+ {t:'i', s:'technology-layers-white.jpg'},
+ {t:'i', s:'09-workday-alabama-gift-v6.jpg'},
+ {t:'i', s:'10-santa-two-gift-v8.jpg'},
+ {t:'i', s:'04-boots-gift-v13.jpg'},
+ {t:'i', s:'03-purdue-tech-gift-v5.jpg'}
 ];
 const hero = document.getElementById('hero');
 let curIdx = -1, timer = null, soundOn = false;
