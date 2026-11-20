@@ -35,9 +35,9 @@
 </div>
 
 <div id="main">
-  <div class="side"><video src="airfeet-thongs-video-v1.mp4" autoplay muted loop playsinline onloadedmetadata="this.playbackRate=0.55"></video></div>
+  <div class="side"><video src="airfeet-thongs-video-christmas-v1.mp4" autoplay muted loop playsinline onloadedmetadata="this.playbackRate=0.55"></video></div>
   <div id="hero"></div>
-  <div class="side"><video src="airfeet-sliding-video-v1.mp4" autoplay muted loop playsinline onloadedmetadata="this.playbackRate=0.55"></video></div>
+  <div class="side"><video src="airfeet-slides-video-christmas-v1.mp4" autoplay muted loop playsinline onloadedmetadata="this.playbackRate=0.55"></video></div>
 </div>
 
 
@@ -100,7 +100,7 @@ function playItem(idx) {
   } else {
     const v = document.createElement('video');
     v.muted = true; v.playsInline = true; v.autoplay = true; v.preload = 'auto';
-    if (item.s === 'airfeet-sliding-video-v1.mp4') v.playbackRate = 0.7;
+    if (item.s === 'airfeet-slides-video-christmas-v1.mp4') v.playbackRate = 0.7;
     let swapped = false;
     v.oncanplay = () => { swapped = true; swapIn(v, item); };
     v.onerror = () => next();
