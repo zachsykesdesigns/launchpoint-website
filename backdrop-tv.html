@@ -24,7 +24,10 @@
   #hdr .qr { height:100%; border-radius:1.2vh; box-shadow:0 4px 24px rgba(0,0,0,.45); }
   #hdr .logo { height:88%; filter:drop-shadow(2px 0 0 #000) drop-shadow(-2px 0 0 #000) drop-shadow(0 2px 0 #000) drop-shadow(0 -2px 0 #000) drop-shadow(2px 2px 0 #000) drop-shadow(-2px 2px 0 #000) drop-shadow(2px -2px 0 #000) drop-shadow(-2px -2px 0 #000) drop-shadow(0 3px 14px rgba(0,0,0,.7)); }
   #main { position:absolute; left:0; right:0; top:33.5vh; bottom:2vh; display:flex; gap:1.6vw; padding:0 1.6vw; }
-  .side { flex:0 0 20%; display:flex; align-items:center; justify-content:center; }
+  .side { flex:0 0 16%; overflow:hidden; border-radius:1.2vh; }
+  .rail-track { display:flex; flex-direction:column; gap:1.4vh; animation:railscroll 160s linear infinite; will-change:transform; }
+  .rail-track img { width:100%; display:block; border-radius:1.2vh; box-shadow:0 4px 24px rgba(0,0,0,.45); }
+  @keyframes railscroll { from { transform:translateY(0); } to { transform:translateY(-50%); } }
   .side video { width:100%; height:100%; object-fit:contain; border-radius:1.2vh; box-shadow:0 4px 24px rgba(0,0,0,.45); }
   #hero { position:relative; flex:1; height:100%;
     overflow:visible; background:transparent; }
@@ -42,7 +45,9 @@
 </div>
 
 <div id="main">
+  <div class="side"><div class="rail-track"><img src="rail-slide-indiana.jpg" alt=""><img src="rail-slide-purdue.jpg" alt=""><img src="rail-slide-ims.jpg" alt=""><img src="rail-slide-shamrock.jpg" alt=""><img src="rail-slide-alabama.jpg" alt=""><img src="rail-slide-arizona.jpg" alt=""><img src="rail-slide-clemson.jpg" alt=""><img src="rail-slide-florida.jpg" alt=""><img src="rail-slide-illinois.jpg" alt=""><img src="rail-slide-kansas.jpg" alt=""><img src="rail-slide-lsu.jpg" alt=""><img src="rail-slide-michigan-state.jpg" alt=""><img src="rail-slide-missouri.jpg" alt=""><img src="rail-slide-penn-state.jpg" alt=""><img src="rail-slide-tennessee.jpg" alt=""><img src="rail-slide-vanderbilt.jpg" alt=""><img src="rail-slide-west-virginia.jpg" alt=""><img src="rail-slide-american-flag.jpg" alt=""><img src="rail-slide-indiana.jpg" alt=""><img src="rail-slide-purdue.jpg" alt=""><img src="rail-slide-ims.jpg" alt=""><img src="rail-slide-shamrock.jpg" alt=""><img src="rail-slide-alabama.jpg" alt=""><img src="rail-slide-arizona.jpg" alt=""><img src="rail-slide-clemson.jpg" alt=""><img src="rail-slide-florida.jpg" alt=""><img src="rail-slide-illinois.jpg" alt=""><img src="rail-slide-kansas.jpg" alt=""><img src="rail-slide-lsu.jpg" alt=""><img src="rail-slide-michigan-state.jpg" alt=""><img src="rail-slide-missouri.jpg" alt=""><img src="rail-slide-penn-state.jpg" alt=""><img src="rail-slide-tennessee.jpg" alt=""><img src="rail-slide-vanderbilt.jpg" alt=""><img src="rail-slide-west-virginia.jpg" alt=""><img src="rail-slide-american-flag.jpg" alt=""></div></div>
   <div id="hero"></div>
+  <div class="side"><div class="rail-track"><img src="rail-thong-indiana.jpg" alt=""><img src="rail-thong-purdue.jpg" alt=""><img src="rail-thong-ims.jpg" alt=""><img src="rail-thong-shamrock.jpg" alt=""><img src="rail-thong-alabama.jpg" alt=""><img src="rail-thong-arizona.jpg" alt=""><img src="rail-thong-clemson.jpg" alt=""><img src="rail-thong-florida.jpg" alt=""><img src="rail-thong-illinois.jpg" alt=""><img src="rail-thong-kansas.jpg" alt=""><img src="rail-thong-lsu.jpg" alt=""><img src="rail-thong-michigan-state.jpg" alt=""><img src="rail-thong-missouri.jpg" alt=""><img src="rail-thong-penn-state.jpg" alt=""><img src="rail-thong-tennessee.jpg" alt=""><img src="rail-thong-vanderbilt.jpg" alt=""><img src="rail-thong-west-virginia.jpg" alt=""><img src="rail-thong-american-flag.jpg" alt=""><img src="rail-thong-indiana.jpg" alt=""><img src="rail-thong-purdue.jpg" alt=""><img src="rail-thong-ims.jpg" alt=""><img src="rail-thong-shamrock.jpg" alt=""><img src="rail-thong-alabama.jpg" alt=""><img src="rail-thong-arizona.jpg" alt=""><img src="rail-thong-clemson.jpg" alt=""><img src="rail-thong-florida.jpg" alt=""><img src="rail-thong-illinois.jpg" alt=""><img src="rail-thong-kansas.jpg" alt=""><img src="rail-thong-lsu.jpg" alt=""><img src="rail-thong-michigan-state.jpg" alt=""><img src="rail-thong-missouri.jpg" alt=""><img src="rail-thong-penn-state.jpg" alt=""><img src="rail-thong-tennessee.jpg" alt=""><img src="rail-thong-vanderbilt.jpg" alt=""><img src="rail-thong-west-virginia.jpg" alt=""><img src="rail-thong-american-flag.jpg" alt=""></div></div>
 </div>
 
 
@@ -109,7 +114,7 @@ function swapIn(el, item) {
   if (old) setTimeout(() => old.remove(), 800);
   clearTimeout(timer);
   if (item.t === 'i') {
-    timer = setTimeout(next, 6000);
+    timer = setTimeout(next, 8000);
   } else {
     el.muted = !soundOn;
     el.play().catch(() => { el.muted = true; el.play().catch(() => {}); });
