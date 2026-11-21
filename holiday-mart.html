@@ -6,16 +6,13 @@
 <meta name="robots" content="noindex, nofollow">
 <title>AirFeet — Holiday Mart Booth Loop</title>
 <!-- Built 2026-11-19 (Zach's direction): IMAGE-ONLY booth loop for Holiday Mart.
-     Hero banners + gift images + QR scan slides. NO videos.
-     Assets referenced by site-root filename (already live on the site):
-       holiday-mart-mobile.png, christmas-santa-mobile.png, hoops-opener-mobile.png,
-       rivalry-week-mobile.png, indiana-usc-mobile.png, alabama-vanderbilt-mobile.png,
-       thanksgiving-mobile.png (1080x1350 hero banners)
-       mascots-group-v4.jpg, booth-106-slide.jpg, qr-join-slide.jpg,
-       qr-shop-slide.jpg, qr-signup-slide.jpg, qr-follow-facebook-slide.jpg,
-       qr-follow-instagram-slide.jpg, and the 9 gift stills.
-     Black Friday / Cyber Monday banners intentionally NOT included
-     (no deal creative out until Black Friday itself). -->
+     Updated 2026-11-21 (Zach's direction): the six vertical 1080x1350 portrait
+     hero banners (holiday-mart-mobile, christmas-santa-mobile, hoops-opener-mobile,
+     rivalry-week-mobile, indiana-usc-mobile, alabama-vanderbilt-mobile) were REMOVED,
+     and the 18-team Holiday Mart Black Friday carousel (hm-carousel-*-v1.jpg,
+     adapted from the website BF hero carousel slides with a Holiday Mart band +
+     IG/FB follow QRs) was added in the middle of the loop. Everything else —
+     gift stills, QR scan slides, AirFeet logo overlay — kept the same. -->
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
   html, body { width:100%; height:100%; background:#000; overflow:hidden; cursor:pointer;
@@ -49,21 +46,33 @@
 
 <script>
 const slides = [
-  { src: 'holiday-mart-mobile.png', cover:true, dur:15, cap:'', sub:'' },
   { src: 'booth-106-slide.jpg', cover:true, dur:20, cap:'', sub:'' },
   { src: 'mascots-group-v4.jpg', cover:true, dur:12,
     cap:'Recovery Starts With the <span class="accent">Shoes</span>', sub:'You Are Wearing' },
   { src: 'technology-layers-dark.jpg', cover:true, dur:12, cap:'', sub:'' },
-  { src: 'christmas-santa-mobile.png', cover:true, dur:12, cap:'', sub:'' },
   { src: '01-santa-hoodie-gift-v4.jpg', cover:true, dur:10, cap:'', sub:'' },
-  { src: 'hoops-opener-mobile.png', cover:true, dur:12, cap:'', sub:'' },
   { src: '02-holiday-nurse-gift-v7.jpg', cover:true, dur:10, cap:'', sub:'' },
-  { src: 'rivalry-week-mobile.png', cover:true, dur:12, cap:'', sub:'' },
   { src: 'qr-join-slide.jpg', cover:true, dur:30, cap:'', sub:'' },
   { src: '05-skeleton-purdue-gift-v6.jpg', cover:true, dur:10, cap:'', sub:'' },
-  { src: 'indiana-usc-mobile.png', cover:true, dur:12, cap:'', sub:'' },
+  { src: 'hm-carousel-indiana-v1.jpg', cover:true, dur:10, cap:'', sub:'' },
+  { src: 'hm-carousel-purdue-v1.jpg', cover:true, dur:10, cap:'', sub:'' },
+  { src: 'hm-carousel-ims-v1.jpg', cover:true, dur:10, cap:'', sub:'' },
+  { src: 'hm-carousel-shamrock-v1.jpg', cover:true, dur:10, cap:'', sub:'' },
+  { src: 'hm-carousel-alabama-v1.jpg', cover:true, dur:10, cap:'', sub:'' },
+  { src: 'hm-carousel-arizona-v1.jpg', cover:true, dur:10, cap:'', sub:'' },
+  { src: 'hm-carousel-clemson-v1.jpg', cover:true, dur:10, cap:'', sub:'' },
+  { src: 'hm-carousel-florida-v1.jpg', cover:true, dur:10, cap:'', sub:'' },
+  { src: 'hm-carousel-illinois-v1.jpg', cover:true, dur:10, cap:'', sub:'' },
+  { src: 'hm-carousel-kansas-v1.jpg', cover:true, dur:10, cap:'', sub:'' },
+  { src: 'hm-carousel-lsu-v1.jpg', cover:true, dur:10, cap:'', sub:'' },
+  { src: 'hm-carousel-michigan-state-v1.jpg', cover:true, dur:10, cap:'', sub:'' },
+  { src: 'hm-carousel-missouri-v1.jpg', cover:true, dur:10, cap:'', sub:'' },
+  { src: 'hm-carousel-penn-state-v1.jpg', cover:true, dur:10, cap:'', sub:'' },
+  { src: 'hm-carousel-tennessee-v1.jpg', cover:true, dur:10, cap:'', sub:'' },
+  { src: 'hm-carousel-vanderbilt-v1.jpg', cover:true, dur:10, cap:'', sub:'' },
+  { src: 'hm-carousel-west-virginia-v1.jpg', cover:true, dur:10, cap:'', sub:'' },
+  { src: 'hm-carousel-american-flag-v1.jpg', cover:true, dur:10, cap:'', sub:'' },
   { src: '06-give-team-gift-v7.jpg', cover:true, dur:10, cap:'', sub:'' },
-  { src: 'alabama-vanderbilt-mobile.png', cover:true, dur:12, cap:'', sub:'' },
   { src: '07-nurse-plus-gift-v5.jpg', cover:true, dur:10, cap:'', sub:'' },
   { src: 'technology-layers-white.jpg', cover:true, dur:12, cap:'', sub:'' },
   { src: '09-workday-alabama-gift-v6.jpg', cover:true, dur:10, cap:'', sub:'' },
