@@ -105,40 +105,76 @@ const PLAYLIST = [
  {t:'v', s:'frosty-announcer-v1-web.mp4'},
 ];
 const hero = document.getElementById('hero');
-let curIdx = -1, timer = null, soundOn = false;
+let curIdx = -1, timer = null, soundOn = false, stallTimer = null, lastTime = -1, stuckCount = 0;
+const preloaded = new Map();
+function preload(idx) {
+  const item = PLAYLIST[idx];
+  if (!item || preloaded.has(idx)) return;
+  if (item.t === 'i') { const im = new Image(); im.src = item.s; preloaded.set(idx, im); }
+  else { const v = document.createElement('video'); v.muted = true; v.playsInline = true; v.preload = 'auto'; v.src = item.s; preloaded.set(idx, v); }
+}
+function preloadAhead() {
+  const keep = new Set([curIdx]);
+  for (let k = 1; k <= 3; k++) keep.add((curIdx + k) % PLAYLIST.length);
+  for (const key of [...preloaded.keys()) {
+    if (!keep.has(key)) {
+      const e = preloaded.get(key);
+      if (e && e.tagName === 'VIDEO') { e.removeAttribute('src'); e.load(); }
+      preloaded.delete(key);
+    }
+  }
+  for (const key of keep) if (key !== curIdx) preload(key);
+}
 function next() { playItem((curIdx + 1) % PLAYLIST.length); }
+function armStallWatchdog(el) {
+  clearInterval(stallTimer); lastTime = -1; stuckCount = 0;
+  stallTimer = setInterval(() => {
+    if (!el.isConnected || el.ended) { clearInterval(stallTimer); return; }
+    if (el.readyState < 3 || el.currentTime === lastTime) {
+      stuckCount++;
+      if (stuckCount >= 3) { clearInterval(stallTimer); next(); }
+    } else { stuckCount = 0; lastTime = el.currentTime; }
+  }, 2500);
+}
 function swapIn(el, item) {
   const old = hero.querySelector('.active');
   el.classList.add('active');
   hero.appendChild(el);
   if (old) setTimeout(() => old.remove(), 800);
-  clearTimeout(timer);
+  clearTimeout(timer); clearInterval(stallTimer);
+  preloadAhead();
   if (item.t === 'i') {
     timer = setTimeout(next, 8000);
   } else {
     el.muted = !soundOn;
     el.play().catch(() => { el.muted = true; el.play().catch(() => {}); });
     el.onended = next;
-    timer = setTimeout(next, 60000);
+    const dur = (el.duration && isFinite(el.duration)) ? el.duration * 1000 + 12000 : 45000;
+    timer = setTimeout(next, dur);
+    armStallWatchdog(el);
   }
 }
 function playItem(idx) {
   curIdx = idx;
   const item = PLAYLIST[idx];
   if (item.t === 'i') {
+    const cached = preloaded.get(idx);
+    if (cached && cached.complete && cached.naturalWidth) { swapIn(cached, item); return; }
     const im = new Image();
     im.alt = '';
     im.onload = () => swapIn(im, item);
     im.onerror = () => next();
     im.src = item.s;
   } else {
-    const v = document.createElement('video');
+    let v = preloaded.get(idx);
+    if (!v) v = document.createElement('video');
     v.muted = true; v.playsInline = true; v.autoplay = true; v.preload = 'auto';
     if (item.s === 'airfeet-slides-video-christmas-v1.mp4') v.playbackRate = 0.7;
     let swapped = false;
-    v.oncanplay = () => { swapped = true; swapIn(v, item); };
-    v.onerror = () => next();
-    v.src = item.s;
+    v.oncanplay = () => { if (!swapped) { swapped = true; swapIn(v, item); } };
+    v.onerror = () => { if (curIdx === idx) next(); };
+    if (!v.getAttribute('src')) v.src = item.s;
+    if (v.readyState >= 3) { swapped = true; swapIn(v, item); }
     setTimeout(() => { if (!swapped && curIdx === idx) next(); }, 12000);
   }
 }
