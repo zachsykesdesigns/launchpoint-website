@@ -5,15 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
 <title>AirFeet — TV Backdrop</title>
-<!-- TV backdrop v2 clean URL (Zach 2026-11-19): NO videos. QR header on top, smaller rotating
-     hero banner (desktop ads) centered underneath, full 16:9 navy frame.
-     Updated 2026-11-21 (Zach): hero space now runs ONLY the 18-team Holiday Mart
-     Black Friday carousel (hm-carousel-*-v2.jpg, object-fit:contain so all text
-     shows); side product videos removed so the carousel takes the full width.
-     Later 2026-11-21 (Zach): yesterday's end-of-day ad rotation (34 items:
-     Smokey, collection videos/posters, Christmas announcer videos and stills)
-     sprinkled randomly through the carousel.
-     Green background, header QR cards and top logo unchanged. -->
+<!-- TV backdrop v3 (2026-11-21): rebuilt player in plain ES5 JavaScript for TV-browser
+     compatibility. Fixed hero img/video elements (first slide is in the HTML so the
+     middle is never empty), timer-driven rotation, stall watchdog, next-item preload,
+     visible fullscreen button. Playlist, header QR cards, rails and styling unchanged. -->
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
   html, body { width:100%; height:100%; overflow:hidden; cursor:pointer;
@@ -34,6 +29,9 @@
   #hero img, #hero video { position:absolute; left:5%; top:5%; width:90%; height:90%; object-fit:contain;
     opacity:0; transition:opacity .8s ease; }
   #hero img.active, #hero video.active { opacity:1; }
+  #fsBtn { position:absolute; right:1.2vw; bottom:1.2vh; z-index:20; background:rgba(0,0,0,.55);
+    color:#fff; border:2px solid rgba(255,255,255,.7); border-radius:1vh; padding:1.2vh 1.6vw;
+    font-family:Arial, sans-serif; font-size:2.2vh; cursor:pointer; }
 </style>
 </head>
 <body>
@@ -46,16 +44,14 @@
 
 <div id="main">
   <div class="side"><div class="rail-track"><img src="rail-slide-indiana.jpg" alt=""><img src="rail-slide-purdue.jpg" alt=""><img src="rail-slide-ims.jpg" alt=""><img src="rail-slide-shamrock.jpg" alt=""><img src="rail-slide-alabama.jpg" alt=""><img src="rail-slide-arizona.jpg" alt=""><img src="rail-slide-clemson.jpg" alt=""><img src="rail-slide-florida.jpg" alt=""><img src="rail-slide-illinois.jpg" alt=""><img src="rail-slide-kansas.jpg" alt=""><img src="rail-slide-lsu.jpg" alt=""><img src="rail-slide-michigan-state.jpg" alt=""><img src="rail-slide-missouri.jpg" alt=""><img src="rail-slide-penn-state.jpg" alt=""><img src="rail-slide-tennessee.jpg" alt=""><img src="rail-slide-vanderbilt.jpg" alt=""><img src="rail-slide-west-virginia.jpg" alt=""><img src="rail-slide-american-flag.jpg" alt=""><img src="rail-slide-indiana.jpg" alt=""><img src="rail-slide-purdue.jpg" alt=""><img src="rail-slide-ims.jpg" alt=""><img src="rail-slide-shamrock.jpg" alt=""><img src="rail-slide-alabama.jpg" alt=""><img src="rail-slide-arizona.jpg" alt=""><img src="rail-slide-clemson.jpg" alt=""><img src="rail-slide-florida.jpg" alt=""><img src="rail-slide-illinois.jpg" alt=""><img src="rail-slide-kansas.jpg" alt=""><img src="rail-slide-lsu.jpg" alt=""><img src="rail-slide-michigan-state.jpg" alt=""><img src="rail-slide-missouri.jpg" alt=""><img src="rail-slide-penn-state.jpg" alt=""><img src="rail-slide-tennessee.jpg" alt=""><img src="rail-slide-vanderbilt.jpg" alt=""><img src="rail-slide-west-virginia.jpg" alt=""><img src="rail-slide-american-flag.jpg" alt=""></div></div>
-  <div id="hero"></div>
+  <div id="hero"><img id="heroImg" class="active" src="hm-carousel-indiana-v4.jpg" alt=""><video id="heroVid" muted playsinline preload="auto"></video></div>
   <div class="side"><div class="rail-track"><img src="rail-thong-indiana.jpg" alt=""><img src="rail-thong-purdue.jpg" alt=""><img src="rail-thong-ims.jpg" alt=""><img src="rail-thong-shamrock.jpg" alt=""><img src="rail-thong-alabama.jpg" alt=""><img src="rail-thong-arizona.jpg" alt=""><img src="rail-thong-clemson.jpg" alt=""><img src="rail-thong-florida.jpg" alt=""><img src="rail-thong-illinois.jpg" alt=""><img src="rail-thong-kansas.jpg" alt=""><img src="rail-thong-lsu.jpg" alt=""><img src="rail-thong-michigan-state.jpg" alt=""><img src="rail-thong-missouri.jpg" alt=""><img src="rail-thong-penn-state.jpg" alt=""><img src="rail-thong-tennessee.jpg" alt=""><img src="rail-thong-vanderbilt.jpg" alt=""><img src="rail-thong-west-virginia.jpg" alt=""><img src="rail-thong-american-flag.jpg" alt=""><img src="rail-thong-indiana.jpg" alt=""><img src="rail-thong-purdue.jpg" alt=""><img src="rail-thong-ims.jpg" alt=""><img src="rail-thong-shamrock.jpg" alt=""><img src="rail-thong-alabama.jpg" alt=""><img src="rail-thong-arizona.jpg" alt=""><img src="rail-thong-clemson.jpg" alt=""><img src="rail-thong-florida.jpg" alt=""><img src="rail-thong-illinois.jpg" alt=""><img src="rail-thong-kansas.jpg" alt=""><img src="rail-thong-lsu.jpg" alt=""><img src="rail-thong-michigan-state.jpg" alt=""><img src="rail-thong-missouri.jpg" alt=""><img src="rail-thong-penn-state.jpg" alt=""><img src="rail-thong-tennessee.jpg" alt=""><img src="rail-thong-vanderbilt.jpg" alt=""><img src="rail-thong-west-virginia.jpg" alt=""><img src="rail-thong-american-flag.jpg" alt=""></div></div>
 </div>
 
-
+<button id="fsBtn" type="button">FULL SCREEN</button>
 
 <script>
-
-
-const PLAYLIST = [
+var PLAYLIST = [
  {t:'i', s:'hm-carousel-indiana-v4.jpg'},
  {t:'v', s:'https://cdn.shopify.com/videos/c/vp/bab36b6bdf074723a1efb88e9b112cfd/bab36b6bdf074723a1efb88e9b112cfd.HD-720p-1.6Mbps-102159556.mp4'},
  {t:'v', s:'bama-elephant-tales-v4-web.mp4'},
@@ -102,98 +98,85 @@ const PLAYLIST = [
  {t:'v', s:'https://cdn.shopify.com/videos/c/vp/61d56753921345acbce6fb59acb2890f/61d56753921345acbce6fb59acb2890f.HD-720p-1.6Mbps-102160533.mp4'},
  {t:'i', s:'hm-carousel-american-flag-v4.jpg'},
  {t:'v', s:'https://cdn.shopify.com/videos/c/vp/cf239c9eaf6b471d82c90835c4e25b58/cf239c9eaf6b471d82c90835c4e25b58.HD-720p-1.6Mbps-102159649.mp4'},
- {t:'v', s:'frosty-announcer-v1-web.mp4'},
+ {t:'v', s:'frosty-announcer-v1-web.mp4'}
 ];
-const hero = document.getElementById('hero');
-let curIdx = -1, timer = null, soundOn = false, stallTimer = null, lastTime = -1, stuckCount = 0;
-const preloaded = new Map();
-function preload(idx) {
-  const item = PLAYLIST[idx];
-  if (!item || preloaded.has(idx)) return;
-  if (item.t === 'i') { const im = new Image(); im.src = item.s; preloaded.set(idx, im); }
-  else { const v = document.createElement('video'); v.muted = true; v.playsInline = true; v.preload = 'auto'; v.src = item.s; preloaded.set(idx, v); }
+var heroImg = document.getElementById('heroImg');
+var heroVid = document.getElementById('heroVid');
+var curIdx = 0;
+var timer = null;
+var soundOn = false;
+var lastTime = -1;
+var stuckSecs = 0;
+var preNext = null;
+
+function tryPlay(v) {
+  try {
+    var p = v.play();
+    if (p && p.catch) { p.catch(function () { v.muted = true; try { v.play(); } catch (e) {} }); }
+  } catch (e) {}
 }
-function preloadAhead() {
-  const keep = new Set([curIdx]);
-  for (let k = 1; k <= 3; k++) keep.add((curIdx + k) % PLAYLIST.length);
-  for (const key of [...preloaded.keys()) {
-    if (!keep.has(key)) {
-      const e = preloaded.get(key);
-      if (e && e.tagName === 'VIDEO') { e.removeAttribute('src'); e.load(); }
-      preloaded.delete(key);
-    }
-  }
-  for (const key of keep) if (key !== curIdx) preload(key);
+function preloadNext() {
+  var n = PLAYLIST[(curIdx + 1) % PLAYLIST.length];
+  if (!n) { return; }
+  if (n.t === 'i') { preNext = new Image(); preNext.src = n.s; }
+  else { preNext = document.createElement('video'); preNext.muted = true; preNext.preload = 'auto'; preNext.src = n.s; }
 }
-function next() { playItem((curIdx + 1) % PLAYLIST.length); }
-function armStallWatchdog(el) {
-  clearInterval(stallTimer); lastTime = -1; stuckCount = 0;
-  stallTimer = setInterval(() => {
-    if (!el.isConnected || el.ended) { clearInterval(stallTimer); return; }
-    if (el.readyState < 3 || el.currentTime === lastTime) {
-      stuckCount++;
-      if (stuckCount >= 3) { clearInterval(stallTimer); next(); }
-    } else { stuckCount = 0; lastTime = el.currentTime; }
-  }, 2500);
-}
-function swapIn(el, item) {
-  const old = hero.querySelector('.active');
-  el.classList.add('active');
-  hero.appendChild(el);
-  if (old) setTimeout(() => old.remove(), 800);
-  clearTimeout(timer); clearInterval(stallTimer);
-  preloadAhead();
-  if (item.t === 'i') {
-    timer = setTimeout(next, 8000);
-  } else {
-    el.muted = !soundOn;
-    el.play().catch(() => { el.muted = true; el.play().catch(() => {}); });
-    el.onended = next;
-    const dur = (el.duration && isFinite(el.duration)) ? el.duration * 1000 + 12000 : 45000;
-    timer = setTimeout(next, dur);
-    armStallWatchdog(el);
-  }
-}
-function playItem(idx) {
+function show(idx) {
   curIdx = idx;
-  const item = PLAYLIST[idx];
+  var item = PLAYLIST[idx];
+  if (timer) { clearTimeout(timer); timer = null; }
+  stuckSecs = 0; lastTime = -1;
   if (item.t === 'i') {
-    const cached = preloaded.get(idx);
-    if (cached && cached.complete && cached.naturalWidth) { swapIn(cached, item); return; }
-    const im = new Image();
-    im.alt = '';
-    im.onload = () => swapIn(im, item);
-    im.onerror = () => next();
-    im.src = item.s;
+    try { heroVid.pause(); } catch (e) {}
+    heroVid.className = '';
+    heroImg.src = item.s;
+    heroImg.className = 'active';
+    timer = setTimeout(nextItem, 8000);
   } else {
-    let v = preloaded.get(idx);
-    if (!v) v = document.createElement('video');
-    v.muted = true; v.playsInline = true; v.autoplay = true; v.preload = 'auto';
-    if (item.s === 'airfeet-slides-video-christmas-v1.mp4') v.playbackRate = 0.7;
-    let swapped = false;
-    v.oncanplay = () => { if (!swapped) { swapped = true; swapIn(v, item); } };
-    v.onerror = () => { if (curIdx === idx) next(); };
-    if (!v.getAttribute('src')) v.src = item.s;
-    if (v.readyState >= 3) { swapped = true; swapIn(v, item); }
-    setTimeout(() => { if (!swapped && curIdx === idx) next(); }, 12000);
+    heroImg.className = '';
+    heroVid.src = item.s;
+    if (item.s === 'airfeet-slides-video-christmas-v1.mp4') { try { heroVid.playbackRate = 0.7; } catch (e) {} }
+    else { try { heroVid.playbackRate = 1; } catch (e) {} }
+    heroVid.muted = !soundOn;
+    heroVid.className = 'active';
+    tryPlay(heroVid);
+    timer = setTimeout(nextItem, 45000);
   }
+  preloadNext();
 }
-playItem(0);
-
-
-
-async function goFull() {
-  try { await document.documentElement.requestFullscreen(); } catch(e) {}
-  try { if (navigator.wakeLock) await navigator.wakeLock.request('screen'); } catch(e) {}
+function nextItem() { show((curIdx + 1) % PLAYLIST.length); }
+heroVid.addEventListener('ended', function () { nextItem(); });
+heroVid.addEventListener('error', function () { if (heroVid.className === 'active') { nextItem(); } }, true);
+heroVid.addEventListener('loadedmetadata', function () {
+  if (heroVid.className === 'active' && heroVid.duration && isFinite(heroVid.duration)) {
+    if (timer) { clearTimeout(timer); }
+    timer = setTimeout(nextItem, (heroVid.duration + 8) * 1000);
+  }
+});
+setInterval(function () {
+  if (heroVid.className !== 'active') { stuckSecs = 0; lastTime = -1; return; }
+  if (heroVid.ended) { return; }
+  if (heroVid.readyState < 3 || heroVid.currentTime === lastTime) {
+    stuckSecs += 2;
+    if (stuckSecs >= 8) { nextItem(); }
+  } else { stuckSecs = 0; lastTime = heroVid.currentTime; }
+}, 2000);
+function goFull() {
+  try {
+    var el = document.documentElement;
+    if (el.requestFullscreen) { el.requestFullscreen(); }
+    else if (el.webkitRequestFullscreen) { el.webkitRequestFullscreen(); }
+    else if (el.msRequestFullscreen) { el.msRequestFullscreen(); }
+  } catch (e) {}
+  try { if (navigator.wakeLock && navigator.wakeLock.request) { navigator.wakeLock.request('screen'); } } catch (e) {}
 }
-document.addEventListener('click', goFull);
 function enableSound() {
   soundOn = true;
-  const v = hero.querySelector('video.active');
-  if (v) { v.muted = false; v.play().catch(() => {}); }
+  if (heroVid.className === 'active') { heroVid.muted = false; tryPlay(heroVid); }
 }
-document.addEventListener('click', enableSound);
-document.addEventListener('keydown', enableSound);
+document.addEventListener('click', function () { goFull(); enableSound(); });
+document.addEventListener('keydown', function () { enableSound(); });
+show(0);
 </script>
 </body>
 </html>
