@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The 90-Day Launch Program — Launchpoint Media</title>
+<meta name="description" content="One program, three tiers: in 90 days Launchpoint Media builds your website, content, social media, CRM, and advertising — and hands it over running.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=14">
+<style>
+.tier-img { width:100%; height:200px; object-fit:cover; border-radius:12px 12px 0 0; display:block; }
+.card .tier-body { padding:4px 4px 0; }
+.card .who { color:#64748b; font-size:.93rem; margin:6px 0 10px; }
+.value-line { margin-top:10px; font-size:.93rem; color:#64748b; }
+.value-line strong { color:#0f2040; }
+.phase-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px; margin-top:16px; }
+.phase { background:#fff; border:1px solid #e2e8f0; border-radius:12px; padding:16px; }
+.phase h4 { margin:0 0 6px; color:#0f2040; font-size:.98rem; }
+.phase p { margin:0; color:#64748b; font-size:.92rem; }
+.app-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:16px; margin-top:8px; }
+.app-card { background:#fff; border:1px solid #e2e8f0; border-radius:14px; padding:18px; }
+.app-card .app-name { font-weight:800; color:#0f2040; font-size:1.05rem; }
+.app-card .app-cost { font-weight:800; color:#16a34a; margin:4px 0 6px; }
+.app-card p { margin:0; color:#64748b; font-size:.92rem; }
+.split { display:grid; grid-template-columns:1fr 1fr; gap:28px; align-items:center; }
+.split img { width:100%; border-radius:14px; display:block; }
+@media (max-width:760px){ .split { grid-template-columns:1fr; } }
+.check-list { list-style:none; padding:0; margin:12px 0 0; }
+.check-list li { padding:6px 0 6px 26px; position:relative; color:#334155; }
+.check-list li::before { content:"✓"; position:absolute; left:0; color:#16a34a; font-weight:800; }
+.stats { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:18px; margin-top:8px; }
+.stat { background:#fff; border:1px solid #e2e8f0; border-radius:14px; padding:20px; text-align:center; }
+.stat .num { font-size:2rem; font-weight:900; color:#0f2040; }
+.stat .lbl { color:#64748b; font-size:.92rem; margin-top:4px; }
+.platform-strip { display:flex; flex-wrap:wrap; gap:10px; margin-top:14px; }
+.platform-strip span { background:#0f2040; color:#fff; padding:8px 16px; border-radius:999px; font-weight:600; font-size:.9rem; }
+.fineprint { color:#64748b; font-size:.95rem; }
+.fineprint li { margin:6px 0; }
+</style>
+</head>
+<body>
+
+<header class="site-header" id="site-header">
+  <div class="container header-inner">
+    <a href="index-v2-preview.html" class="logo">Launchpoint<span> Media</span></a>
+    <nav class="main-nav" id="main-nav">
+      <a href="#tiers">The Program</a>
+      <a href="#costs">Your Costs</a>
+      <a href="#catalogs">Catalogs</a>
+      <a href="#results">Results</a>
+      <button class="nav-cta consult-trigger">Free Consultation</button>
+    </nav>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <p class="hero-eyebrow">The 90-Day Launch Program</p>
+      <h1>Your whole marketing machine,<br><span class="accent">built in 90 days.</span></h1>
+      <p class="hero-sub">Website, product images, video, social media, CRM, email, and advertising — built, launched, and handed over running. One program, three tiers, sized to your business. This is the exact program that took our first product client from zero to 90 pairs sold and 250,000 views in 90 days.</p>
+      <div class="hero-ctas">
+        <button class="btn btn-primary consult-trigger">Book a Free Consultation</button>
+        <a href="#tiers" class="btn btn-ghost">See the Tiers</a>
+      </div>
+      <p class="hero-note">90 days means 90 days — every tier has a finish line and a handover. You own everything we build.</p>
+    </div>
+  </section>
+
+  <!-- TIERS OVERVIEW -->
+  <section class="section" id="tiers">
+    <div class="container">
+      <p class="section-eyebrow">The Program</p>
+      <h2>Three tiers. One finish line.</h2>
+      <p class="section-lead">Pick the tier that fits where your business is. Every tier ends with the machine running and a simple monthly retainer if you want us to keep it running.</p>
+      <div class="cards">
+
+        <div class="card">
+          <img class="tier-img" src="images/tier-launch.webp" alt="A local business owner at his shop counter">
+          <div class="tier-body">
+            <h3>Launch</h3>
+            <p class="price">$4,800 <small>/ 90 days</small></p>
+            <p class="who">$1,500 down + $1,100/mo · For local businesses that live on being found nearby — diners, barbers, bookstores, studios, cafes, trades.</p>
+            <ul class="check-list">
+              <li>Website built or rebuilt — a real site you own</li>
+              <li>Facebook + Instagram set up, branded, posting weekly</li>
+              <li>CRM + lead form + automated welcome email</li>
+              <li>Review funnel so happy customers get heard</li>
+              <li>Starter content package</li>
+            </ul>
+            <p class="value-line">Priced separately elsewhere: <strong>~$7,500</strong> — and the website alone typically runs $4,000–$12,000.</p>
+            <p style="margin-top:14px"><a href="#launch" class="btn btn-primary">See Launch details</a></p>
+          </div>
+        </div>
+
+        <div class="card featured">
+          <img class="tier-img" src="images/tier-growth.webp" alt="A product photo and video studio setup">
+          <div class="tier-body">
+            <p class="badge">The full program</p>
+            <h3>Growth</h3>
+            <p class="price">$8,500 <small>/ 90 days</small></p>
+            <p class="who">$2,500 down + $2,000/mo · For product brands and online sellers — everything in Launch, plus the full store, content, and advertising engine.</p>
+            <ul class="check-list">
+              <li>Full online store with catalog, codes &amp; shipping set up</li>
+              <li>Product image system + a library of brand videos</li>
+              <li>Facebook, Instagram, TikTok &amp; YouTube, run for you</li>
+              <li>Email campaigns + automated offer workflows</li>
+              <li>Managed ads — including geofenced local targeting</li>
+            </ul>
+            <p class="value-line">Priced separately at standard rates: <strong>~$27,000</strong>. This is the exact AirFeet build.</p>
+            <p style="margin-top:14px"><a href="#growth" class="btn btn-primary">See Growth details</a></p>
+          </div>
+        </div>
+
+        <div class="card">
+          <img class="tier-img" src="images/tier-partner.webp" alt="A fulfillment warehouse aisle">
+          <div class="tier-body">
+            <h3>Partner</h3>
+            <p class="price">$12,500 <small>/ 90 days</small></p>
+            <p class="who">$3,500 down + $3,000/mo · For established brands adding infrastructure — fulfillment, wholesale, and new channels.</p>
+            <ul class="check-list">
+              <li>Everything in Growth</li>
+              <li>Warehouse / fulfillment integration + returns system</li>
+              <li>Wholesale (B2B) channel with its own price list</li>
+              <li>Affiliate + ambassador programs with tracking codes</li>
+              <li>Event selling kit: booth, QR capture, displays</li>
+            </ul>
+            <p class="value-line">Priced separately: <strong>$35,000+</strong> — fulfillment integration alone starts at $2,500 elsewhere.</p>
+            <p style="margin-top:14px"><a href="#partner" class="btn btn-primary">See Partner details</a></p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- LAUNCH DETAIL -->
+  <section class="section section-alt" id="launch">
+    <div class="container">
+      <p class="section-eyebrow">Tier 1 — Launch · $4,800</p>
+      <h2>For the business people drive past every day</h2>
+      <p class="section-lead">Diners, restaurants, cafes, barbershops, salons, bookstores, boutiques, yoga and wellness studios, farm markets, trades. Your customers choose whoever looks alive online. Launch makes sure that's you: a real website (not a stub or a free booking page), social profiles that post every week, a customer list you own, and reviews flowing where people look.</p>
+      <div class="phase-grid">
+        <div class="phase"><h4>Days 1–30</h4><p>Website built, social profiles claimed and branded, CRM live.</p></div>
+        <div class="phase"><h4>Days 31–60</h4><p>Weekly posting running, lead form + first automated email live, review funnel on.</p></div>
+        <div class="phase"><h4>Days 61–90</h4><p>Content library built out, first promotion run, handover and training.</p></div>
+        <div class="phase"><h4>Day 91 →</h4><p>Rolls to a $450–$750/mo retainer if you want us to keep it running.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GROWTH DETAIL -->
+  <section class="section" id="growth">
+    <div class="container">
+      <p class="section-eyebrow">Tier 2 — Growth · $8,500</p>
+      <h2>The exact program behind the AirFeet numbers</h2>
+      <p class="section-lead">For product brands, makers, and retailers selling online. A web developer, photographer, videographer, social manager, and ads buyer would cost ~$27,000 hired separately. Growth is all five, coordinated, in one 90-day build: store, image system, 35+ videos, four social channels, email that sells, and ads verified against real orders — including geofenced ads targeted to a tight radius around a stadium, an event, a competitor, or your own storefront.</p>
+      <div class="phase-grid">
+        <div class="phase"><h4>Days 1–30</h4><p>Store built and stocked, shipping configured, profiles + CRM live.</p></div>
+        <div class="phase"><h4>Days 31–60</h4><p>Image + video library produced, posting cadence running, email automations live.</p></div>
+        <div class="phase"><h4>Days 61–90</h4><p>Ad campaigns launched (incl. geofenced), first promotion cycle measured against real orders.</p></div>
+        <div class="phase"><h4>Day 91 →</h4><p>Rolls to a $750–$1,200/mo retainer.</p></div>
+      </div>
+      <p class="section-lead" style="margin-top:18px">We build on the platform that fits your business:</p>
+      <div class="platform-strip">
+        <span>Shopify — recommended for products</span><span>Square</span><span>WooCommerce</span><span>Wix</span><span>Squarespace</span><span>Etsy</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARTNER DETAIL -->
+  <section class="section section-alt" id="partner">
+    <div class="container">
+      <p class="section-eyebrow">Tier 3 — Partner · $12,500</p>
+      <h2>When the problem is handling success, not finding it</h2>
+      <p class="section-lead">For established brands, multi-location businesses, and wholesalers adding direct sales. Partner adds the operations layer: your store connected to a fulfillment warehouse (our AirFeet integration allocated 33,826 pairs across 530 SKUs), a returns system with prepaid labels and inspection, a wholesale channel other stores can order from, ambassador and affiliate programs with tracking codes, and a full event selling kit.</p>
+      <div class="phase-grid">
+        <div class="phase"><h4>Days 1–30</h4><p>Store + fulfillment integration, inventory allocation, channels scoped.</p></div>
+        <div class="phase"><h4>Days 31–60</h4><p>Content engine at full volume, wholesale + ambassador programs launched.</p></div>
+        <div class="phase"><h4>Days 61–90</h4><p>Event kit delivered and run at a live event, every channel measured, ops documented and handed over.</p></div>
+        <div class="phase"><h4>Day 91 →</h4><p>Rolls to a $1,200–$1,500/mo retainer.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OUTSIDE COSTS -->
+  <section class="section" id="costs">
+    <div class="container">
+      <div class="split">
+        <div>
+          <p class="section-eyebrow">Straight Talk</p>
+          <h2>What you pay for outside our work</h2>
+          <p class="section-lead">Our price covers the work — building, designing, writing, managing. The tools themselves are billed by the companies that make them, in <strong>your name, on your accounts</strong>. That's deliberate: you own everything, and if we ever part ways, it all stays with you. Here are the typical costs so there are no surprises.</p>
+        </div>
+        <img src="images/apps-stack.webp" alt="A phone and laptop running a business's apps">
+      </div>
+      <div class="app-grid" style="margin-top:26px">
+        <div class="app-card"><div class="app-name">Shopify</div><div class="app-cost">~$39/mo</div><p>Your online store platform (Growth &amp; Partner). Paid to Shopify. The platform behind every result on this page.</p></div>
+        <div class="app-card"><div class="app-name">Square</div><div class="app-cost">Free – $49/mo</div><p>Register + online store for local shops. If your register is already Square, your store syncs with it.</p></div>
+        <div class="app-card"><div class="app-name">Wix / Squarespace</div><div class="app-cost">~$17–$49/mo</div><p>Simple sites and small stores. If you're already on one, we can rebuild right where you live.</p></div>
+        <div class="app-card"><div class="app-name">WordPress Hosting</div><div class="app-cost">~$5–$15/mo</div><p>Hosting for a WordPress site (Hostinger, GoDaddy). No platform fee — you own the site outright.</p></div>
+        <div class="app-card"><div class="app-name">Domain Name</div><div class="app-cost">~$15–$20/yr</div><p>Your .com, registered in your name. Small cost, non-negotiable to own.</p></div>
+        <div class="app-card"><div class="app-name">CRM — MarketFlux</div><div class="app-cost">Priced by plan</div><p>Your customer list, sign-up forms, and automated emails. We set it up; the account is yours.</p></div>
+        <div class="app-card"><div class="app-name">Meta Ads (Facebook / Instagram)</div><div class="app-cost">Your budget, your call</div><p>Ad spend is paid by you directly to Meta — never through us, never marked up. We manage it; you control the budget.</p></div>
+        <div class="app-card"><div class="app-name">Google Workspace</div><div class="app-cost">~$7/user/mo</div><p>Professional email on your own domain (you@yourbusiness.com) instead of a Gmail address.</p></div>
+        <div class="app-card"><div class="app-name">Payment Processing</div><div class="app-cost">2.9% + 30¢ per sale</div><p>The standard card-processing fee, taken out of each sale by Shopify/Stripe/Square. No sale, no fee.</p></div>
+        <div class="app-card"><div class="app-name">Warehouse Fulfillment</div><div class="app-cost">Partner tier — varies</div><p>Storage and pick/pack fees paid directly to the warehouse, plus postage. Priced by volume; we help you negotiate it.</p></div>
+      </div>
+      <p class="fineprint" style="margin-top:14px">Prices are the platforms' typical published rates as of late 2026 and can change — we'll confirm your exact stack and its cost before you sign anything.</p>
+    </div>
+  </section>
+
+  <!-- CATALOGS -->
+  <section class="section section-alt" id="catalogs">
+    <div class="container">
+      <div class="split">
+        <img src="images/service-catalogs.webp" alt="A printed product catalog and its digital version">
+        <div>
+          <p class="section-eyebrow">Included Service</p>
+          <h2>We create catalogs for our clients</h2>
+          <p class="section-lead">A clean, professional catalog of everything you sell — digital for your website and email list, print-ready for your counter, your booth, and your wholesale buyers. Built from your product photos, priced and organized, in your branding.</p>
+          <ul class="check-list">
+            <li>Digital catalog for your site, socials, and email</li>
+            <li>Print-ready version for in-store and events</li>
+            <li>Wholesale line sheets for Partner-tier B2B selling</li>
+          </ul>
+          <p class="value-line">Included in <strong>Growth</strong> (digital) and <strong>Partner</strong> (digital + print + line sheets). Add-on for Launch clients: <strong>$400</strong>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESULTS -->
+  <section class="section" id="results">
+    <div class="container">
+      <p class="section-eyebrow">Proof, Not Promises</p>
+      <h2>What this program did in its first 90 days</h2>
+      <p class="section-lead">AirFeet Recovery started at zero — no store, no followers, no list. Ninety days of this program later:</p>
+      <div class="stats">
+        <div class="stat"><div class="num">250K</div><div class="lbl">Facebook views in 90 days</div></div>
+        <div class="stat"><div class="num">180K</div><div class="lbl">Unique viewers reached</div></div>
+        <div class="stat"><div class="num">90</div><div class="lbl">Pairs sold from a standing start</div></div>
+        <div class="stat"><div class="num">2 → 22+</div><div class="lbl">Online orders, Sept → Nov, month over month</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINE PRINT / CTA -->
+  <section class="section section-dark">
+    <div class="container narrow">
+      <p class="section-eyebrow">The Honest Fine Print</p>
+      <h2>How we work</h2>
+      <ul class="fineprint" style="color:#cbd5e1">
+        <li><strong style="color:#fff">Ad spend is separate</strong> — paid by you straight to the platform. We manage it; we never touch it or mark it up.</li>
+        <li><strong style="color:#fff">90 days means 90 days.</strong> Every tier has a finish line and a handover — no drifting open-ended projects.</li>
+        <li><strong style="color:#fff">You own everything</strong> — the site, the list, the accounts, the content. Built in your name, like everything on this page.</li>
+        <li><strong style="color:#fff">Proof over promises.</strong> Every number in our pitch comes from live analytics, and we'll show you.</li>
+      </ul>
+      <p style="margin-top:22px"><button class="btn btn-primary btn-large consult-trigger">Book a Free Consultation</button></p>
+    </div>
+  </section>
+
+  <!-- Consultation popup -->
+  <div class="consult-popup" id="consult-popup" aria-hidden="true" role="dialog" aria-label="Book a free consultation">
+    <div class="consult-popup-backdrop" id="consult-backdrop"></div>
+    <div class="consult-popup-card">
+      <button class="consult-popup-close" id="consult-close" aria-label="Close">&times;</button>
+      <p class="section-eyebrow">Free Consultation</p>
+      <h2>Book your free consultation</h2>
+      <p class="section-lead">Tell me about your business and we'll find a time for a free 30-minute call. No pitch, no pressure — just honest advice. I read every message personally.</p>
+      <form class="contact-form" id="consult-form">
+        <label for="consult-name">Name
+          <input type="text" id="consult-name" name="name" required autocomplete="name">
+        </label>
+        <label for="consult-email">Email
+          <input type="email" id="consult-email" name="email" required autocomplete="email">
+        </label>
+        <label for="consult-message">What does your business need?
+          <textarea id="consult-message" name="message" rows="4" required></textarea>
+        </label>
+        <button type="submit" class="btn btn-primary">Request My Free Consultation</button>
+      </form>
+      <p class="contact-email">Prefer email? <a href="mailto:zachsykesdesigns@gmail.com">zachsykesdesigns@gmail.com</a></p>
+    </div>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>&copy; 2026 Launchpoint Media. All rights reserved.</p>
+    <p><a href="mailto:zachsykesdesigns@gmail.com">zachsykesdesigns@gmail.com</a></p>
+  </div>
+</footer>
+
+<script src="script.js?v=16"></script>
+</body>
+</html>
